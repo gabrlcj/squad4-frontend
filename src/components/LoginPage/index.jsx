@@ -1,8 +1,12 @@
 import { Container } from './styles'
 
 export function LoginPage() {
+  function handleLoginForm(e) {
+    e.preventDefault()
+  }
+
   return (
-    <Container>
+    <Container onSubmit={handleLoginForm}>
       <h2>Login</h2>
       <label htmlFor='identificador'>
         Nome ou E-mail:
