@@ -1,3 +1,13 @@
+import { Header } from './components/Header'
+import { LoginPage } from './components/LoginPage'
+import { GlobalStyle } from './styles/global'
+
 export default function App() {
-  return <h1>Hello World</h1>
+  return (
+    <>
+      <GlobalStyle />
+      <Header />
+      <LoginPage />
+    </>
+  )
 }
