@@ -5,7 +5,7 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.75rem;
 
   border: 2px solid #d3d3d3c1;
   border-radius: 0.25rem;
@@ -36,7 +36,7 @@ export const Container = styled.form`
       }
 
       &:focus {
-        background: var(--background-focus);
+        outline: 3px solid var(--background-focus);
       }
 
       &::placeholder {
