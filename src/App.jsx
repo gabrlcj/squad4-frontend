@@ -1,13 +1,20 @@
-import { Header } from './components/Header'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { LoginPage } from './components/LoginPage'
+import { RegisterPage } from './components/RegisterPage'
 import { GlobalStyle } from './styles/global'
 
 export default function App() {
   return (
-    <>
+    <Router>
       <GlobalStyle />
-      <Header />
-      <LoginPage />
-    </>
+      <Switch>
+        <Route path='/register'>
+          <RegisterPage />
+        </Route>
+        <Route path='/'>
+          <LoginPage />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
