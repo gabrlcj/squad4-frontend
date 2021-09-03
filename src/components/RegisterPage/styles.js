@@ -23,11 +23,11 @@ export const Container = styled.form`
     font-weight: 700;
 
     input {
-      padding: 0.5rem 1.5rem;
+      padding: 0.75rem 1.75rem;
       border: 0;
       border-radius: 0.25rem;
       outline: transparent;
-      margin: 0.5rem 0;
+      margin-top: 1rem;
 
       transition: filter 0.2s;
 
@@ -51,7 +51,7 @@ export const Container = styled.form`
     border-radius: 1.25rem;
     font-weight: 700;
     background: var(--background);
-    margin: 0.5rem 0;
+    width: 170px;
 
     transition: filter 0.2s;
 
