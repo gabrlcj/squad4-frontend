@@ -21,28 +21,6 @@ export const Container = styled.form`
     flex-direction: column;
 
     font-weight: 700;
-
-    input {
-      padding: 0.75rem 1.75rem;
-      border: 0;
-      border-radius: 0.25rem;
-      outline: transparent;
-      margin-top: 1rem;
-
-      transition: filter 0.2s;
-
-      &:hover {
-        filter: brightness(0.9);
-      }
-
-      &:focus {
-        outline: 3px solid var(--background-focus);
-      }
-
-      &::placeholder {
-        font-weight: 700;
-      }
-    }
   }
 
   button {
