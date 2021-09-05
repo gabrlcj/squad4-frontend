@@ -23,6 +23,7 @@ export const Container = styled.form`
     font-weight: 700;
 
     input {
+      text-align: center;
       padding: 0.75rem 1.75rem;
       border: 0;
       border-radius: 0.25rem;
