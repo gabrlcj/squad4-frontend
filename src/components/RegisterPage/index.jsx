@@ -8,6 +8,7 @@ export function RegisterPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [office, setOffice] = useState('')
   const [vaccine, setVaccine] = useState(false)
 
@@ -26,8 +27,13 @@ export function RegisterPage() {
   }
 
   function validateInputs() {
+
     if (name === '' || email === '' || password === '') {
       return toast.error('Ops, algo deu errado')
+    }
+    else if (confirmPassword !== password) {
+        // setPassword(password)
+        return toast.error('Senha inválida!')
     } else {
       return toast.success('Registro feito com sucesso!')
     }
@@ -69,6 +75,18 @@ export function RegisterPage() {
             placeholder='Digite sua senha'
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+        <label htmlFor='confirmSenha'>
+          Confirme sua senha:
+          <input
+            id='cp'
+            name='confirmSenha'
+            type='password'
+            required
+            placeholder='Confirme sua senha'
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
           />
         </label>
         <label htmlFor='filial'>
