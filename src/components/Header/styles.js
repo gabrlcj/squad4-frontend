@@ -18,7 +18,8 @@ export const Container = styled.header`
     color: var(--background);
   }
 
-  a:first-child {
+  a:first-child,
+  a:nth-child(2) {
     margin-right: 1rem;
   }
 `

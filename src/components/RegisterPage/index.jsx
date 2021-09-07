@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Header } from '../Header'
+import api from '../../api'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
@@ -9,8 +10,11 @@ export function RegisterPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [office, setOffice] = useState('')
-  const [vaccine, setVaccine] = useState(false)
+  const [origin_office, setOffice] = useState('')
+  const [vaccine_status, setVaccine] = useState(false)
+  const [role, setRole] = useState('')
+  const [squad, setSquad] = useState('')
+  const [pwd, setPWD] = useState(false)
 
   function handleUserRegister(event) {
     event.preventDefault()
@@ -19,11 +23,19 @@ export function RegisterPage() {
       name,
       email,
       password,
-      office,
-      vaccine,
+      origin_office,
+      vaccine_status,
+      role,
+      squad,
+      pwd
     }
 
-    console.log(data)
+    api({
+      method:"POST",
+      url: "/colaboradores",
+      data
+    }).then((res) => toast.success("Registro feito com sucesso!"))
+    .catch(error => toast.error("Algo não saiu como o planejado."))
   }
 
   function validateInputs() {
@@ -32,11 +44,8 @@ export function RegisterPage() {
       return toast.error('Ops, algo deu errado')
     }
     else if (confirmPassword !== password) {
-        // setPassword(password)
         return toast.error('Senha inválida!')
-    } else {
-      return toast.success('Registro feito com sucesso!')
-    }
+    } 
   }
 
   return (
@@ -93,12 +102,35 @@ export function RegisterPage() {
           Filial de preferência:
           <input name='filial' type='radio' value='São Paulo - SP' onClick={() => setOffice('São Paulo')} /> São Paulo
           <input name='filial' type='radio' value='Santos - SP' onClick={() => setOffice('Santos')} /> Santos
+
+          {/* <select name="filial">
+            <option value="SP" onClick={() => setOffice('São Paulo')}>São Paulo</option>
+            <option value="Santos" onClick={() => setOffice('Santos')}>Santos</option>
+          </select> */}
         </label>
+
+        
         <label htmlFor='vacina'>
           Situação da vacina contra COVID:
           <input name='vacina' type='radio' value='Vacinado' onClick={() => setVaccine(true)} /> Vacinado
           <input name='vacina' type='radio' value='Não vacinado' onClick={() => setVaccine(false)} /> Não vacinado
         </label>
+
+        <label htmlFor="role">
+          Qual seu cargo?
+          <input type="text" value={role} placeholder="Digite seu cargo" onChange={(event) => setRole(event.target.value)}/>
+        </label>
+
+        <label htmlFor="squad">
+          Qual seu squad?
+            <input type="text" value={squad} placeholder="Qual seu squad?" onChange={(event) => setSquad(event.target.value)}/>
+        </label>
+
+        <label htmlFor="pwd">
+          Você é PCD?
+          <input type="checkbox" value={pwd} onChange={() => setPWD(!pwd)}/>
+        </label>
+
         <button type='submit' onClick={validateInputs}>
           Fazer Cadastro
         </button>

@@ -4,12 +4,18 @@ import { RegisterPage } from './components/RegisterPage'
 
 import { GlobalStyle } from './styles/global'
 import { ToastContainer } from 'react-toastify'
+import { Dashboard } from './components/Dashboard'
 
 export default function App() {
   return (
     <>
       <Router>
         <GlobalStyle />
+        <Switch>
+          <Route path='/dashboard'>
+            <Dashboard />
+          </Route>
+        </Switch>
         <Switch>
           <Route path='/register'>
             <RegisterPage />
