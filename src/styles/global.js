@@ -32,10 +32,6 @@ export const GlobalStyle = createGlobalStyle`
     font: 400 1rem 'Arial', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
-
-    div#root {
-      min-height: 100vh;
-    }
   }
 
   input {
@@ -60,7 +56,7 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 700;
     }
   }
-}
+
 
   button {
     cursor: pointer;
