@@ -1,13 +1,14 @@
 import { Calendario } from '../Calendar/index.jsx'
-import { Header } from '../Header/index.jsx'
+// import { Header } from '../Header/index.jsx'
+import { NavigationBar } from '../NavigationBar/index.jsx'
 import { Container } from './styles.js'
 
 export function Dashboard() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container>
-        <h1>Interface gráfica aqui</h1>
+        <NavigationBar />
         <Calendario />
       </Container>
     </>
