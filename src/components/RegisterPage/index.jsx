@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Header } from '../Header'
 import api from '../../api'
 
@@ -45,8 +45,23 @@ export function RegisterPage() {
     }
     else if (confirmPassword !== password) {
         return toast.error('Senha inválida!')
-    } 
+    }
   }
+
+  const [validLength, setValidLength] = useState(null);
+  const [hasNumber, setHasNumber] = useState(null);
+  const [upperCase, setUpperCase] = useState(null);
+  const [lowerCase, setLowerCase] = useState(null);
+  const [specialChar, setSpecialChar] = useState(null);
+  // const [match, setMatch] = useState(null);
+
+  useEffect (() => {
+    setValidLength(password.length > 7 ? true : false);
+    setHasNumber(/\d/.test(password) ? true: false);
+    setUpperCase(/[A-Z]/.test(password) ? true: false);
+    setLowerCase(/[a-z]/.test(password) ? true: false);
+    setSpecialChar((/[^A-Z a-z0-9]/).test(password) ? true: false);
+  }, [password])
 
   return (
     <>
@@ -97,6 +112,13 @@ export function RegisterPage() {
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
           />
+        </label>
+        <label>
+          <div className={validLength === true ? 'green' : null}>Senha com 8 ou mais dígitos</div>
+          <div className={upperCase ? 'green' : null}>Possui letra maiúscula</div>
+          <div className={lowerCase ? 'green' : null} >Possui letra minúscula</div>
+          <div className={hasNumber ? 'green' : null}>Possui números</div>
+          <div className={specialChar ? 'green' : null} >Possui caractéres especiais</div>
         </label>
         <label htmlFor='filial'>
           Filial de preferência:
