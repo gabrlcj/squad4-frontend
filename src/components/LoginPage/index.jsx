@@ -23,37 +23,44 @@ export function LoginPage() {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Container onSubmit={handleLoginForm}>
-        <h2>Login</h2>
-        <label htmlFor='identificador'>
-          E-mail:
-          <input
-            name='identificador'
-            type='text'
-            required
-            placeholder='Digite seu email'
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </label>
-        <label htmlFor='senha'>
-          Senha:
-          <input
-            name='senha'
-            type='password'
-            required
-            placeholder='Digite sua senha'
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-        <button type='submit' onClick={validateInputs}>
-          Fazer Login
-        </button>
-        <button type='button'>
-          <Link to='/register'>Fazer Cadastro</Link>
-        </button>
+        <div className="left" />
+        <div className="right">
+          <div className="loginbox">
+            <h2>ACESSAR PORTAL</h2>
+            <label htmlFor='email'>
+              <input
+                name='email'
+                type='email'
+                required
+                placeholder='Digite seu email'
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </label>
+
+            <label htmlFor='password'>
+              <input
+                name='password'
+                type='password'
+                required
+                placeholder='Digite sua senha'
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </label>
+            <button type='submit' onClick={validateInputs}>
+              ACESSAR
+            </button>
+              <div className="basetext">
+                Não é cadastrado? <Link to='/register'>Cadastre-se</Link>
+              </div>
+              <div className="basetext">
+                Esqueci a senha
+              </div>
+          </div>
+        </div>
       </Container>
     </>
   )
