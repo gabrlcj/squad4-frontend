@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Header } from '../Header'
+// import { Header } from '../Header'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
@@ -25,12 +25,10 @@ export function LoginPage() {
     <>
       {/* <Header /> */}
       <Container onSubmit={handleLoginForm}>
-        <div className="left">
-      
-        </div>
-        <div className="right">
-          <div className="loginbox">
-            <h1 className="title">ACESSAR PORTAL</h1>
+        <div className='left'></div>
+        <div className='right'>
+          <div className='loginbox'>
+            <h1 className='title'>ACESSAR PORTAL</h1>
             <label htmlFor='email'>
               <input
                 name='email'
@@ -56,16 +54,16 @@ export function LoginPage() {
             <button type='submit' onClick={validateInputs}>
               ACESSAR
             </button>
-            
-              <div className="text-box">
-                <div className="basetext">
-                  Não é cadastrado? <Link to='/register' className="underline">Cadastre-se</Link>
-                </div>
-                <div className="basetext underline">
-                  Esqueci a senha
-                </div>
 
+            <div className='text-box'>
+              <div className='basetext'>
+                Não é cadastrado?{' '}
+                <Link to='/register' className='underline'>
+                  Cadastre-se
+                </Link>
               </div>
+              <div className='basetext underline'>Esqueci a senha</div>
+            </div>
           </div>
         </div>
       </Container>

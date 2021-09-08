@@ -1,11 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   background: #d3d3d3c1;
-  /* width: min(1080px, 90%); */
+  width: min(1024px, 90%);
+  min-height: 100vh;
 
   .underline {
     text-decoration: underline;
@@ -29,7 +31,7 @@ export const Container = styled.form`
     background: #cbcbcb;
     width: 50%;
     height: 500px;
-    padding: 150px 250px 150px;
+    padding: 150px 250px;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -88,4 +90,4 @@ export const Container = styled.form`
       color: #535353;
     }
   }
-`;
+`
