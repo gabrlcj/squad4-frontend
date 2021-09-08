@@ -37,4 +37,23 @@ export const Container = styled.form`
       filter: brightness(0.9);
     }
   }
-`;
+  
+  .green{
+    font-weight: bold;
+    color: green;
+    }
+
+    .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 50%; */
+    flex: 2;
+  }
+`

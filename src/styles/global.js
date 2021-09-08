@@ -1,9 +1,9 @@
-import { createGlobalStyle } from 'styled-components'
-import 'react-toastify/dist/ReactToastify.css'
+import { createGlobalStyle } from "styled-components";
+import "react-toastify/dist/ReactToastify.css";
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --background: #FE4400;
+    --background: #DAD8D7;
     --background-focus: #FE4400a9;
     --alternative: #b4ccff;
     --text: #363033;
@@ -32,6 +32,15 @@ export const GlobalStyle = createGlobalStyle`
     font: 400 1rem 'Arial', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
+
+    div#root {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+    }
   }
 
   input {
@@ -71,4 +80,4 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
-`
+`;
