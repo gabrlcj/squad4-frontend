@@ -53,11 +53,13 @@ export function LoginPage() {
             <button type='submit' onClick={validateInputs}>
               ACESSAR
             </button>
-              <div className="basetext">
-                Não é cadastrado? <Link to='/register'>Cadastre-se</Link>
-              </div>
-              <div className="basetext">
-                Esqueci a senha
+              <div className="text-box">
+                <div className="basetext">
+                  Não é cadastrado? <Link to='/register'>Cadastre-se</Link>
+                </div>
+                <div className="basetext">
+                  Esqueci a senha
+                </div>
               </div>
           </div>
         </div>

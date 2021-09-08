@@ -34,9 +34,17 @@ export const Container = styled.form`
     align-items: center;
     margin-top: 30%;
   }
+  
+  .text-box {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: left;
+  }
 
   .basetext {
     font-size: 12px;
+    margin: 2px 0;
   }
 
   /* label {
