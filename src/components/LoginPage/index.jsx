@@ -26,7 +26,7 @@ export function LoginPage() {
       {/* <Header /> */}
       <Container onSubmit={handleLoginForm}>
         <div className="left">
-            <h1>Astronauta aqui.</h1>
+      
         </div>
         <div className="right">
           <div className="loginbox">
