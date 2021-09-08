@@ -30,7 +30,7 @@ export function LoginPage() {
         </div>
         <div className="right">
           <div className="loginbox">
-            <h2>ACESSAR PORTAL</h2>
+            <h1 className="title">ACESSAR PORTAL</h1>
             <label htmlFor='email'>
               <input
                 name='email'
@@ -52,16 +52,19 @@ export function LoginPage() {
                 onChange={(event) => setPassword(event.target.value)}
               />
             </label>
+
             <button type='submit' onClick={validateInputs}>
               ACESSAR
             </button>
+            
               <div className="text-box">
                 <div className="basetext">
-                  Não é cadastrado? <Link to='/register'>Cadastre-se</Link>
+                  Não é cadastrado? <Link to='/register' className="underline">Cadastre-se</Link>
                 </div>
-                <div className="basetext">
+                <div className="basetext underline">
                   Esqueci a senha
                 </div>
+
               </div>
           </div>
         </div>

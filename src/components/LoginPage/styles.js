@@ -7,6 +7,18 @@ export const Container = styled.form`
   background: #d3d3d3c1;
   /* width: min(1080px, 90%); */
 
+  .underline {
+    text-decoration: underline;
+    padding-left: 0.2rem;
+  }
+
+  .title {
+    display: flex;
+    width: 14.5625rem;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+
   .left {
     background: #f0edec;
     width: 50%;
@@ -17,9 +29,10 @@ export const Container = styled.form`
     background: #cbcbcb;
     width: 50%;
     height: 500px;
-    padding: 100px 250px 170px;
+    padding: 150px 250px 150px;
     justify-content: center;
     align-items: center;
+    align-content: center;
   }
 
   .loginbox {
@@ -35,10 +48,15 @@ export const Container = styled.form`
     display: flex;
     flex: 1;
     flex-direction: column;
+    width: 14.5625rem;
+    justify-content: center;
     text-align: left;
   }
 
   .basetext {
+    display: flex;
+    width: 14.5625rem;
+    justify-content: center;
     font-size: 12px;
     margin: 2px 0;
   }
@@ -56,15 +74,18 @@ export const Container = styled.form`
     border: 0;
     padding: 0.75rem 2rem;
     margin: 10px;
-    border-radius: 1.25rem;
+    border-radius: 0.625rem;
     font-weight: 700;
-    background: var(--background);
+    background: #535353;
+    color: #ffffff;
     width: 170px;
 
     transition: filter 0.2s;
 
     &:hover {
       filter: brightness(0.9);
+      background: #ffffff;
+      color: #535353;
     }
   }
 `;
