@@ -12,15 +12,13 @@ export function LoginPage() {
   const { token, setToken, user, setUser } = useContext(AuthContext)
 
   async function login(email, password) {
-    console.log(email, password)
     const response = await api.post(`/login`, {
       email,
       password,
     });
-    console.log(response.data)
+
     const { token } = response.data;
     localStorage.setItem("token", token);
-    console.log(token)
     setToken(token);
   }
 
@@ -28,7 +26,6 @@ export function LoginPage() {
     event.preventDefault()
     try {
       await login(email, password)
-      console.log("danza kuduro oi oi oi")
     } catch (e) {
       console.log(e)
       toast.error("Email ou senha inválidos.")
