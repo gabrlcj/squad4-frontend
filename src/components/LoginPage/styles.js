@@ -1,29 +1,25 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-direction: column; */
-
-  border: 2px solid #d3d3d3c1;
-  border-radius: 0.25rem;
   background: #d3d3d3c1;
-  /* padding: 2rem; */
-  margin: 5rem auto;
-  width: min(1080px, 90%);
+  /* width: min(1080px, 90%); */
 
   .left {
     background: #f0edec;
-    width:50%;
-    height:600px;
+    width: 50%;
+    height: 500px;
   }
 
   .right {
     background: #cbcbcb;
-    width:50%;
-    height:600px;
-    /* flex-direction: column; */
+    width: 50%;
+    height: 500px;
+    padding: 100px 250px 170px;
+    justify-content: center;
+    align-items: center;
   }
 
   .loginbox {
@@ -34,7 +30,7 @@ export const Container = styled.form`
     align-items: center;
     margin-top: 30%;
   }
-  
+
   .text-box {
     display: flex;
     flex: 1;
@@ -71,4 +67,4 @@ export const Container = styled.form`
       filter: brightness(0.9);
     }
   }
-`
+`;
