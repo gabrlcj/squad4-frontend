@@ -39,8 +39,21 @@ export const Container = styled.form`
   }
   
   .green{
-    font-weight: bolder;
+    font-weight: bold;
     color: green;
     }
 
-`;
+    .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: 50%; */
+    flex: 2;
+  }
+`

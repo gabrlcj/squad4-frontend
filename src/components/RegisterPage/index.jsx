@@ -68,28 +68,30 @@ export function RegisterPage() {
       <Header />
       <Container onSubmit={handleUserRegister}>
         <h2>Cadastro</h2>
-        <label htmlFor='nome'>
-          Nome:
-          <input
-            name='nome'
-            type='text'
-            required
-            placeholder='Digite seu nome'
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-          />
-        </label>
-        <label htmlFor='email'>
-          Email:
-          <input
-            name='email'
-            type='email'
-            required
-            placeholder='Digite seu email'
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </label>
+          <div className="row">
+            <label htmlFor='nome' className="column">
+              Nome:
+              <input
+                name='nome'
+                type='text'
+                required
+                placeholder='Digite seu nome'
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </label>
+            <label htmlFor='email' className="column">
+              Email:
+              <input
+                name='email'
+                type='email'
+                required
+                placeholder='Digite seu email'
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </label>
+          </div>
         <label htmlFor='senha'>
           Senha:
           <input

@@ -60,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
       font-weight: 700;
     }
   }
-}
+
 
   button {
     cursor: pointer;
@@ -75,4 +75,4 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
-`
+`;
