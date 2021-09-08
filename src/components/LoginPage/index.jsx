@@ -1,62 +1,81 @@
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-// import { Header } from '../Header'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../../context/AuthContext'
+import api from '../../api'
 
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { token, setToken, user, setUser } = useContext(AuthContext)
-  
-  console.log(user)
 
-  function handleLoginForm(event) {
+  async function login(email, password) {
+    console.log(email, password)
+    const response = await api.post(`/login`, {
+      email,
+      password,
+    });
+    console.log(response.data)
+    const { token } = response.data;
+    localStorage.setItem("token", token);
+    console.log(token)
+    setToken(token);
+  }
+
+  async function handleLoginForm(event) {
     event.preventDefault()
+    try {
+      await login(email, password)
+      console.log("danza kuduro oi oi oi")
+    } catch (e) {
+      console.log(e)
+      toast.error("Email ou senha inválidos.")
+    }
   }
 
   function validateInputs() {
     if (email === '' || password === '') {
-      return toast.error('Email ou senha inválidos')
-    } else {
-      return toast.success('Login feito com sucesso!')
+      return toast.error('Email ou senha em branco.')
     }
   }
 
   return (
     <>
-      <Container onSubmit={handleLoginForm}>
+      <Container>
         <div className='left'></div>
         <div className='right'>
           <div className='loginbox'>
             <h1 className='title'>ACESSAR PORTAL</h1>
-            <label htmlFor='email'>
-              <input
-                name='email'
-                type='email'
-                required
-                placeholder='Digite seu email'
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-              />
-            </label>
 
-            <label htmlFor='password'>
-              <input
-                name='password'
-                type='password'
-                required
-                placeholder='Digite sua senha'
-                value={password}
-                onChange={(event) => setPassword(event.target.value)}
-              />
-            </label>
+            <form onSubmit={handleLoginForm}>
+              <label htmlFor='email'>
+                <input
+                  name='email'
+                  type='email'
+                  required
+                  placeholder='Digite seu email'
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                />
+              </label>
 
-            <button type='submit' onClick={validateInputs}>
-              ACESSAR
-            </button>
+              <label htmlFor='password'>
+                <input
+                  name='password'
+                  type='password'
+                  required
+                  placeholder='Digite sua senha'
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                />
+              </label>
+
+              <button type='submit' onClick={validateInputs}>
+                ACESSAR
+              </button>
+            </form>
 
             <div className='text-box'>
               <div className='basetext'>

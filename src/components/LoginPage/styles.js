@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.form`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,7 +37,7 @@ export const Container = styled.form`
     align-content: center;
   }
 
-  .loginbox {
+  .loginbox, form {
     display: flex;
     flex: 1;
     flex-direction: column;
