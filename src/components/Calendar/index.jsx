@@ -2,21 +2,12 @@ import { useState } from 'react'
 import Calendar from 'react-calendar'
 import { Container } from './styles'
 
-export function Calendario() {
+export function Calendario({ formatDay }) {
   const [day, setDay] = useState(new Date())
-  const today = new Date()
-
-  function formatDateWithZero(date) {
-    if (date <= 9) return '0' + date
-    else return date
-  }
-
-  const formatToday =
-    formatDateWithZero(today.getDate()) + '/' + formatDateWithZero(today.getMonth() + 1) + '/' + today.getFullYear()
 
   return (
     <Container>
-      <h3>Hoje é dia {formatToday}</h3>
+      <h5>Hoje é dia {formatDay}</h5>
       <Calendar
         className='calendario'
         tileClassName='day'
@@ -27,6 +18,12 @@ export function Calendario() {
         minDate={new Date()}
         tileDisabled={({ date }) => date.getDay() === 6 || date.getDay() === 0}
       />
+      <h5>Meus agendamentos</h5>
+      <div className='appointments'>
+        <div>11/09</div>
+        <div>16/09</div>
+        <div>20/09</div>
+      </div>
     </Container>
   )
 }

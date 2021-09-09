@@ -11,11 +11,18 @@ export const Container = styled.nav`
   background: #707070;
   padding: 2rem 0;
 
-  img {
+  .profile-img {
     height: 6rem;
     width: 6rem;
     border-radius: 50%;
     border: 2px solid white;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 7rem;
   }
 
   div {
@@ -24,5 +31,10 @@ export const Container = styled.nav`
     justify-content: center;
     gap: 2rem;
     flex-direction: column;
+
+    img {
+      height: 2rem;
+      width: 2rem;
+    }
   }
 `
