@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
@@ -9,28 +9,30 @@ import api from '../../api'
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { token, setToken, user, setUser } = useContext(AuthContext)
+  const {  setToken, setUser } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   async function login(email, password) {
-    console.log(email, password)
+    setLoading(true);
     const response = await api.post(`/login`, {
       email,
-      password,
+      password
     });
-    console.log(response.data)
     const { token } = response.data;
+    const { user } = response.data;
     localStorage.setItem("token", token);
-    console.log(token)
     setToken(token);
+    setUser(user);
+    setLoading(false);
+    history.push('/dashboard');
   }
 
   async function handleLoginForm(event) {
     event.preventDefault()
     try {
       await login(email, password)
-      console.log("danza kuduro oi oi oi")
     } catch (e) {
-      console.log(e)
       toast.error("Email ou senha inválidos.")
     }
   }
@@ -39,6 +41,11 @@ export function LoginPage() {
     if (email === '' || password === '') {
       return toast.error('Email ou senha em branco.')
     }
+  }
+
+
+  if(loading){
+    return <h1>Carregando...</h1>
   }
 
   return (
