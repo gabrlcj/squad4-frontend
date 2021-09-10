@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
 export function WorkStation() {
-  const { scheduling, setNewScheduling  } = useContext(AuthContext);
+  const { scheduling, setScheduling  } = useContext(AuthContext);
 
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()
     
     if (scheduling.workstation !== chairNumber) {
-        setNewScheduling({...scheduling, workstation: chairNumber})
+        setScheduling({...scheduling, workstation: chairNumber})
     } else {
       return;
     }

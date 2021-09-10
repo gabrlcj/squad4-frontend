@@ -5,9 +5,9 @@ import { useContext } from 'react/cjs/react.development'
 import { AuthContext } from '../../context/AuthContext'
 
 export function Main() {
-  const [filial, setFilial] = useState('São Paulo')
-  const [station, setStation] = useState('Estação de trabalho')
-  const { day } = useContext(AuthContext)
+  const [station, setStation] = useState('Estação de trabalho');
+  const { day, scheduling, setScheduling } = useContext(AuthContext);
+
 
   function dataAtualFormatada(day) {
     var data = day,
@@ -21,7 +21,7 @@ export function Main() {
     <Container>
       <h1>Logo aqui</h1>
       <div className='selection-bar'>
-        <select name='filial' onChange={(event) => setFilial(event.target.value)}>
+        <select name='filial' onChange={(event) => setScheduling({...scheduling, office: event.target.value})}>
           <option name='filial' value='São Paulo'>
             SÃO PAULO
           </option>
@@ -40,7 +40,7 @@ export function Main() {
       </div>
       <section>
         <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
-        {filial === 'São Paulo' && station === 'Estação de trabalho' ? <WorkStation /> : <h3>Exemplo 2</h3>}
+        {scheduling.office === 'São Paulo' && station === 'Estação de trabalho' ? <WorkStation /> : <h3>Exemplo 2</h3>}
         <div className='legenda'>
           <strong>
             <div className='circle ocupado'></div>Ocupado
