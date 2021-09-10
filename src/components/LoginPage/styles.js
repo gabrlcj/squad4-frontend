@@ -1,11 +1,10 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-export const Container = styled.form`
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  background: #d3d3d3c1;
   width: min(1024px, 90%);
   min-height: 100vh;
 
@@ -37,7 +36,7 @@ export const Container = styled.form`
     align-content: center;
   }
 
-  .loginbox {
+  .loginbox, form {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -90,4 +89,4 @@ export const Container = styled.form`
       color: #535353;
     }
   }
-`
+`;
