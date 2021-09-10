@@ -7,6 +7,7 @@ export const Container = styled.div`
   border-radius: 2rem;
   margin: 0.5rem auto 0;
   padding: 1rem;
+  width: 20rem;
 
   display: flex;
   align-items: center;
@@ -14,7 +15,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   h5 {
-    margin: 0 0 1.5rem 0.75rem;
+    margin: 0 0 0.5rem 0.75rem;
     color: #f9f9f9;
     font-weight: 800;
     font-size: 1rem;
