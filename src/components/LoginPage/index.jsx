@@ -9,17 +9,17 @@ import api from '../../api'
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { token, setToken, user, setUser } = useContext(AuthContext)
+  const { setToken } = useContext(AuthContext)
 
   async function login(email, password) {
     const response = await api.post(`/login`, {
       email,
       password,
-    });
+    })
 
-    const { token } = response.data;
-    localStorage.setItem("token", token);
-    setToken(token);
+    const { token } = response.data
+    localStorage.setItem('token', token)
+    setToken(token)
   }
 
   async function handleLoginForm(event) {
@@ -28,7 +28,7 @@ export function LoginPage() {
       await login(email, password)
     } catch (e) {
       console.log(e)
-      toast.error("Email ou senha inválidos.")
+      toast.error('Email ou senha inválidos.')
     }
   }
 

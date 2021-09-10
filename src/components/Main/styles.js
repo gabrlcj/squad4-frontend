@@ -13,7 +13,7 @@ export const Container = styled.main`
   }
 
   .selection-bar {
-    margin-top: 6rem;
+    margin-top: 4rem;
     width: 100%;
     background: #a9a9a9;
     border-radius: 1rem;

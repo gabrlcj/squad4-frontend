@@ -6,21 +6,15 @@ import { AuthContext } from "../../context/AuthContext";
 export function WorkStation() {
   const { scheduling, setNewScheduling  } = useContext(AuthContext);
 
-  console.log(scheduling)
-
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()
     
     if (scheduling.workstation !== chairNumber) {
-      console.log("oi")
-        const choosedChair = chairNumber;
-        setNewScheduling({...scheduling, workstation: choosedChair})
+        setNewScheduling({...scheduling, workstation: chairNumber})
     } else {
-      console.log("olá")
       return;
     }
 }
-
   const GenerateUpChairs = (chairNumbers) => {
     return (
       <>

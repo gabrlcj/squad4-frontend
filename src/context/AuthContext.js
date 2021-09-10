@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react'
 
 const AuthContext = createContext({
 
@@ -7,6 +7,7 @@ const AuthContext = createContext({
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
+  const [day, setDay] = useState(new Date())
   const [scheduling, setNewScheduling] = useState({
     id: 1,
     user_id: 2,
@@ -16,10 +17,10 @@ const AuthProvider = ({ children }) => {
   })
 
   return (
-    <AuthContext.Provider value={{ token, setToken, user, setUser, scheduling, setNewScheduling }}>
+    <AuthContext.Provider value={{ token, setToken, user, setUser, day, setDay, scheduling, setNewScheduling }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-export { AuthContext, AuthProvider };
+export { AuthContext, AuthProvider }

@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import Calendar from 'react-calendar'
+import { AuthContext } from '../../context/AuthContext'
 import { Container } from './styles'
 
 export function Calendario({ formatDay }) {
-  const [day, setDay] = useState(new Date())
+  const { day, setDay } = useContext(AuthContext)
 
   return (
     <Container>
@@ -20,7 +21,7 @@ export function Calendario({ formatDay }) {
       />
       <h5>Meus agendamentos</h5>
       <div className='appointments'>
-        <div>11/09</div>
+        <div>14/09</div>
         <div>16/09</div>
         <div>20/09</div>
       </div>

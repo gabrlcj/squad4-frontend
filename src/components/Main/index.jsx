@@ -1,12 +1,21 @@
 import { useState } from 'react'
 import { Container } from './styles'
 import { WorkStation } from '../WorkStation'
+import { useContext } from 'react/cjs/react.development'
+import { AuthContext } from '../../context/AuthContext'
 
-export function Main({ formatDay }) {
+export function Main() {
   const [filial, setFilial] = useState('São Paulo')
   const [station, setStation] = useState('Estação de trabalho')
-  console.log(filial)
-  console.log(station)
+  const { day } = useContext(AuthContext)
+
+  function dataAtualFormatada(day) {
+    var data = day,
+      dia = data.getDate().toString().padStart(2, '0'),
+      mes = (data.getMonth() + 1).toString().padStart(2, '0'),
+      ano = data.getFullYear()
+    return dia + '/' + mes + '/' + ano
+  }
 
   return (
     <Container>
@@ -30,7 +39,7 @@ export function Main({ formatDay }) {
         </select>
       </div>
       <section>
-        <h2>ESTAÇÕES DISPONÍVEIS PARA {formatDay}</h2>
+        <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
         {filial === 'São Paulo' && station === 'Estação de trabalho' ? <WorkStation /> : <h3>Exemplo 2</h3>}
         <div className='legenda'>
           <strong>
