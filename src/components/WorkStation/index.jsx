@@ -8,20 +8,20 @@ let stationChairs2 = [];
 chairs.forEach((chair, index) => {
   if (index < 4) {
     stationChairs.push(
-      <div key={index + chair} className="circle up">
-        {chair + index}
+      <div v id={index + chair} key={index + chair} className="circle up">
+        {index + chair} 
       </div>
     );
   } else {
     stationChairs2.push(
-      <div key={index + chair} className="circle up">
-        {chair + index}
+      <div id={index + chair} key={index + chair} className="circle up">
+        {index + chair} 
       </div>
     );
   }
 });
 
-function tableStation(id) {
+const tableStation = (id) => {
   return (
     <Station id={id}>
       <div className="chairs">{stationChairs}</div>

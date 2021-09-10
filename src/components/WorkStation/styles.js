@@ -17,6 +17,7 @@ export const Station = styled.div`
     margin-bottom: -1rem;
     z-index: 100;
     position: relative;
+    cursor: pointer;
 
     .circle.up {
       background: grey;
