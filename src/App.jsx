@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { LoginPage } from './components/LoginPage'
 import { RegisterPage } from './components/RegisterPage'
+import { QuestionnairePage } from './components/Questionnaire'
 
 import { GlobalStyle } from './styles/global'
 import { ToastContainer } from 'react-toastify'
@@ -12,6 +13,11 @@ export default function App() {
       <Router>
         <GlobalStyle />
         <Switch>
+          <Switch>
+            <Route path='/firstaccess'>
+              <QuestionnairePage />
+            </Route>
+          </Switch>
           <Route path='/dashboard'>
             <Dashboard />
           </Route>

@@ -11,10 +11,8 @@ export function RegisterPage() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [origin_office, setOffice] = useState('')
-  const [vaccine_status, setVaccine] = useState(false)
   const [role, setRole] = useState('')
   const [squad, setSquad] = useState('')
-  const [pwd, setPWD] = useState(false)
 
   function handleUserRegister(event) {
     event.preventDefault()
@@ -24,18 +22,16 @@ export function RegisterPage() {
       email,
       password,
       origin_office,
-      vaccine_status,
       role,
-      squad,
-      pwd
+      squad
     }
 
     api({
-      method:"POST",
+      method: "POST",
       url: "/colaboradores",
       data
     }).then((res) => toast.success("Registro feito com sucesso!"))
-    .catch(error => toast.error("Algo não saiu como o planejado."))
+      .catch(error => toast.error("Algo não saiu como o planejado."))
   }
 
   function validateInputs() {
@@ -44,7 +40,7 @@ export function RegisterPage() {
       return toast.error('Ops, algo deu errado')
     }
     else if (confirmPassword !== password) {
-        return toast.error('Senha inválida!')
+      return toast.error('Senha inválida!')
     }
   }
 
@@ -55,12 +51,12 @@ export function RegisterPage() {
   const [specialChar, setSpecialChar] = useState(null);
   // const [match, setMatch] = useState(null);
 
-  useEffect (() => {
+  useEffect(() => {
     setValidLength(password.length > 7 ? true : false);
-    setHasNumber(/\d/.test(password) ? true: false);
-    setUpperCase(/[A-Z]/.test(password) ? true: false);
-    setLowerCase(/[a-z]/.test(password) ? true: false);
-    setSpecialChar((/[^A-Z a-z0-9]/).test(password) ? true: false);
+    setHasNumber(/\d/.test(password) ? true : false);
+    setUpperCase(/[A-Z]/.test(password) ? true : false);
+    setLowerCase(/[a-z]/.test(password) ? true : false);
+    setSpecialChar((/[^A-Z a-z0-9]/).test(password) ? true : false);
   }, [password])
 
   return (
@@ -68,30 +64,30 @@ export function RegisterPage() {
       <Header />
       <Container onSubmit={handleUserRegister}>
         <h2>Cadastro</h2>
-          <div className="row">
-            <label htmlFor='nome' className="column">
-              Nome:
-              <input
-                name='nome'
-                type='text'
-                required
-                placeholder='Digite seu nome'
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-              />
-            </label>
-            <label htmlFor='email' className="column">
-              Email:
-              <input
-                name='email'
-                type='email'
-                required
-                placeholder='Digite seu email'
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-              />
-            </label>
-          </div>
+        <div className="row">
+          <label htmlFor='nome' className="column">
+            Nome:
+            <input
+              name='nome'
+              type='text'
+              required
+              placeholder='Digite seu nome'
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
+          </label>
+          <label htmlFor='email' className="column">
+            Email:
+            <input
+              name='email'
+              type='email'
+              required
+              placeholder='Digite seu email'
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </label>
+        </div>
         <label htmlFor='senha'>
           Senha:
           <input
@@ -133,26 +129,14 @@ export function RegisterPage() {
           </select> */}
         </label>
 
-        
-        <label htmlFor='vacina'>
-          Situação da vacina contra COVID:
-          <input name='vacina' type='radio' value='Vacinado' onClick={() => setVaccine(true)} /> Vacinado
-          <input name='vacina' type='radio' value='Não vacinado' onClick={() => setVaccine(false)} /> Não vacinado
-        </label>
-
         <label htmlFor="role">
           Qual seu cargo?
-          <input type="text" value={role} placeholder="Digite seu cargo" onChange={(event) => setRole(event.target.value)}/>
+          <input type="text" value={role} placeholder="Digite seu cargo" onChange={(event) => setRole(event.target.value)} />
         </label>
 
         <label htmlFor="squad">
           Qual seu squad?
-            <input type="text" value={squad} placeholder="Qual seu squad?" onChange={(event) => setSquad(event.target.value)}/>
-        </label>
-
-        <label htmlFor="pwd">
-          Você é PCD?
-          <input type="checkbox" value={pwd} onChange={() => setPWD(!pwd)}/>
+          <input type="text" value={squad} placeholder="Qual seu squad?" onChange={(event) => setSquad(event.target.value)} />
         </label>
 
         <button type='submit' onClick={validateInputs}>

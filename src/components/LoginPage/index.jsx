@@ -9,7 +9,7 @@ import api from '../../api'
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {  setToken, setUser } = useContext(AuthContext);
+  const { setToken, setUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -25,7 +25,7 @@ export function LoginPage() {
     setToken(token);
     setUser(user);
     setLoading(false);
-    history.push('/dashboard');
+    history.push('/firstaccess');
   }
 
   async function handleLoginForm(event) {
@@ -44,7 +44,7 @@ export function LoginPage() {
   }
 
 
-  if(loading){
+  if (loading) {
     return <h1>Carregando...</h1>
   }
 
