@@ -8,7 +8,6 @@ export function Main() {
   const [station, setStation] = useState('Estação de trabalho');
   const { day, scheduling, setScheduling } = useContext(AuthContext);
 
-
   function dataAtualFormatada(day) {
     var data = day,
       dia = data.getDate().toString().padStart(2, '0'),
@@ -16,6 +15,8 @@ export function Main() {
       ano = data.getFullYear()
     return dia + '/' + mes + '/' + ano
   }
+
+
 
   return (
     <Container>

@@ -4,7 +4,20 @@ import { AuthContext } from '../../context/AuthContext'
 import { Container } from './styles'
 
 export function Calendario({ formatDay }) {
-  const { day, setDay } = useContext(AuthContext)
+  const { day, setDay, scheduling, setScheduling } = useContext(AuthContext)
+
+  function storingDate() {
+    setDay(day);
+    setScheduling({...scheduling, date: dataToDatabase(day)})
+  }
+  
+  function dataToDatabase(day) {
+    var data = day,
+      dia = data.getDate().toString().padStart(2, '0'),
+      mes = (data.getMonth() + 1).toString().padStart(2, '0'),
+      ano = data.getFullYear()
+    return ano + '-' + mes + '-' + dia
+  }
 
   return (
     <Container>
@@ -12,7 +25,7 @@ export function Calendario({ formatDay }) {
       <Calendar
         className='calendario'
         tileClassName='day'
-        onChange={setDay}
+        onChange={storingDate}
         value={day}
         showNavigation={false}
         showFixedNumberOfWeeks={true}
