@@ -1,46 +1,42 @@
 import Table from "../../assets/Table.svg";
 import { Container, Station } from "./styles";
+import { Chair } from '../Chair';
 
-let chairs = ["A", "B", "C", "D", "E", "F", "G", "H"];
-let stationChairs = [];
-let stationChairs2 = [];
+const GenerateChairs = (chairNumbers) => {
 
-chairs.forEach((chair, index) => {
-  if (index < 4) {
-    stationChairs.push(
-      <button v id={index + chair} key={index + chair} className="circle up">
-        {index + chair} 
-      </button>
-    );
-  } else {
-    stationChairs2.push(
-      <button id={index + chair} key={index + chair} className="circle up">
-        {index + chair} 
-      </button>
-    );
-  }
-});
+	return (
+		<>
+			{
+				chairNumbers.map((chairNumber) => {
+					return  <Chair chairNumber={chairNumber} key={chairNumber} className="circle up">{chairNumber}</Chair>
+				})
+			}
+		</>
+	)
+}
 
-const tableStation = (id) => {
+const tableStation = (id, chairs, chairs2) => {
   return (
     <Station id={id}>
-      <div className="chairs">{stationChairs}</div>
+      <div className="chairs">{GenerateChairs(chairs)}</div>
       <img src={Table} alt="Mesa de trabalho" />
-      <div className="chairs">{stationChairs2}</div>
+      <div className="chairs">{GenerateChairs(chairs2)}</div>
     </Station>
   );
 }
 
 export function WorkStation() {
+
+
   return (
     <Container>
       <div className="content">
-        {tableStation(1)}
-        {tableStation(2)}
+        {tableStation(1,[1,2,3,4],[5,6,7,8])}
+        {tableStation(2, [9,10,11,12], [13,14,15,16])}
       </div>
       <div className="content">
-        {tableStation(3)}
-        {tableStation(4)}
+        {tableStation(3, [17,18,19,20], [21,22,23,24] )}
+        {tableStation(4, [25,26,27,28], [29,30,31,32])}
       </div>
     </Container>
   );
