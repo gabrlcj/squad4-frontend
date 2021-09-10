@@ -35,5 +35,21 @@ export const Station = styled.div`
       margin-top: -1.5rem;
       margin-bottom: 0.75rem;
     }
+
+    .circle.ocupado {
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      background: #121212;
+      margin-right: 0.25rem;
+    }
+
+    .circle.livre {
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      background: grey;
+      margin-right: 0.25rem;
+    }
   }
 `
