@@ -4,7 +4,6 @@ import { AuthContext } from "../../context/AuthContext";
 export function Chair(props) {
   const { scheduling, setNewScheduling  } = useContext(AuthContext);
 
-
   const chairIdentification = props.chairNumber;
   const chairStatus = props.seatColor ? props.seatColor : "chair-grey";
 
@@ -14,17 +13,16 @@ export function Chair(props) {
     console.log(chairColor)
     if (scheduling.workstation !== chairIdentification) {
       console.log("oi")
-        // const newChair = scheduling.workstation.filter((chair) => {
-        //     return chair !== chairIdentification
-        // })
+        const choosedChair = chairIdentification;
+
         // chairColor.remove("seat-black")
         // chairColor.add("seat-grey")
-        // setNewScheduling({...scheduling, workstation: newChair})
+        setNewScheduling({...scheduling, workstation: choosedChair})
     } else {
       console.log("olá")
       // chairColor.remove("seat-grey")
       // chairColor.add("seat-black")
-      // setNewScheduling({...scheduling})
+      return;
     }
 }
 
