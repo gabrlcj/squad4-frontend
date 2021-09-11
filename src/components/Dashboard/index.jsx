@@ -1,16 +1,34 @@
-import { Calendario } from '../Calendar/index.jsx'
-// import { Header } from '../Header/index.jsx'
-import { NavigationBar } from '../NavigationBar/index.jsx'
-import { Container } from './styles.js'
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext.js";
+import { Calendario } from "../Calendar/index.jsx";
+import { Main } from "../Main/index.jsx";
+import { NavigationBar } from "../NavigationBar/index.jsx";
+import { Container } from "./styles.js";
 
 export function Dashboard() {
+  const { user, setUser } = useContext(AuthContext);
+  console.log(user)
+  const today = new Date();
+ 
+  function formatDateWithZero(date) {
+    if (date <= 9) return "0" + date;
+    else return date;
+  }
+
+  const formatToday =
+    formatDateWithZero(today.getDate()) +
+    "/" +
+    formatDateWithZero(today.getMonth() + 1) +
+    "/" +
+    today.getFullYear();
+
   return (
     <>
-      {/* <Header /> */}
       <Container>
         <NavigationBar />
-        <Calendario />
+        <Main formatDay={formatToday} />
+        <Calendario formatDay={formatToday} />
       </Container>
     </>
-  )
+  );
 }

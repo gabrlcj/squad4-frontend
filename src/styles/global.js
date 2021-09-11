@@ -29,7 +29,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     min-height: 100vh;
     background: var(--background);
-    font: 400 1rem 'Arial', sans-serif;
+    font: 400 1rem 'Inter', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
   }
