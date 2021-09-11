@@ -8,13 +8,11 @@ const AuthProvider = ({ children }) => {
   const [day, setDay] = useState(new Date());
   const [schedulings, setSchedulings] = useState([]);
   const [scheduling, setScheduling] = useState({
-    id: "",
     user_id: "",
     date: "",
     workstation: "",
     office: "São Paulo",
   });
-
 
   return (
     <AuthContext.Provider

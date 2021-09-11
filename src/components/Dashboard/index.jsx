@@ -9,8 +9,8 @@ import api from '../../api';
 
 export function Dashboard() {
   const today = new Date();
-  const { scheduling, setScheduling, schedulings, setSchedulings } = useContext(AuthContext);
-  console.log(scheduling)
+  const { scheduling, setScheduling, schedulings, setSchedulings, user } = useContext(AuthContext);
+ 
 
   useEffect(() => {
     api.get(`/agendamentos`)
