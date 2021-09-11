@@ -5,8 +5,8 @@ import { useContext } from 'react/cjs/react.development'
 import { AuthContext } from '../../context/AuthContext'
 
 export function Main() {
-  const [station, setStation] = useState('Estação de trabalho');
-  const { day, scheduling, setScheduling, user } = useContext(AuthContext);
+  const [station, setStation] = useState('Estação de trabalho')
+  const { day, scheduling, setScheduling, user } = useContext(AuthContext)
 
   function dataAtualFormatada(day) {
     var data = day,
@@ -20,7 +20,10 @@ export function Main() {
     <Container>
       <h1>Logo aqui</h1>
       <div className='selection-bar'>
-        <select name='filial' onChange={(event) => setScheduling({...scheduling, office: event.target.value, user_id: user.id})}>
+        <select
+          name='filial'
+          onChange={(event) => setScheduling({ ...scheduling, office: event.target.value, user_id: user.id })}
+        >
           <option name='filial' value='São Paulo'>
             SÃO PAULO
           </option>
@@ -48,11 +51,17 @@ export function Main() {
             <div className='circle livre'></div>Livre
           </strong>
         </div>
-        <div className='buttons-container'>
-          <button>1° ANDAR</button>
-          <button>2° ANDAR</button>
-          <button>3° ANDAR</button>
-        </div>
+        {scheduling.office === 'São Paulo' ? (
+          <div className='buttons-container'>
+            <button>1° ANDAR</button>
+            <button>2° ANDAR</button>
+            <button>3° ANDAR</button>
+          </div>
+        ) : (
+          <div className='buttons-container'>
+            <button>1° ANDAR</button>
+          </div>
+        )}
       </section>
     </Container>
   )
