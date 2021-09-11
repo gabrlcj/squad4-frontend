@@ -34,6 +34,7 @@ export function LoginPage() {
       await login(email, password)
     } catch (e) {
       toast.error("Email ou senha inválidos.")
+      setLoading(false);
     }
   }
 
