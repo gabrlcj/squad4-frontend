@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { LoginPage } from './components/LoginPage'
 import { RegisterPage } from './components/RegisterPage'
+import { Dashboard } from './components/Dashboard'
 
 import { GlobalStyle } from './styles/global'
 import { ToastContainer } from 'react-toastify'
-import { Dashboard } from './components/Dashboard'
 
 export default function App() {
   return (
