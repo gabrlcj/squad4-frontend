@@ -19,6 +19,7 @@ export function Calendario({ formatDay }) {
     return ano + '-' + mes + '-' + dia
   }
 
+
   return (
     <Container>
       <h5>Hoje é dia {formatDay}</h5>
