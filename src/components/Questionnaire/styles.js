@@ -1,75 +1,78 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin: 0 auto;
-  width: min(1024px, 90%);
-  min-height: 100vh;
+  width: 76.5rem;
+  height: auto;
+  background: #F0EDEC;
 
-  .underline {
-    text-decoration: underline;
-    padding-left: 0.2rem;
-  }
-
-  .title {
+  .box {
     display: flex;
-    width: 14.5625rem;
-    justify-content: center;
-    font-size: 1.25rem;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    height: 500px;
+
+    input[type="radio"], label{
+      display: inline;
+      margin: auto 0;
+    }
+    label {
+      line-height: 2;
+      cursor: pointer;
+      }
+
+    /* Checked */
+    input[type="radio"]:checked + label {
+      color: #FE5517;
+    }
+
+    /* Transition */
+    label,
+    label::before {
+      transition: .25s all ease;
+    }
+
   }
 
   .left {
-    background: #f0edec;
-    width: 50%;
-    height: 500px;
+    width: 40%;
+    height: 21.88rem;
+
+    .box-question div {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      align-content: center;
+      justify-content: space-between;
+      width: 50%;
+    }
+
   }
 
   .right {
-    background: #cbcbcb;
-    width: 50%;
-    height: 500px;
-    padding: 150px 250px;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+    width: 40%;
+    height: 21.88rem;
+
+    .box-question div {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      align-content: center;
+      justify-content: space-between;
+      width: 50%;
+    }
+
   }
 
-  .loginbox, form {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30%;
+  .question {
+    width: 27.19rem;
+    height: 5.313rem;
+    /* margin-top: 3.125rem; */
+    padding-top: 2rem;
+    text-align: center;
+    background: #C4C4C4;
   }
-
-  .text-box {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    width: 14.5625rem;
-    justify-content: center;
-    text-align: left;
-  }
-
-  .basetext {
-    display: flex;
-    width: 14.5625rem;
-    justify-content: center;
-    font-size: 12px;
-    margin: 2px 0;
-  }
-
-  /* label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    font-weight: 700;
-  } */
 
   button {
     border: 0;
