@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import Calendar from 'react-calendar'
 import { AuthContext } from '../../context/AuthContext'
 import { Container } from './styles'
@@ -6,10 +6,10 @@ import { Container } from './styles'
 export function Calendario({ formatDay }) {
   const { day, setDay, scheduling, setScheduling } = useContext(AuthContext)
 
-  function storingDate() {
-    setDay(day);
+  useEffect(() => {
     setScheduling({...scheduling, date: dataToDatabase(day)})
-  }
+  }, [day]);
+
   
   function dataToDatabase(day) {
     var data = day,
@@ -25,7 +25,7 @@ export function Calendario({ formatDay }) {
       <Calendar
         className='calendario'
         tileClassName='day'
-        onChange={storingDate}
+        onChange={setDay}
         value={day}
         showNavigation={false}
         showFixedNumberOfWeeks={true}

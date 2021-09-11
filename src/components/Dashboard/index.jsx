@@ -1,23 +1,15 @@
-// import { useEffect } from 'react'
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext.js";
 import { Calendario } from "../Calendar/index.jsx";
 import { Main } from "../Main/index.jsx";
 import { NavigationBar } from "../NavigationBar/index.jsx";
 import { Container } from "./styles.js";
-import api from '../../api';
 
 export function Dashboard() {
+  const { user, setUser } = useContext(AuthContext);
+  console.log(user)
   const today = new Date();
-  const { scheduling, setScheduling, schedulings, setSchedulings, user } = useContext(AuthContext);
  
-
-  useEffect(() => {
-    api.get(`/agendamentos`)
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
-  }, [])
-
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
     else return date;

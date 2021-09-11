@@ -3,8 +3,8 @@ import { createContext, useState } from "react";
 const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null);
+  const [token, setToken] = useState("");
+  const [user, setUser] = useState("");
   const [day, setDay] = useState(new Date());
   const [schedulings, setSchedulings] = useState([]);
   const [scheduling, setScheduling] = useState({

@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthContext'
 
 export function Main() {
   const [station, setStation] = useState('Estação de trabalho');
-  const { day, scheduling, setScheduling } = useContext(AuthContext);
+  const { day, scheduling, setScheduling, user } = useContext(AuthContext);
 
   function dataAtualFormatada(day) {
     var data = day,
@@ -16,13 +16,11 @@ export function Main() {
     return dia + '/' + mes + '/' + ano
   }
 
-
-
   return (
     <Container>
       <h1>Logo aqui</h1>
       <div className='selection-bar'>
-        <select name='filial' onChange={(event) => setScheduling({...scheduling, office: event.target.value})}>
+        <select name='filial' onChange={(event) => setScheduling({...scheduling, office: event.target.value, user_id: user.id})}>
           <option name='filial' value='São Paulo'>
             SÃO PAULO
           </option>
