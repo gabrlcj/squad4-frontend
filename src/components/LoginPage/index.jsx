@@ -21,11 +21,17 @@ export function LoginPage() {
     });
     const { token } = response.data;
     const { user } = response.data;
+    const { returningUser: { first_access } } = response.data;
     localStorage.setItem("token", token);
     setToken(token);
     setUser(user);
     setLoading(false);
-    history.push('/firstaccess');
+
+    if (first_access) {
+      history.push('/firstaccess');
+    } else {
+      history.push('/dashboard');
+    }
   }
 
   async function handleLoginForm(event) {

@@ -38,7 +38,7 @@ export function QuestionnairePage() {
               <div className="box-question">
                 <div>
                   <input name='leftExample' type='radio' value="leftExample1" id="leftExample1" />
-                  <label for="leftExample1">Sim</label>
+                  <label htmlFor="leftExample1">Sim</label>
                 </div>
 
                 <div>
@@ -79,7 +79,7 @@ export function QuestionnairePage() {
               <div className="box-question">
                 <div>
                   <input name='rightExample' type='radio' value="rightExample1" id="rightExample1" />
-                  <label for="rightExample1">Sim</label>
+                  <label htmlFor="rightExample1">Sim</label>
                 </div>
 
                 <div>
