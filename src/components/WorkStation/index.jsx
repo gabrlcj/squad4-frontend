@@ -1,25 +1,36 @@
 import Table from '../../assets/Table.svg'
 import { Container, Station } from './styles'
 import { useContext } from 'react'
-import { AuthContext } from '../../context/AuthContext'
+import { AuthContext } from '../../context/AuthContext';
+import api from '../../api';
+import { toast } from 'react-toastify';
 
 export function WorkStation() {
-  const { scheduling, setScheduling, user } = useContext(AuthContext)
+  const { scheduling, setScheduling, user } = useContext(AuthContext);
   console.log(scheduling)
 
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()
 
     if (scheduling.workstation !== chairNumber) {
-      setScheduling({ ...scheduling, workstation: chairNumber, user_id: user?.id })
+      setScheduling({ ...scheduling, workstation: chairNumber.toString(), user_id: user?.id })
     } else {
       return
     }
   }
 
-  const handleAppointment = (event) => {
-    event.preventDefault()
-    console.log(scheduling)
+  const handleAppointment = async (event) => {
+    event.preventDefault();
+    try {
+     await api({
+        method: 'post',
+        url: 'agendamentos',
+        data: scheduling
+      });
+      toast.success('Agendamento feito com sucesso!');
+    } catch (error) {
+      toast.error(error.response.data.mensagem);
+    }
   }
 
   const GenerateUpChairs = (chairNumbers) => {

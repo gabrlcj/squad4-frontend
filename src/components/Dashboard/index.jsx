@@ -7,7 +7,6 @@ import { Container } from './styles.js'
 
 export function Dashboard() {
   const { user, setUser } = useContext(AuthContext)
-  console.log(user)
   const today = new Date()
 
   function formatDateWithZero(date) {
