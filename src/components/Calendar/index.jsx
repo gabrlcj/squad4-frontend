@@ -3,23 +3,22 @@ import Calendar from "react-calendar";
 import { AuthContext } from "../../context/AuthContext";
 import { Container } from "./styles";
 import api from '../../api';
+import { useParams } from "react-router-dom";
 
 export function Calendario({ formatDay }) {
+  const { id } = useParams();
   const { day, setDay, scheduling, setScheduling, user } = useContext(AuthContext);
   const [userScheduling, setUserScheduling] = useState([]);
-  console.log(scheduling)
-
-   const userId = user?.id;
-   console.log("user" + userId)
+  console.log(user)
 
   useEffect(() => {
     api({
       method: 'get',
-      url: `/agendamentos/colaboradores/${userId}`
+      url: `/agendamentos/colaboradores/${id}`
     })
     .then(res => setUserScheduling(res.data))
     .catch(error => console.log(error.response.data.mensagem))
-  }, [userId]);
+  }, [id]);
 
   useEffect(() => {
     setScheduling({ ...scheduling, date: dataToDatabase(day) });
@@ -35,12 +34,11 @@ export function Calendario({ formatDay }) {
 
   function dataToCalendar(day) {
     var data = day,
-      dia = data.getDate().toString().padStart(2, "0"),
+      dia = (data.getDate() + 1).toString().padStart(2, "0"),
       mes = (data.getMonth() + 1).toString().padStart(2, "0");
     return dia + "/" + mes;
   }
 
-  console.log(dataToCalendar((new Date(userScheduling[0]?.date))))
 
   // function setMaxDate(date) {
   //   const d = date.getDate()
@@ -62,7 +60,8 @@ export function Calendario({ formatDay }) {
       <Calendar
         className="calendario"
         tileClassName="day"
-        // onChange={setDay}
+
+        // onChange={() => setScheduling({ ...scheduling, date: dataToDatabase(day) })}
         onClickDay={setDay}
         value={day}
         showNavigation={false}
@@ -73,7 +72,7 @@ export function Calendario({ formatDay }) {
       />
       <h5>Meus agendamentos</h5>
       <div className="appointments">
-        {userScheduling && userScheduling.map((scheduling, index) => (
+        {userScheduling?.map((scheduling, index) => (
           <div key={index}>{dataToCalendar((new Date(scheduling.date)))}</div>
         ))}
       </div>

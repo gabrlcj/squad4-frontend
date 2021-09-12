@@ -1,12 +1,9 @@
-import { useContext } from 'react'
-import { AuthContext } from '../../context/AuthContext.js'
 import { Calendario } from '../Calendar/index.jsx'
 import { Main } from '../Main/index.jsx'
 import { NavigationBar } from '../NavigationBar/index.jsx'
 import { Container } from './styles.js'
 
 export function Dashboard() {
-  const { user, setUser } = useContext(AuthContext)
   const today = new Date()
 
   function formatDateWithZero(date) {

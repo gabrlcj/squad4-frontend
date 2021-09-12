@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-
+import useStorage from "../utils/useStorage";
 
 const AuthContext = createContext({
   token: null,
@@ -9,8 +9,8 @@ const AuthContext = createContext({
 });
 
 const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState('token');
-  const [user, setUser] = useState("user");
+  const [token, setToken] = useState('');
+  const [user, setUser] = useStorage("user");
   const [day, setDay] = useState(new Date());
   const [schedulings, setSchedulings] = useState([]);
   const [scheduling, setScheduling] = useState({

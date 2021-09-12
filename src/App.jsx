@@ -12,7 +12,7 @@ export default function App() {
       <Router>
         <GlobalStyle />
         <Switch>
-          <Route path='/dashboard'>
+          <Route path='/dashboard/:id'>
             <Dashboard />
           </Route>
         </Switch>
