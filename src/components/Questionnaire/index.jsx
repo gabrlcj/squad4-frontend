@@ -1,40 +1,49 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Container } from './styles'
 import api from '../../api'
 import { toast } from 'react-toastify'
+import { AuthContext } from '../../context/AuthContext'
 
 
 export function QuestionnairePage() {
-  const [vaccine_status, setVaccine] = useState(false)
-  const [pwd, setPWD] = useState(false)
-  const [first_access, setFirstAccess] = useState(false)
+  const [vaccine_status, setVaccine] = useState()
+  const [pwd, setPWD] = useState()
+  const [first_access, setFirstAccess] = useState()
+  const history = useHistory()
+
+  const { user } = useContext(AuthContext)
+
+  console.log(user)
 
   function handleQuestionnaire(event) {
     event.preventDefault()
 
     const data = {
+      ...user,
       vaccine_status,
       pwd,
       first_access
     };
 
     api({
-      method: "POST",
-      url: "/login/firstaccess",
+      method: "PUT",
+      url: `/login/firstaccess/${user.id}`,
       data
-    }).then((res) => toast.success("Lhe damos às boas vindas!"))
-      .catch(error => toast.error("Algo não saiu como o planejado."))
+    }).then((res) => {
+      toast.success("Lhe damos às boas vindas!")
+      history.push('/dashboard')
+    }).catch(error => toast.error("Algo não saiu como o planejado."))
   };
 
   return (
     <>
-      <Container onSubmit={handleQuestionnaire}>
+      <Container>
         <div className="window">
           <h1 className="title">Olá!<br />Sua primeira vez por aqui, né?</h1>
           <p className="title">Antes de começar, responda essas perguntas para a gente te conhecer melhor!</p>
 
-          <form className="box">
+          <form className="box" onSubmit={handleQuestionnaire}>
             <div className="left">
 
               <h3 className="question">Você está vacinado contra a COVID-19?</h3>
@@ -113,14 +122,13 @@ export function QuestionnairePage() {
                   <label htmlFor="rightExample3">Prefiro não responder</label>
                 </div>
               </div>
+              <button type='submit' onClick={() => setFirstAccess(false)}>
+                PROSSEGUIR
+              </button>
             </div>
           </form>
 
-          <Link to='/dashboard'>
-            <button type='submit' onClick={() => setFirstAccess(false)}>
-              PROSSEGUIR
-            </button>
-          </Link>
+
 
         </div>
       </Container>

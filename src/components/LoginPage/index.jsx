@@ -20,11 +20,11 @@ export function LoginPage() {
       password
     });
     const { token } = response.data;
-    const { user } = response.data;
     const { returningUser: { first_access } } = response.data;
+    const { returningUser } = response.data;
     localStorage.setItem("token", token);
     setToken(token);
-    setUser(user);
+    setUser(returningUser);
     setLoading(false);
 
     if (first_access) {
