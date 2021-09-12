@@ -1,15 +1,35 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Container } from './styles'
+import api from '../../api'
+import { toast } from 'react-toastify'
 
 
 export function QuestionnairePage() {
   const [vaccine_status, setVaccine] = useState(false)
   const [pwd, setPWD] = useState(false)
+  const [first_access, setFirstAccess] = useState(false)
+
+  function handleQuestionnaire(event) {
+    event.preventDefault()
+
+    const data = {
+      vaccine_status,
+      pwd,
+      first_access
+    };
+
+    api({
+      method: "POST",
+      url: "/login/firstaccess",
+      data
+    }).then((res) => toast.success("Lhe damos às boas vindas!"))
+      .catch(error => toast.error("Algo não saiu como o planejado."))
+  };
 
   return (
     <>
-      <Container>
+      <Container onSubmit={handleQuestionnaire}>
         <div className="window">
           <h1 className="title">Olá!<br />Sua primeira vez por aqui, né?</h1>
           <p className="title">Antes de começar, responda essas perguntas para a gente te conhecer melhor!</p>
@@ -97,7 +117,7 @@ export function QuestionnairePage() {
           </form>
 
           <Link to='/dashboard'>
-            <button type='submit'>
+            <button type='submit' onClick={() => setFirstAccess(false)}>
               PROSSEGUIR
             </button>
           </Link>
