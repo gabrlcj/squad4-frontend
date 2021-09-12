@@ -2,23 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import { AuthContext } from "../../context/AuthContext";
 import { Container } from "./styles";
-import api from '../../api';
-import { useParams } from "react-router-dom";
 
-export function Calendario({ formatDay }) {
-  const { id } = useParams();
-  const { day, setDay, scheduling, setScheduling, user } = useContext(AuthContext);
-  const [userScheduling, setUserScheduling] = useState([]);
-  console.log(user)
-
-  useEffect(() => {
-    api({
-      method: 'get',
-      url: `/agendamentos/colaboradores/${id}`
-    })
-    .then(res => setUserScheduling(res.data))
-    .catch(error => console.log(error.response.data.mensagem))
-  }, [id]);
+export function Calendario({ formatDay, userScheduling }) {
+  
+  const { day, setDay, scheduling, setScheduling } = useContext(AuthContext);
 
   useEffect(() => {
     setScheduling({ ...scheduling, date: dataToDatabase(day) });
@@ -38,21 +25,6 @@ export function Calendario({ formatDay }) {
       mes = (data.getMonth() + 1).toString().padStart(2, "0");
     return dia + "/" + mes;
   }
-
-
-  // function setMaxDate(date) {
-  //   const d = date.getDate()
-  //   const m = date.getMonth()
-  //   const y = date.getFullYear()
-
-  //   if (date.getDay() === 5) {
-  //     const lastDay = d + 7
-  //     return new Date(y, m, lastDay)
-  //   } else {
-  //     const lastDay = date.getDate() + (5 - date.getDay())
-  //     return new Date(y, m, lastDay)
-  //   }
-  // }
 
   return (
     <Container>

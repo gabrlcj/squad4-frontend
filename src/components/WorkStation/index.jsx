@@ -7,6 +7,8 @@ import { toast } from 'react-toastify';
 
 export function WorkStation() {
   const { scheduling, setScheduling, user } = useContext(AuthContext);
+  console.log(scheduling)
+ 
 
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()
@@ -26,7 +28,9 @@ export function WorkStation() {
         url: 'agendamentos',
         data: scheduling
       });
+
       toast.success('Agendamento feito com sucesso!');
+        setScheduling({...scheduling, date: new Date()});
     } catch (error) {
       toast.error(error.response.data.mensagem);
     }
