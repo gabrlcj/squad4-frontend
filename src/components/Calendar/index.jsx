@@ -7,17 +7,18 @@ import api from '../../api';
 export function Calendario({ formatDay }) {
   const { day, setDay, scheduling, setScheduling, user } = useContext(AuthContext);
   const [userScheduling, setUserScheduling] = useState([]);
+  console.log(scheduling)
 
-
-   const userId = user.id;
+   const userId = user?.id;
+   console.log("user" + userId)
 
   useEffect(() => {
     api({
-      method: 'GET',
+      method: 'get',
       url: `/agendamentos/colaboradores/${userId}`
     })
     .then(res => setUserScheduling(res.data))
-    .catch(error => console.log(error))
+    .catch(error => console.log(error.response.data.mensagem))
   }, [userId]);
 
   useEffect(() => {
