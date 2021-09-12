@@ -7,7 +7,6 @@ import { toast } from 'react-toastify';
 
 export function WorkStation() {
   const { scheduling, setScheduling, user } = useContext(AuthContext);
-  console.log(scheduling)
 
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()

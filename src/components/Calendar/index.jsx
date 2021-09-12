@@ -1,22 +1,45 @@
-import { useContext, useEffect } from 'react'
-import Calendar from 'react-calendar'
-import { AuthContext } from '../../context/AuthContext'
-import { Container } from './styles'
+import { useContext, useEffect, useState } from "react";
+import Calendar from "react-calendar";
+import { AuthContext } from "../../context/AuthContext";
+import { Container } from "./styles";
+import api from '../../api';
 
 export function Calendario({ formatDay }) {
-  const { day, setDay, scheduling, setScheduling } = useContext(AuthContext)
+  const { day, setDay, scheduling, setScheduling, user } = useContext(AuthContext);
+  const [userScheduling, setUserScheduling] = useState([]);
+
+
+   const userId = user.id;
 
   useEffect(() => {
-    setScheduling({ ...scheduling, date: dataToDatabase(day) })
-  }, [day])
+    api({
+      method: 'GET',
+      url: `/agendamentos/colaboradores/${userId}`
+    })
+    .then(res => setUserScheduling(res.data))
+    .catch(error => console.log(error))
+  }, [userId]);
+
+  useEffect(() => {
+    setScheduling({ ...scheduling, date: dataToDatabase(day) });
+  }, [day]);
 
   function dataToDatabase(day) {
     var data = day,
-      dia = data.getDate().toString().padStart(2, '0'),
-      mes = (data.getMonth() + 1).toString().padStart(2, '0'),
-      ano = data.getFullYear()
-    return ano + '-' + mes + '-' + dia
+      dia = data.getDate().toString().padStart(2, "0"),
+      mes = (data.getMonth() + 1).toString().padStart(2, "0"),
+      ano = data.getFullYear();
+    return ano + "-" + mes + "-" + dia;
   }
+
+  function dataToCalendar(day) {
+    var data = day,
+      dia = data.getDate().toString().padStart(2, "0"),
+      mes = (data.getMonth() + 1).toString().padStart(2, "0");
+    return dia + "/" + mes;
+  }
+
+  console.log(dataToCalendar((new Date(userScheduling[0]?.date))))
 
   // function setMaxDate(date) {
   //   const d = date.getDate()
@@ -36,8 +59,8 @@ export function Calendario({ formatDay }) {
     <Container>
       <h5>Hoje é dia {formatDay}</h5>
       <Calendar
-        className='calendario'
-        tileClassName='day'
+        className="calendario"
+        tileClassName="day"
         // onChange={setDay}
         onClickDay={setDay}
         value={day}
@@ -48,11 +71,11 @@ export function Calendario({ formatDay }) {
         tileDisabled={({ date }) => date.getDay() === 6 || date.getDay() === 0}
       />
       <h5>Meus agendamentos</h5>
-      <div className='appointments'>
-        <div>14/09</div>
-        <div>16/09</div>
-        <div>20/09</div>
+      <div className="appointments">
+        {userScheduling && userScheduling.map((scheduling, index) => (
+          <div key={index}>{dataToCalendar((new Date(scheduling.date)))}</div>
+        ))}
       </div>
     </Container>
-  )
+  );
 }
