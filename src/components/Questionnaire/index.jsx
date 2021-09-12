@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Container } from './styles'
 
 
@@ -95,9 +96,12 @@ export function QuestionnairePage() {
             </div>
           </form>
 
-          <button type='submit'>
-            PROSSEGUIR
-          </button>
+          <Link to='/dashboard'>
+            <button type='submit'>
+              PROSSEGUIR
+            </button>
+          </Link>
+
         </div>
       </Container>
     </>
