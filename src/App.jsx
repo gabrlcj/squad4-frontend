@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { LoginPage } from './components/LoginPage'
 import { RegisterPage } from './components/RegisterPage'
 import { QuestionnairePage } from './components/Questionnaire'
+import { Dashboard } from './components/Dashboard'
 
 import { GlobalStyle } from './styles/global'
 import { ToastContainer } from 'react-toastify'
-import { Dashboard } from './components/Dashboard'
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
               <QuestionnairePage />
             </Route>
           </Switch>
-          <Route path='/dashboard'>
+          <Route path='/dashboard/:id'>
             <Dashboard />
           </Route>
         </Switch>

@@ -30,7 +30,7 @@ export function LoginPage() {
     if (first_access) {
       history.push('/firstaccess');
     } else {
-      history.push('/dashboard');
+      history.push(`/dashboard/${returningUser.id}`);
     }
   }
 
@@ -40,6 +40,7 @@ export function LoginPage() {
       await login(email, password)
     } catch (e) {
       toast.error("Email ou senha inválidos.")
+      setLoading(false);
     }
   }
 
