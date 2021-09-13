@@ -40,7 +40,6 @@ export const Container = styled.div`
     flex: 1;
     justify-content: center;
     align-items: center;
-    /* padding-top: 2.813rem; */
 
     .box-question div {
       display: flex;
@@ -79,6 +78,7 @@ export const Container = styled.div`
     width: 40%;
     padding-right: 2rem;
     margin-left: 15.938rem;
+    margin-bottom: 6.950rem;
   }
 
   .right {
@@ -103,14 +103,13 @@ export const Container = styled.div`
     border: 0;
     border-radius: 0.625rem;
     padding: 0.75rem 2rem;
-    /* margin: 10px; */
     font-weight: 700;
     background: #535353;
     color: #ffffff;
     width: 10.625rem;
     float: right;
     margin-top: 4.375rem;
-    margin-right: 6rem;
+
 
     transition: filter 0.2s;
 

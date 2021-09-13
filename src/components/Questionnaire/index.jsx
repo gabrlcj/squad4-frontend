@@ -122,10 +122,13 @@ export function QuestionnairePage() {
                   <label htmlFor="rightExample3">Prefiro não responder</label>
                 </div>
               </div>
-              <button type='submit' onClick={() => setFirstAccess(false)}>
-                PROSSEGUIR
-              </button>
+              <div>
+                <button type='submit' onClick={() => setFirstAccess(false)}>
+                  PROSSEGUIR
+                </button>
+              </div>
             </div>
+
           </form>
 
 
