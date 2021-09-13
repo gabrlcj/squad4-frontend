@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Calendar from "react-calendar";
 import { AuthContext } from "../../context/AuthContext";
 import { Container } from "./styles";

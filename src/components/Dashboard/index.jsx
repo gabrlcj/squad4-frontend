@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import api from '../../api/index.js';
 import { AuthContext } from '../../context/AuthContext.js';
 import { Calendario } from '../Calendar/index.jsx'
@@ -13,7 +14,6 @@ export function Dashboard() {
   const [userScheduling, setUserScheduling] = useState([]);
   const { scheduling } = useContext(AuthContext);
  
-
   useEffect(() => {
     api({
       method: 'get',
@@ -21,10 +21,8 @@ export function Dashboard() {
     })
     .then(res => {
       setUserScheduling(res.data);
-      console.log("oi")
-      console.log(res.data)
     })
-    .catch(error => console.log(error.response.data.mensagem))
+    .catch(error => toast.error(error.response?.data.mensagem))
   }, [id, scheduling]);
 
   function formatDateWithZero(date) {

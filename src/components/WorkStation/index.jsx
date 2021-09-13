@@ -1,14 +1,41 @@
 import Table from '../../assets/Table.svg'
 import { Container, Station } from './styles'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext';
 import api from '../../api';
 import { toast } from 'react-toastify';
 
 export function WorkStation() {
-  const { scheduling, setScheduling, user } = useContext(AuthContext);
-  console.log(scheduling)
+  const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext);
+  const [occupiedWorkstations, setOccupiedWorkstations ] = useState([]);
+  
  
+  function formatDateWithZero(date) {
+    if (date <= 9) return '0' + date
+    else return date
+  }
+
+  useEffect(() => {
+    setOccupiedWorkstations(schedulings?.map(dayscheduling => dayscheduling.workstation));
+  }, [schedulings])
+ 
+
+  const formatToday =
+    formatDateWithZero(day.getFullYear()) + '-' + formatDateWithZero(day.getMonth() + 1) + '-' + day.getDate();
+
+  useEffect(() => {
+    try {
+       api({
+         method: 'get',
+         url: `agendamentos/data/${formatToday}`
+       })
+       .then(res => {
+        setSchedulings(res.data.rows)
+       })
+     } catch (error) {
+       toast.error(error.response?.data.mensagem);
+     }
+  }, [formatToday, setSchedulings])
 
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()
@@ -30,9 +57,9 @@ export function WorkStation() {
       });
 
       toast.success('Agendamento feito com sucesso!');
-        setScheduling({...scheduling, date: new Date()});
+      setScheduling({...scheduling, date: new Date()});
     } catch (error) {
-      toast.error(error.response.data.mensagem);
+      toast.error(error.response?.data.mensagem);
     }
   }
 
@@ -41,7 +68,7 @@ export function WorkStation() {
       <>
         {chairNumbers.map((chairNumber) => {
           return (
-            <div className='circle up' key={chairNumber} onClick={(event) => chairClickHandler(event, chairNumber)}>
+            <div className={`circle up ${occupiedWorkstations.includes(chairNumber.toString()) ? "red" : "green" }`} key={chairNumber} onClick={(event) => chairClickHandler(event, chairNumber)}>
               {chairNumber}
             </div>
           )
@@ -55,7 +82,7 @@ export function WorkStation() {
       <>
         {chairNumbers.map((chairNumber) => {
           return (
-            <div className='circle down' key={chairNumber} onClick={(event) => chairClickHandler(event, chairNumber)}>
+            <div className={`circle down ${occupiedWorkstations.includes(chairNumber.toString()) ? "red" : "green" }`} key={chairNumber} onClick={(event) => chairClickHandler(event, chairNumber)}>
               {chairNumber}
             </div>
           )
