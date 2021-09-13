@@ -5,16 +5,16 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.75rem;
+  /* gap: 1.75rem;
 
   border: 2px solid #d3d3d3c1;
   border-radius: 0.25rem;
   background: #d3d3d3c1;
   padding: 2rem;
-  margin: 5rem auto;
+  margin: 5rem auto;*/
   width: min(1080px, 90%);
 
-  label {
+ /* label {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,6 +54,6 @@ export const Container = styled.form`
     display: flex;
     flex-direction: column;
     /* flex-basis: 50%; */
-    flex: 2;
-  }
+    /* flex: 2;
+  }  */
 `
