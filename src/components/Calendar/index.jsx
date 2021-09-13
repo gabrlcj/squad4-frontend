@@ -1,19 +1,9 @@
 import { useContext, useEffect } from 'react'
-import Calendar from 'react-calendar'
 import { AuthContext } from '../../context/AuthContext'
-import { Container } from './styles'
-import Slider from 'react-slick'
+import Calendar from 'react-calendar'
+import Carousel from 'react-elastic-carousel'
 
-export function SimpleSlider({ children }) {
-  let settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  }
-  return <Slider {...settings}>{children}</Slider>
-}
+import { Container } from './styles'
 
 export function Calendario({ formatDay, userScheduling }) {
   const { day, setDay, scheduling, setScheduling } = useContext(AuthContext)
@@ -54,19 +44,14 @@ export function Calendario({ formatDay, userScheduling }) {
         tileDisabled={({ date }) => date.getDay() === 6 || date.getDay() === 0}
       />
       <h5>Meus agendamentos</h5>
-
       <div className='appointments'>
-        <SimpleSlider className='carrousel'>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-        </SimpleSlider>
-        {userScheduling?.map((scheduling, index) => (
-          <div key={index}>{dataToCalendar(new Date(scheduling.date))}</div>
-        ))}
+        <Carousel itemsToShow={3}>
+          {userScheduling?.map((scheduling, index) => (
+            <div className='appointment-date' key={index}>
+              {dataToCalendar(new Date(scheduling.date))}
+            </div>
+          ))}
+        </Carousel>
       </div>
     </Container>
   )

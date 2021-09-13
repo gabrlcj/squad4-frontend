@@ -5,6 +5,7 @@ import { useContext } from 'react/cjs/react.development'
 import { AuthContext } from '../../context/AuthContext'
 import LogoImage from '../../assets/Logo.svg'
 import BrandName from '../../assets/BrandName.svg'
+import { Meeting } from '../Meeting'
 
 export function Main() {
   const [station, setStation] = useState('Estação de trabalho')
@@ -50,7 +51,7 @@ export function Main() {
       </div>
       <section>
         <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
-        {scheduling.office === 'São Paulo' && station === 'Estação de trabalho' ? <WorkStation /> : <h3>Exemplo 2</h3>}
+        {scheduling.office === 'São Paulo' && station === 'Estação de trabalho' ? <WorkStation /> :<Meeting />}
         <div className='legenda'>
           <strong>
             <div className='circle ocupado'></div>Ocupado
@@ -62,7 +63,11 @@ export function Main() {
         {scheduling.office === 'São Paulo' ? (
           <div className='buttons-container'>
             {buttons.map((item, index) => (
-              <button onClick={() => setActiveButton(index)} className={activeButton === index ? 'selected' : ''}>
+              <button
+                key={index}
+                onClick={() => setActiveButton(index)}
+                className={activeButton === index ? 'selected' : ''}
+              >
                 {item}
               </button>
             ))}

@@ -66,7 +66,9 @@ export function WorkStation() {
         {chairNumbers.map((chairNumber) => {
           return (
             <div
-              className={`circle up ${occupiedWorkstations.includes(chairNumber.toString()) ? 'red' : 'green'}`}
+              className={`circle up ${
+                occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
+              }`}
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >
@@ -84,7 +86,9 @@ export function WorkStation() {
         {chairNumbers.map((chairNumber) => {
           return (
             <div
-              className={`circle down ${occupiedWorkstations.includes(chairNumber.toString()) ? 'red' : 'green'}`}
+              className={`circle down ${
+                occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
+              }`}
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >

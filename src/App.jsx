@@ -13,13 +13,13 @@ export default function App() {
       <Router>
         <GlobalStyle />
         <Switch>
-          <Route path="/firstaccess">
+          <Route path='/firstaccess'>
             <QuestionnairePage />
           </Route>
-          <Route path="/dashboard/:id">
+          <Route path='/dashboard/:id'>
             <Dashboard />
           </Route>
-          <Route path="/register">
+          <Route path='/register'>
             <RegisterPage />
           </Route>
           <Route path="/" exact>

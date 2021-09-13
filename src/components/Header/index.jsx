@@ -8,7 +8,7 @@ export function Header() {
       <nav>
         <Link to='/'>Página de Login</Link>
         <Link to='/register'>Página de Cadastro</Link>
-        <Link to='/dashboard'>Dashboard</Link>
+        <Link to='/dashboard/:id'>Dashboard</Link>
       </nav>
     </Container>
   )
