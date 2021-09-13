@@ -25,7 +25,7 @@ export function LoginPage() {
     setToken(token);
     setUser(returningUser);
     setLoading(false);
-    history.push('/dashboard');
+    history.push(`/dashboard/${returningUser.id}`);
   }
 
   async function handleLoginForm(event) {

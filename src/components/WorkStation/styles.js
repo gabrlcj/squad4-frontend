@@ -25,6 +25,7 @@ export const Station = styled.div`
       border: 1px solid white;
       height: 2rem;
       width: 2rem;
+      
     }
 
     .circle.down {
@@ -52,5 +53,10 @@ export const Station = styled.div`
       background: grey;
       margin-right: 0.25rem;
     }
+
+    .red {
+        background: red !important;
+      }
   }
+ 
 `
