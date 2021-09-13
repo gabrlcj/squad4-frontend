@@ -9,7 +9,7 @@ import api from '../../api'
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const {  setToken, setUser } = useContext(AuthContext);
+  const { setToken, setUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
@@ -20,12 +20,18 @@ export function LoginPage() {
       password
     });
     const { token } = response.data;
+    const { returningUser: { first_access } } = response.data;
     const { returningUser } = response.data;
     localStorage.setItem("token", token);
     setToken(token);
     setUser(returningUser);
     setLoading(false);
-    history.push(`/dashboard/${returningUser.id}`);
+
+    if (first_access) {
+      history.push('/firstaccess');
+    } else {
+      history.push(`/dashboard/${returningUser.id}`);
+    }
   }
 
   async function handleLoginForm(event) {
@@ -45,7 +51,7 @@ export function LoginPage() {
   }
 
 
-  if(loading){
+  if (loading) {
     return <h1>Carregando...</h1>
   }
 
