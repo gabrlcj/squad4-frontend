@@ -13,6 +13,7 @@ export function RegisterPage() {
   const [origin_office, setOffice] = useState('')
   const [role, setRole] = useState('')
   const [squad, setSquad] = useState('')
+  const [first_access, SetFirstAccess] = useState('')
 
   function handleUserRegister(event) {
     event.preventDefault()
@@ -23,7 +24,8 @@ export function RegisterPage() {
       password,
       origin_office,
       role,
-      squad
+      squad,
+      first_access
     }
 
     api({
@@ -35,6 +37,8 @@ export function RegisterPage() {
   }
 
   function validateInputs() {
+
+    SetFirstAccess(true)
 
     if (name === '' || email === '' || password === '') {
       return toast.error('Ops, algo deu errado')
@@ -122,11 +126,6 @@ export function RegisterPage() {
           Filial de preferência:
           <input name='filial' type='radio' value='São Paulo - SP' onClick={() => setOffice('São Paulo')} /> São Paulo
           <input name='filial' type='radio' value='Santos - SP' onClick={() => setOffice('Santos')} /> Santos
-
-          {/* <select name="filial">
-            <option value="SP" onClick={() => setOffice('São Paulo')}>São Paulo</option>
-            <option value="Santos" onClick={() => setOffice('Santos')}>Santos</option>
-          </select> */}
         </label>
 
         <label htmlFor="role">
