@@ -3,7 +3,8 @@ import 'react-calendar/dist/Calendar.css'
 
 export const Container = styled.div`
   grid-area: calendar;
-  background: #707070;
+  background: #fff;
+  color: var(--orange-main);
   border-radius: 2rem;
   margin: 0.5rem auto 0;
   padding: 1rem;
@@ -14,12 +15,26 @@ export const Container = styled.div`
   justify-content: space-around;
   flex-direction: column;
 
+  .background-calendar {
+    background: var(--blue-darker);
+    border-radius: 1.75rem 0 0 0;
+  }
+
   h5 {
     margin: 0 0 0.5rem 0.75rem;
-    color: #f9f9f9;
     font-weight: 800;
     font-size: 1rem;
     margin-right: auto;
+  }
+
+  h4 {
+    width: 100%;
+    border-radius: 1rem;
+    text-align: center;
+    line-height: 1.5rem;
+    margin-bottom: 0.5rem;
+    background: var(--blue-darker);
+    color: #fff;
   }
 
   .appointments {
@@ -36,9 +51,10 @@ export const Container = styled.div`
   }
 
   .calendario {
-    height: 11rem;
+    height: 10rem;
     border-radius: 0.5rem;
     margin-bottom: 1.5rem;
+    border: 0;
 
     abbr {
       text-decoration: none;

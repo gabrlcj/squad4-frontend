@@ -8,4 +8,14 @@ export const Container = styled.main`
   grid-template-areas:
     'navbar main calendar'
     'navbar main notification';
+
+  .background-calendar {
+    background: var(--blue-darker);
+    border-radius: 2rem 0 0 0;
+  }
+
+  .background-notification {
+    background: var(--blue-darker);
+    border-radius: 0 0 0 2rem;
+  }
 `

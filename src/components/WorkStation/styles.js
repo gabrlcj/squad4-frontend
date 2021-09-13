@@ -13,28 +13,25 @@ export const Station = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 15rem;
+    width: 100%;
     margin-bottom: -1rem;
     z-index: 100;
     position: relative;
     cursor: pointer;
 
-    .circle.up {
-      background: grey;
-      border-radius: 50%;
-      border: 1px solid white;
+    .circle {
+      border-radius: 20%;
       height: 2rem;
       width: 2rem;
-      
+    }
+
+    .circle.up {
+      background: grey;
     }
 
     .circle.down {
       background: grey;
-      border-radius: 50%;
-      border: 1px solid white;
-      height: 2rem;
-      width: 2rem;
-      margin-top: -1.5rem;
+      margin-top: -1.8rem;
       margin-bottom: 0.75rem;
     }
 
@@ -42,7 +39,7 @@ export const Station = styled.div`
       height: 1rem;
       width: 1rem;
       border-radius: 50%;
-      background: #121212;
+      background: var(--orange-subtle);
       margin-right: 0.25rem;
     }
 
@@ -50,13 +47,12 @@ export const Station = styled.div`
       height: 1rem;
       width: 1rem;
       border-radius: 50%;
-      background: grey;
+      background: var(--green);
       margin-right: 0.25rem;
     }
 
     .red {
-        background: red !important;
-      }
+      background: red !important;
+    }
   }
- 
 `

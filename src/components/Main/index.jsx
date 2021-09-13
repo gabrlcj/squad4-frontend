@@ -3,9 +3,12 @@ import { Container } from './styles'
 import { WorkStation } from '../WorkStation'
 import { useContext } from 'react/cjs/react.development'
 import { AuthContext } from '../../context/AuthContext'
+import LogoImage from '../../assets/Logo.svg'
+import BrandName from '../../assets/BrandName.svg'
 
 export function Main() {
   const [station, setStation] = useState('Estação de trabalho')
+  const [activeButton, setActiveButton] = useState(0)
   const { day, scheduling, setScheduling, user } = useContext(AuthContext)
 
   function dataAtualFormatada(day) {
@@ -16,16 +19,21 @@ export function Main() {
     return dia + '/' + mes + '/' + ano
   }
 
+  const buttons = ['1° ANDAR', '2° ANDAR', '3° ANDAR']
+
   return (
     <Container>
-      <h1>Logo aqui</h1>
+      <div className='brand-container'>
+        <img src={LogoImage} alt='Logo da aplicação' />
+        <img src={BrandName} alt='Nome da aplicação' />
+      </div>
       <div className='selection-bar'>
         <select
           name='filial'
           onChange={(event) => setScheduling({ ...scheduling, office: event.target.value, user_id: user.id })}
         >
           <option name='filial' value='São Paulo'>
-            SÃO PAULO
+            SÃO PAULO - SP
           </option>
           <option name='filial' value='Santos'>
             SANTOS
@@ -53,13 +61,15 @@ export function Main() {
         </div>
         {scheduling.office === 'São Paulo' ? (
           <div className='buttons-container'>
-            <button>1° ANDAR</button>
-            <button>2° ANDAR</button>
-            <button>3° ANDAR</button>
+            {buttons.map((item, index) => (
+              <button onClick={() => setActiveButton(index)} className={activeButton === index ? 'selected' : ''}>
+                {item}
+              </button>
+            ))}
           </div>
         ) : (
           <div className='buttons-container'>
-            <button>1° ANDAR</button>
+            <button className='selected'>1° ANDAR</button>
           </div>
         )}
       </section>

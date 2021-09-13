@@ -3,68 +3,76 @@ import SelectArrow from '../../assets/Select-arrow.svg'
 
 export const Container = styled.main`
   grid-area: main;
-  padding: 2rem;
+  padding: 1rem 2rem;
 
-  h1 {
-    border: 2px solid white;
-    width: fit-content;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  .selection-bar {
-    margin-top: 3rem;
-    width: 100%;
-    background: #a9a9a9;
-    border-radius: 1rem;
-    padding: 0.25rem;
-
+  .brand-container {
     display: flex;
     align-items: center;
     justify-content: left;
+    gap: 2rem;
+  }
+
+  .selection-bar {
+    margin-top: 1rem;
+    width: 100%;
+    border-radius: 1rem;
+
+    display: flex;
+    align-items: center;
 
     select {
-      font: 600 0.85rem 'Inter', sans-serif;
-      margin: 0 2.5rem 0 1.5rem;
-      padding: 0.25rem;
-      width: 110px;
+      font: 700 0.85rem 'Montserrat', sans-serif;
+      margin: 0 2.5rem 0 1rem;
+      padding: 0 1.5rem;
+      width: 190px;
+      height: 40px;
       border: 0;
       background: transparent;
-      color: #f9f9f9;
+      color: #fff;
       background: url(${SelectArrow}) no-repeat;
-      background-position: center right;
+      background-position: 9.2rem;
+      background-color: var(--blue-darker);
+      border-radius: 3rem;
+      outline: none;
 
       -webkit-appearance: none;
       -moz-appearance: none;
 
+      &:focus {
+        box-shadow: 0 0 0.5rem 0.1rem var(--blue-lighter);
+      }
+
       & + select {
-        width: 195px;
+        width: 250px;
+        background-position: 13rem;
       }
 
       option {
-        background: #a9a9a9;
+        background-color: var(--blue-darker);
       }
     }
   }
 
   section {
-    margin-top: 2rem;
-    border: 1px solid grey;
-    border-radius: 1.5rem;
+    margin-top: 1rem;
+    border: 3.5px solid var(--blue-darker);
+    border-radius: 2rem;
 
     h2 {
       font-size: 1rem;
       padding: 1rem;
       color: #fff;
-      background: grey;
+      background: var(--blue-darker);
       border-radius: 1.5rem 1.5rem 0 0;
+      text-align: center;
     }
   }
 
   .legenda {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    margin-left: 1rem;
 
     strong {
       display: flex;
@@ -77,7 +85,7 @@ export const Container = styled.main`
       height: 1rem;
       width: 1rem;
       border-radius: 50%;
-      background: #121212;
+      background: var(--orange-subtle);
       margin-right: 0.25rem;
     }
 
@@ -85,7 +93,7 @@ export const Container = styled.main`
       height: 1rem;
       width: 1rem;
       border-radius: 50%;
-      background: grey;
+      background: var(--green);
       margin-right: 0.25rem;
     }
   }
@@ -93,17 +101,23 @@ export const Container = styled.main`
   .buttons-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin: 1rem 0;
 
     button {
       color: white;
-      background: #a9a9a9;
+      background: var(--orange-main);
       border-radius: 1rem;
       border: 0;
-      width: 10rem;
+      width: 8rem;
       padding: 0.5rem 1rem;
-      font: 800 1rem 'Inter', sans-serif;
+      font: 800 1rem 'Montserrat', sans-serif;
+
+      transition: all 0.2s;
+    }
+
+    .selected {
+      background-color: var(--blue-darker);
     }
   }
 `

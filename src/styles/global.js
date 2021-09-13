@@ -3,7 +3,17 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export const GlobalStyle = createGlobalStyle`
   :root {
-    --background: #DAD8D7;
+    --orange-main: #fe5517;
+    --orange-lighter: #fe662e;
+    --orange-subtle: #FE885C;
+
+    --green: #51a259;
+
+    --blue-main: #36357e;
+    --blue-lighter: #5251a2;
+    --blue-darker: #2a2962;
+
+    --background: #fff;
     --background-focus: #FE4400a9;
     --alternative: #b4ccff;
     --text: #363033;
@@ -29,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     min-height: 100vh;
     background: var(--background);
-    font: 400 1rem 'Inter', sans-serif;
+    font: 700 1rem 'Montserrat', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
   }
