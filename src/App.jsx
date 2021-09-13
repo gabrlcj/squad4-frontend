@@ -13,16 +13,12 @@ export default function App() {
       <Router>
         <GlobalStyle />
         <Switch>
-          <Switch>
-            <Route path='/firstaccess'>
-              <QuestionnairePage />
-            </Route>
-          </Switch>
+          <Route path='/firstaccess'>
+            <QuestionnairePage />
+          </Route>
           <Route path='/dashboard/:id'>
             <Dashboard />
           </Route>
-        </Switch>
-        <Switch>
           <Route path='/register'>
             <RegisterPage />
           </Route>

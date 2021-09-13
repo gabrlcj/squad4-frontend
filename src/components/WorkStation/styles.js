@@ -23,6 +23,7 @@ export const Station = styled.div`
       border-radius: 20%;
       height: 2rem;
       width: 2rem;
+      text-align: center;
     }
 
     .circle.up {
@@ -33,6 +34,16 @@ export const Station = styled.div`
       background: grey;
       margin-top: -1.8rem;
       margin-bottom: 0.75rem;
+    }
+
+    .circle.down.occupied,
+    .circle.up.occupied {
+      background: var(--orange-subtle);
+    }
+
+    .circle.up.unoccupied,
+    .circle.down.unoccupied {
+      background: var(--green);
     }
 
     .circle.ocupado {
@@ -49,10 +60,6 @@ export const Station = styled.div`
       border-radius: 50%;
       background: var(--green);
       margin-right: 0.25rem;
-    }
-
-    .red {
-      background: red !important;
     }
   }
 `

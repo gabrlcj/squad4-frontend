@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -36,7 +36,8 @@ export const Container = styled.div`
     align-content: center;
   }
 
-  .loginbox, form {
+  .loginbox,
+  form {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -89,4 +90,4 @@ export const Container = styled.div`
       color: #535353;
     }
   }
-`;
+`

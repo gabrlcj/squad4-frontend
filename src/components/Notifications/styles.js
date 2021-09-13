@@ -5,14 +5,31 @@ export const Container = styled.div`
   background: #fff;
   color: var(--orange-main);
   border-radius: 2rem;
-  margin: 0.5rem auto 0;
+  margin: 2rem auto 0;
   padding: 1rem;
   width: 20rem;
+  height: 85%;
 
   h5 {
     margin: 0 0 0.5rem 0.75rem;
     font-weight: 800;
     font-size: 1rem;
     margin-right: auto;
+  }
+
+  .notification-container {
+    color: #fff;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    div {
+      background: var(--blue-lighter);
+      border-radius: 1rem;
+      width: 100%;
+      padding: 1rem;
+    }
   }
 `

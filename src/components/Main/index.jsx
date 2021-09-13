@@ -62,7 +62,11 @@ export function Main() {
         {scheduling.office === 'São Paulo' ? (
           <div className='buttons-container'>
             {buttons.map((item, index) => (
-              <button onClick={() => setActiveButton(index)} className={activeButton === index ? 'selected' : ''}>
+              <button
+                key={index}
+                onClick={() => setActiveButton(index)}
+                className={activeButton === index ? 'selected' : ''}
+              >
                 {item}
               </button>
             ))}

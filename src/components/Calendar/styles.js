@@ -9,10 +9,12 @@ export const Container = styled.div`
   margin: 0.5rem auto 0;
   padding: 1rem;
   width: 20rem;
+  height: 98%;
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: start;
+  gap: 0.75rem;
   flex-direction: column;
 
   .background-calendar {
@@ -41,17 +43,57 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 
-    div {
-      background: white;
+    .rec {
+      width: 100%;
+      height: 3.5rem;
+      padding: 0;
+      margin: 0;
+
+      button {
+        border-radius: 100%;
+        width: 0.75rem;
+        height: 0.75rem;
+        padding: 0;
+        border: 0;
+        margin-top: 0.5rem;
+
+        &:hover {
+          box-shadow: 0 0 1px 3px var(--orange-lighter);
+        }
+      }
+
+      .rec.rec-dot_active {
+        background: var(--orange-lighter);
+        box-shadow: 0 0 1px 3px var(--orange-lighter);
+      }
+
+      .rec.rec-arrow {
+        display: none;
+      }
+
+      .rec.rec-pagination {
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+    }
+
+    .appointment-date {
+      color: #fff;
+      background: var(--orange-main);
       padding: 1rem 0.35rem;
       border-radius: 1rem;
       margin: 0 0.5rem;
+      width: 100%;
+      height: 3.25rem;
+      text-align: center;
     }
   }
 
   .calendario {
-    height: 10rem;
+    height: 9rem;
     border-radius: 0.5rem;
     margin-bottom: 1.5rem;
     border: 0;
