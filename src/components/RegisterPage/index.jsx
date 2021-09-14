@@ -4,6 +4,7 @@ import api from '../../api'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
+import CloseModalButton from '../../assets/CloseModal.svg';
 
 export function RegisterPage({showModal, setShowModal, handleModal}) {
   const [name, setName] = useState('')
@@ -68,8 +69,8 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
 
   return (
     <>
-      <Container onSubmit={handleUserRegister}>
-        {/* <ModalCloseButton /> */}
+      <Container onSubmit={handleUserRegister} showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}>
+        <img src={CloseModalButton} alt='Fechar' onClick={handleModal} className="closeModalIcon"/>
         <div className="regbox">
           <h2>Cadastro</h2>
           <div className="row">

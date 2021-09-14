@@ -5,6 +5,7 @@ import { Container } from './styles'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../api'
+
 import { Modal } from '../Modal/Modal'
 import { RegisterPage } from '../RegisterPage/index'
 
@@ -57,7 +58,6 @@ export function LoginPage({showModal, setShowModal, handleModal}) {
     }
   }
 
-
   if (loading) {
     return <h1>Carregando...</h1>
   }
@@ -65,8 +65,8 @@ export function LoginPage({showModal, setShowModal, handleModal}) {
   return (
     <>
     {showModal ?
-      <Modal showModal={showModal} setShowModal={setShowModal}>
-        <RegisterPage showModal={showModal} setShowModal={setShowModal}/>
+      <Modal showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} >
+        <RegisterPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
       </Modal>
       : null}
       <Container>

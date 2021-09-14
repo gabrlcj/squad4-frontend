@@ -107,7 +107,17 @@ export const Container = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  } 
+  }
+
+  .closeModalIcon {
+    display: flex;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #FFFFFF;
+    border-radius: 50px;
+    cursor: pointer;
+  }
 
   .textbox-input {
     background: #FFFFFF;
