@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     --blue-lighter: #5251a2;
     --blue-darker: #2a2962;
 
-    --background: #fff;
+    --background: #7474B445;
     --background-focus: #FE4400a9;
     --alternative: #b4ccff;
     --text: #363033;
@@ -37,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     background: var(--background);
     font: 700 1rem 'Montserrat', sans-serif;
     color: var(--text);

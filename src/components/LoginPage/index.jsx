@@ -6,6 +6,11 @@ import { toast } from 'react-toastify'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../api'
 
+import AstronautCalendar from '../../assets/AstronautCalendar.svg'
+import GrupoFCamara from '../../assets/GrupoFCamara.svg'
+import BrandName from '../../assets/BrandName.svg'
+import Logo from '../../assets/Logo.svg'
+
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -58,9 +63,17 @@ export function LoginPage() {
   return (
     <>
       <Container>
-        <div className='left'></div>
+        <div className='left'>
+          <img src={GrupoFCamara} alt='Logo da FCamara' />;
+          <img src={AstronautCalendar} alt='Astonauta com Calendário' />;
+        </div>
+
         <div className='right'>
           <div className='loginbox'>
+            <div className='row'>
+              <img src={Logo} alt='Logo do App' style={{ marginRight: '1vw' }} />
+              <img src={BrandName} alt='Orange Space' />
+            </div>
             <h1 className='title'>ACESSAR PORTAL</h1>
 
             <form onSubmit={handleLoginForm}>
@@ -68,6 +81,7 @@ export function LoginPage() {
                 <input
                   name='email'
                   type='email'
+                  className='textbox-input'
                   required
                   placeholder='Digite seu email'
                   value={email}
@@ -79,6 +93,7 @@ export function LoginPage() {
                 <input
                   name='password'
                   type='password'
+                  className='textbox-input'
                   required
                   placeholder='Digite sua senha'
                   value={password}
@@ -91,7 +106,7 @@ export function LoginPage() {
               </button>
             </form>
 
-            <div className='text-box'>
+            <div className='text-container'>
               <div className='basetext'>
                 Não é cadastrado?{' '}
                 <Link to='/register' className='underline'>
