@@ -60,6 +60,8 @@ export const GlobalStyle = createGlobalStyle`
 
     &:focus {
       outline: 3px solid var(--background-focus);
+      -moz-outline-radius: 0.25rem;
+      transition: .1s;
     }
 
     &::placeholder {

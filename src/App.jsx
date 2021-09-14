@@ -29,7 +29,7 @@ export default function App() {
             <RegisterPage />
           </Route>
           <Route path='/' exact>
-            <LoginPage showModal={showModal} setShowModal={setShowModal} openModal={openModal} />
+            <LoginPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
           </Route>
         </Switch>
         <ToastContainer theme={'dark'} autoClose={3000} />

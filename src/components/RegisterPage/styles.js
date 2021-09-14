@@ -8,7 +8,7 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   justify-content: center;
-  margin: 3vh auto;
+  margin: 10vh auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
   background: #FFFFFF;
@@ -60,6 +60,7 @@ export const Container = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     
     border: 0;
     padding: 0.75rem 2rem;
@@ -124,6 +125,7 @@ export const Container = styled.form`
     padding-left: 7px;
 
     color: #707070;
+
   }
 
   .namebox {
