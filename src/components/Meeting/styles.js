@@ -24,6 +24,16 @@ export const TimeBlock = styled.div`
     text-align: center;
     padding-top: 0.5rem;
   }
+
+  .overlay {
+    width: 35rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: 18%;
+  }
+
 `
 
 export const RoomBlock = styled.div`
@@ -38,6 +48,11 @@ export const RoomBlock = styled.div`
     text-align: center;
     padding-top: 0.5rem;
   }
+
+  .hidden {
+    visibility: hidden;
+  }
+
 `
 
 export const TimeContainer = styled.div`
