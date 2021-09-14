@@ -1,4 +1,5 @@
 import Table from '../../assets/WorkstationTable.svg'
+import UnavailableChair from '../../assets/UnavailableChair.svg'
 import { Container, Station } from './styles'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
@@ -62,8 +63,8 @@ export function WorkStation() {
 
   const unavailableSeat = () => {
     return (
-      <div className='circle teste'>
-        <input style={{ display: 'none' }} type='text' disabled={true} />X
+      <div className='circle unavailable'>
+        <img src={UnavailableChair} alt='Marcação de cadeira indisponivel' />
       </div>
     )
   }

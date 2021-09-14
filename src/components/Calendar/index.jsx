@@ -10,6 +10,7 @@ export function Calendario({ formatDay, userScheduling }) {
 
   useEffect(() => {
     setScheduling({ ...scheduling, date: dataToDatabase(day) })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [day])
 
   function setMaxDate(date) {

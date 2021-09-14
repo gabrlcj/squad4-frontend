@@ -19,13 +19,13 @@ export const Station = styled.div`
     position: relative;
     cursor: pointer;
 
-    .teste {
+    .unavailable {
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
       cursor: not-allowed;
-      background: grey;
+      background: #707070;
       text-align: center;
     }
 
@@ -34,6 +34,8 @@ export const Station = styled.div`
       height: 2rem;
       width: 2rem;
       text-align: center;
+
+      box-shadow: 0 0.15rem 0.3rem 0 #333333;
     }
 
     .circle.up {
