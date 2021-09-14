@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { Container } from './styles'
+import { Container, Question } from './styles'
 import api from '../../api'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../../context/AuthContext'
@@ -45,9 +45,8 @@ export function QuestionnairePage() {
 
           <form className="box" onSubmit={handleQuestionnaire}>
             <div className="left">
-
-              <h3 className="question">Você está vacinado contra a COVID-19?</h3>
               <div className="box-question">
+                <Question padding="2.125rem 1rem">Você está vacinado contra a COVID-19?</Question>
                 <div>
                   <input id="vaccine_true" name='vaccine' type='radio' value={vaccine_status} onClick={() => setVaccine(true)} />
                   <label htmlFor="vaccine_true">Sim</label>
@@ -64,8 +63,8 @@ export function QuestionnairePage() {
                 </div>
               </div>
 
-              <h3 className="question">MODELO DE PERGUNTA</h3>
               <div className="box-question">
+                <Question padding="2.125rem 1rem">Você se adaptou bem ao Home Office?</Question>
                 <div>
                   <input name='leftExample' type='radio' value="leftExample1" id="leftExample1" />
                   <label htmlFor="leftExample1">Sim</label>
@@ -86,9 +85,8 @@ export function QuestionnairePage() {
 
             <div className="right">
 
-              <h3 className="question">Para que a gente possa te receber melhor, você faz uso de cadeira de rodas?</h3>
-
               <div className="box-question">
+                <Question>Para que a gente possa te receber melhor, você possui alguma dificuldade de mobilidade?</Question>
                 <div>
                   <input id="wheelchair_true" name='wheelchair' type='radio' value={pwd} onClick={() => setPWD(true)} />
                   <label htmlFor="wheelchair_true">Sim</label>
@@ -105,8 +103,8 @@ export function QuestionnairePage() {
                 </div>
               </div>
 
-              <h3 className="question">MODELO DE PERGUNTA</h3>
               <div className="box-question">
+                <Question padding="1.563rem 1rem">Você acredita que sua produtividade aumenta trabalhando no escritório?</Question>
                 <div>
                   <input name='rightExample' type='radio' value="rightExample1" id="rightExample1" />
                   <label htmlFor="rightExample1">Sim</label>
@@ -123,10 +121,10 @@ export function QuestionnairePage() {
                 </div>
               </div>
               <div>
-                <button type='submit' onClick={() => setFirstAccess(false)}>
-                  PROSSEGUIR
-                </button>
               </div>
+              <button type='submit' onClick={() => setFirstAccess(false)}>
+                PROSSEGUIR
+              </button>
             </div>
 
           </form>
