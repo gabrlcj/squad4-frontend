@@ -126,8 +126,6 @@ export function WorkStation() {
     )
   }
 
-  console.log(scheduling)
-
   return (
     <>
       <form className='modal' onSubmit={handleAppointment}>

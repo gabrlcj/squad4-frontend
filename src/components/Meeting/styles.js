@@ -1,12 +1,16 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 4rem;
+  margin: 1rem 0;
   color: white;
-`;
+
+  .red {
+    background-color: var(--orange-main);
+  }
+`
 
 export const TimeBlock = styled.div`
   display: flex;
@@ -20,12 +24,11 @@ export const TimeBlock = styled.div`
     text-align: center;
     padding-top: 0.5rem;
   }
-`;
+`
 
 export const RoomBlock = styled.div`
   display: flex;
   flex-direction: column;
-
 
   h3 {
     border-radius: 40px;
@@ -35,30 +38,27 @@ export const RoomBlock = styled.div`
     text-align: center;
     padding-top: 0.5rem;
   }
-`;
+`
 
 export const TimeContainer = styled.div`
   display: grid;
   gap: 1rem;
   margin-top: 1rem;
   grid-template-columns: 1fr 1fr;
-  background-color: #7474B445;
+  background-color: #7474b445;
   padding: 2rem 2.5rem;
   border-radius: 1.5rem;
-  min-height: 20rem;
-`;
+  /* min-height: 20rem; */
+`
 
 export const Display = styled.div`
+  text-align: center;
   background-color: var(--blue-lighter);
-  margin-bottom: ${props => props.marginBottom || ".5rem"};
-  padding: ${props => props.padding || ".5rem"};
+  margin-bottom: ${(props) => props.marginBottom || '.5rem'};
+  padding: ${(props) => props.padding || '.5rem'};
   border-radius: 1rem;
   cursor: pointer;
-  
-  .red{
-    background-color:red !important;
-  }
-`;
+`
 
 export const RoomContainer = styled.div`
   display: flex;
@@ -67,5 +67,5 @@ export const RoomContainer = styled.div`
   background-color: rgba(116, 116, 180, 0.27);
   padding: 2rem 2.5rem;
   border-radius: 1.5rem;
-  min-height: 20rem;
-`;
+  /* min-height: 20rem; */
+`

@@ -60,7 +60,7 @@ export function Main() {
             <div className='circle livre'></div>Livre
           </strong>
         </div>
-        {scheduling.office === 'São Paulo' ? (
+        {scheduling.office === 'São Paulo' && station === 'Estação de trabalho' ? (
           <div className='buttons-container'>
             {buttons.map((item, index) => (
               <button
