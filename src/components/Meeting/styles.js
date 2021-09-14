@@ -25,7 +25,7 @@ export const TimeBlock = styled.div`
 export const RoomBlock = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+
 
   h3 {
     border-radius: 40px;
@@ -48,11 +48,12 @@ export const TimeContainer = styled.div`
   min-height: 20rem;
 `;
 
-export const TimeDisplay = styled.div`
+export const Display = styled.div`
   background-color: var(--blue-lighter);
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
+  margin-bottom: ${props => props.marginBottom || ".5rem"};
+  padding: ${props => props.padding || ".5rem"};
   border-radius: 1rem;
+  cursor: pointer;
 `;
 
 export const RoomContainer = styled.div`
@@ -63,11 +64,4 @@ export const RoomContainer = styled.div`
   padding: 2rem 2.5rem;
   border-radius: 1.5rem;
   min-height: 20rem;
-`;
-
-export const RoomDisplay = styled.div`
-  background-color: var(--blue-lighter);
-  margin-bottom: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
 `;

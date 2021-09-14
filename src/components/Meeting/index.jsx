@@ -3,9 +3,8 @@ import {
   TimeBlock,
   RoomBlock,
   TimeContainer,
-  TimeDisplay,
+  Display,
   RoomContainer,
-  RoomDisplay,
 } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -13,43 +12,60 @@ import api from "../../api";
 import { toast } from "react-toastify";
 
 export function Meeting() {
-  const { scheduling, setScheduling, user, schedulings, setSchedulings, day } =
-    useContext(AuthContext);
 
-  function formatDateWithZero(date) {
-    if (date <= 9) return "0" + date;
-    else return date;
-  }
+  const {
+    roomScheduling,
+    setRoomScheduling,
+    roomSchedulings,
+    setRoomSchedulings,
+    user
+  } = useContext(AuthContext);
 
-  const formatToday =
-    formatDateWithZero(day.getFullYear()) +
-    "-" +
-    formatDateWithZero(day.getMonth() + 1) +
-    "-" +
-    day.getDate();
+  console.log(roomScheduling);
 
-  function dataAtualFormatada(day) {
-    var data = day,
-      dia = data.getDate().toString().padStart(2, "0"),
-      mes = (data.getMonth() + 1).toString().padStart(2, "0"),
-      ano = data.getFullYear();
-    return dia + "/" + mes + "/" + ano;
-  }
+
+  const timeClickHandler = (event) => {
+    event.stopPropagation();
+
+    if (roomScheduling.time_zone !== event.target.id) {
+      setRoomScheduling({
+        ...roomScheduling,
+        time_zone: event.target.id,
+        user_id: user?.id,
+      });
+    } else {
+      return;
+    }
+  };
+
+  const roomClickHandler = (event) => {
+    event.stopPropagation();
+
+    if (roomScheduling.room !== event.target.id) {
+      setRoomScheduling({
+        ...roomScheduling,
+        room: event.target.id,
+        user_id: user?.id,
+      });
+    } else {
+      return;
+    }
+  };
 
   const handleAppointment = async (event) => {
-    event.preventDefault();
-    try {
-      await api({
-        method: "post",
-        url: "agendamentos",
-        data: scheduling,
-      });
+    // event.preventDefault();
+    // try {
+    //   await api({
+    //     method: "post",
+    //     url: "agendamentos",
+    //     data: scheduling,
+    //   });
 
-      toast.success("Agendamento feito com sucesso!");
-      setScheduling({ ...scheduling, date: new Date() });
-    } catch (error) {
-      toast.error(error.response?.data.mensagem);
-    }
+    //   toast.success("Agendamento feito com sucesso!");
+    //   setScheduling({ ...scheduling, date: new Date() });
+    // } catch (error) {
+    //   toast.error(error.response?.data.mensagem);
+    // }
   };
 
   return (
@@ -59,18 +75,38 @@ export function Meeting() {
           <h3>HORÁRIO</h3>
           <TimeContainer>
             <div>
-              <TimeDisplay>8h às 9h</TimeDisplay>
-              <TimeDisplay>9h às 10h</TimeDisplay>
-              <TimeDisplay>10h às 11h</TimeDisplay>
-              <TimeDisplay>11h às 12h</TimeDisplay>
-              <TimeDisplay>12h às 13h</TimeDisplay>
+              <Display id="1" onClick={(event) => timeClickHandler(event)}>
+                8h às 9h
+              </Display>
+              <Display id="2" onClick={(event) => timeClickHandler(event)}>
+                9h às 10h
+              </Display>
+              <Display id="3" onClick={(event) => timeClickHandler(event)}>
+                10h às 11h
+              </Display>
+              <Display id="4" onClick={(event) => timeClickHandler(event)}>
+                11h às 12h
+              </Display>
+              <Display id="5" onClick={(event) => timeClickHandler(event)}>
+                12h às 13h
+              </Display>
             </div>
             <div>
-              <TimeDisplay>13h às 14h</TimeDisplay>
-              <TimeDisplay>14h às 15h</TimeDisplay>
-              <TimeDisplay>15h às 16h</TimeDisplay>
-              <TimeDisplay>16h às 17h</TimeDisplay>
-              <TimeDisplay>17h às 18h</TimeDisplay>
+              <Display id="6" onClick={(event) => timeClickHandler(event)}>
+                13h às 14h
+              </Display>
+              <Display id="7" onClick={(event) => timeClickHandler(event)}>
+                14h às 15h
+              </Display>
+              <Display id="8" onClick={(event) => timeClickHandler(event)}>
+                15h às 16h
+              </Display>
+              <Display id="9" onClick={(event) => timeClickHandler(event)}>
+                16h às 17h
+              </Display>
+              <Display id="10" onClick={(event) => timeClickHandler(event)}>
+                17h às 18h
+              </Display>
             </div>
           </TimeContainer>
         </TimeBlock>
@@ -79,10 +115,18 @@ export function Meeting() {
 
           <RoomContainer>
             <div>
-              <RoomDisplay>SALA 1</RoomDisplay>
-              <RoomDisplay>SALA 2</RoomDisplay>
-              <RoomDisplay>SALA 3</RoomDisplay>
-              <RoomDisplay>SALA 4</RoomDisplay>
+              <Display id="sala1" marginBottom={"1rem"} padding={"0.5rem 1rem"} onClick={(event) => roomClickHandler(event)}>
+                SALA 1
+              </Display>
+              <Display id="sala2" marginBottom={"1rem"} padding={"0.5rem 1rem"} onClick={(event) => roomClickHandler(event)}>
+                SALA 2
+              </Display>
+              <Display id="sala3" marginBottom={"1rem"} padding={"0.5rem 1rem"} onClick={(event) => roomClickHandler(event)}>
+                SALA 3
+              </Display>
+              <Display id="sala4" marginBottom={"1rem"} padding={"0.5rem 1rem"} onClick={(event) => roomClickHandler(event)}>
+                SALA 4
+              </Display>
             </div>
           </RoomContainer>
         </RoomBlock>
