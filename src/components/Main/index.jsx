@@ -51,7 +51,7 @@ export function Main() {
       </div>
       <section>
         <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
-        {scheduling.office === 'São Paulo' && station === 'Estação de trabalho' ? <WorkStation /> :<Meeting />}
+        {station === 'Estação de trabalho' ? <WorkStation /> : <Meeting />}
         <div className='legenda'>
           <strong>
             <div className='circle ocupado'></div>Ocupado

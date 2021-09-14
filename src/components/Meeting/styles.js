@@ -5,7 +5,7 @@ export const Container = styled.form`
   align-items: center;
   justify-content: space-around;
   margin-top: 4rem;
-  color: var(--background);
+  color: white;
 `;
 
 export const TimeBlock = styled.div`
@@ -42,7 +42,7 @@ export const TimeContainer = styled.div`
   gap: 1rem;
   margin-top: 1rem;
   grid-template-columns: 1fr 1fr;
-  background-color: rgba(116, 116, 180, 0.27);
+  background-color: #7474B445;
   padding: 2rem 2.5rem;
   border-radius: 1.5rem;
   min-height: 20rem;
@@ -54,6 +54,10 @@ export const Display = styled.div`
   padding: ${props => props.padding || ".5rem"};
   border-radius: 1rem;
   cursor: pointer;
+  
+  .red{
+    background-color:red !important;
+  }
 `;
 
 export const RoomContainer = styled.div`

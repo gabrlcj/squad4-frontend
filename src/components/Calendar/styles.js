@@ -7,15 +7,19 @@ export const Container = styled.div`
   color: var(--orange-main);
   border-radius: 2rem;
   margin: 0.5rem auto 0;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   width: 20rem;
-  height: 98%;
+  height: 97%;
 
   display: flex;
   align-items: center;
   justify-content: start;
-  gap: 0.75rem;
+  gap: 1rem;
   flex-direction: column;
+
+  @media (max-width: 1200px) {
+    width: 18rem;
+  }
 
   .background-calendar {
     background: var(--blue-darker);
@@ -57,7 +61,7 @@ export const Container = styled.div`
         height: 0.75rem;
         padding: 0;
         border: 0;
-        margin-top: 0.5rem;
+        margin-top: 0.85rem;
 
         &:hover {
           box-shadow: 0 0 1px 3px var(--orange-lighter);
@@ -74,6 +78,8 @@ export const Container = styled.div`
       }
 
       .rec.rec-pagination {
+        position: static;
+        display: flex;
         align-items: center;
         justify-content: center;
         gap: 1rem;

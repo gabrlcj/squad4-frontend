@@ -13,6 +13,20 @@ export function Calendario({ formatDay, userScheduling }) {
     setRoomScheduling({...scheduling, date: dataToDatabase(day)})
   }, [day])
 
+  function setMaxDate(date) {
+    const d = date.getDate()
+    const m = date.getMonth()
+    const y = date.getFullYear()
+
+    if (date.getDay() < 5) {
+      const lastDay = date.getDate() + (5 - date.getDay())
+      return new Date(y, m, lastDay)
+    } else {
+      const lastDay = d + 7
+      return new Date(y, m, lastDay)
+    }
+  }
+
   function dataToDatabase(day) {
     var data = day,
       dia = data.getDate().toString().padStart(2, '0'),
@@ -41,7 +55,7 @@ export function Calendario({ formatDay, userScheduling }) {
         showNavigation={false}
         showFixedNumberOfWeeks={true}
         minDate={new Date()}
-        // maxDate={setMaxDate(new Date())}
+        maxDate={setMaxDate(new Date())}
         tileDisabled={({ date }) => date.getDay() === 6 || date.getDay() === 0}
       />
       <h5>Meus agendamentos</h5>
