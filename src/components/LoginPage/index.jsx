@@ -13,7 +13,7 @@ import GrupoFCamara from '../../assets/GrupoFCamara.svg'
 import BrandName from '../../assets/BrandName.svg'
 import Logo from '../../assets/Logo.svg'
 
-export function LoginPage({showModal, setShowModal, openModal}) {
+export function LoginPage({showModal, setShowModal, handleModal}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { setToken, setUser } = useContext(AuthContext);
@@ -71,8 +71,8 @@ export function LoginPage({showModal, setShowModal, openModal}) {
       : null}
       <Container>
         <div className='left'>
-          <img src={GrupoFCamara} alt='Logo da FCamara' />;
-          <img src={AstronautCalendar} alt='Astonauta com Calendário' />;
+          <img src={GrupoFCamara} alt='Logo da FCamara' />
+          <img src={AstronautCalendar} alt='Astonauta com Calendário' />
         </div>
 
         <div className='right'>
@@ -116,9 +116,9 @@ export function LoginPage({showModal, setShowModal, openModal}) {
             <div className='text-container'>
               <div className='basetext'>
                 Não é cadastrado?{' '}
-                <Link to='/register' className='underline'>
+                <div onClick={handleModal} className='underline' style={{cursor: 'pointer'}}>
                   Cadastre-se
-                </Link>
+                </div>
               </div>
               <div className='basetext underline'>Esqueci a senha</div>
             </div>

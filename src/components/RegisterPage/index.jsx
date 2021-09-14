@@ -5,7 +5,7 @@ import api from '../../api'
 import { Container } from './styles'
 import { toast } from 'react-toastify'
 
-export function RegisterPage({showModal, setShowModal, openModal}) {
+export function RegisterPage({showModal, setShowModal, handleModal}) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -69,6 +69,7 @@ export function RegisterPage({showModal, setShowModal, openModal}) {
   return (
     <>
       <Container onSubmit={handleUserRegister}>
+        {/* <ModalCloseButton /> */}
         <div className="regbox">
           <h2>Cadastro</h2>
           <div className="row">
@@ -134,7 +135,7 @@ export function RegisterPage({showModal, setShowModal, openModal}) {
           </label>
 
           <div className='column'>
-          <button type='submit' onClick={validateInputs}>
+          <button type='submit' onClick={validateInputs} >
             Fazer Cadastro
           </button>
           </div>

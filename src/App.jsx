@@ -11,7 +11,7 @@ import { useState } from 'react'
 export default function App() {
   const [showModal, setShowModal] = useState(false);
 
-  function openModal() {
+  function handleModal() {
       setShowModal(prev => !prev);
     };
   
