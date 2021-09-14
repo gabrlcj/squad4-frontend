@@ -23,7 +23,7 @@ export const Container = styled.main`
 
     select {
       font: 700 0.85rem 'Montserrat', sans-serif;
-      margin: 0 2.5rem 0 1rem;
+      margin-right: 0.5rem;
       padding: 0 1.5rem;
       width: 185px;
       height: 40px;
