@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.form`
   display: flex;
@@ -6,33 +6,68 @@ export const Container = styled.form`
   justify-content: space-around;
   margin-top: 4rem;
   color: var(--background);
-`
+`;
 
-export const TimeBlock =  styled.div`
+export const TimeBlock = styled.div`
   display: flex;
   flex-direction: column;
 
   h3 {
     border-radius: 40px;
-    width: 16rem;
-    height: 2rem;
+    width: 18.2rem;
+    height: 2.5rem;
     background-color: var(--blue-darker);
-    text-align:center;
-    padding-top: .2rem;
+    text-align: center;
+    padding-top: 0.5rem;
   }
+`;
 
-`
-
-export const RoomBlock =  styled.div`
+export const RoomBlock = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 
   h3 {
     border-radius: 40px;
     width: 11.25rem;
-    height: 2rem;
+    height: 2.5rem;
     background-color: var(--blue-darker);
-    text-align:center;
-    padding-top: .2rem;
+    text-align: center;
+    padding-top: 0.5rem;
   }
-  `
+`;
+
+export const TimeContainer = styled.div`
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgba(116, 116, 180, 0.27);
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  min-height: 20rem;
+`;
+
+export const TimeDisplay = styled.div`
+  background-color: var(--blue-lighter);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+`;
+
+export const RoomContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  background-color: rgba(116, 116, 180, 0.27);
+  padding: 2rem 2.5rem;
+  border-radius: 1.5rem;
+  min-height: 20rem;
+`;
+
+export const RoomDisplay = styled.div`
+  background-color: var(--blue-lighter);
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+`;
