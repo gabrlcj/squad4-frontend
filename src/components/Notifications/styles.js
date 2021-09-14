@@ -5,10 +5,14 @@ export const Container = styled.div`
   background: #fff;
   color: var(--orange-main);
   border-radius: 2rem;
-  margin: 2rem auto 0;
+  margin: 1rem auto 0;
   padding: 1rem;
   width: 20rem;
   height: 85%;
+
+  @media (max-width: 1200px) {
+    width: 18rem;
+  }
 
   h5 {
     margin: 0 0 0.5rem 0.75rem;

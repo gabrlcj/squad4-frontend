@@ -60,6 +60,22 @@ export function WorkStation() {
     }
   }
 
+  const unavailableSeat = () => {
+    return (
+      <div className='circle teste'>
+        <input style={{ display: 'none' }} type='text' disabled={true} />X
+      </div>
+    )
+  }
+
+  function isOdd(num) {
+    return num % 2 === 1
+  }
+
+  function isEven(num) {
+    return num % 2 === 0
+  }
+
   const GenerateUpChairs = (chairNumbers) => {
     return (
       <>
@@ -72,7 +88,7 @@ export function WorkStation() {
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >
-              {chairNumber}
+              {isEven(chairNumber) ? unavailableSeat() : ''}
             </div>
           )
         })}
@@ -92,7 +108,7 @@ export function WorkStation() {
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >
-              {chairNumber}
+              {isOdd(chairNumber) ? unavailableSeat() : ''}
             </div>
           )
         })}
@@ -110,22 +126,33 @@ export function WorkStation() {
     )
   }
 
+  console.log(scheduling)
+
   return (
     <>
       <form className='modal' onSubmit={handleAppointment}>
         <strong style={{ marginRight: '1rem' }}>Escolha o dia e a cadeira e clique no botão confirmar</strong>
         <button type='submit'>Confirmar</button>
       </form>
-      <Container>
-        <div className='content'>
-          {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
-          {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
-        </div>
-        <div className='content'>
-          {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
-          {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
-        </div>
-      </Container>
+      {scheduling.office === 'São Paulo' ? (
+        <Container>
+          <div className='content'>
+            {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
+            {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
+          </div>
+          <div className='content'>
+            {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
+            {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
+          </div>
+        </Container>
+      ) : (
+        <Container>
+          <div className='content'>
+            {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
+            {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
+          </div>
+        </Container>
+      )}
     </>
   )
 }

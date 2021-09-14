@@ -19,6 +19,16 @@ export const Station = styled.div`
     position: relative;
     cursor: pointer;
 
+    .teste {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: not-allowed;
+      background: grey;
+      text-align: center;
+    }
+
     .circle {
       border-radius: 20%;
       height: 2rem;
