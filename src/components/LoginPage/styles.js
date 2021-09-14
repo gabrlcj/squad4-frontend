@@ -4,9 +4,9 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  width: min(1024px, 90%);
-  min-height: 100vh;
+  justify-content: center;
+  margin: 3vh auto;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
   .underline {
     text-decoration: underline;
@@ -17,19 +17,30 @@ export const Container = styled.div`
     display: flex;
     width: 14.5625rem;
     justify-content: center;
-    font-size: 1.25rem;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 22px;
+    letter-spacing: 0.005em;
+    text-align: left;
   }
 
   .left {
-    background: #f0edec;
-    width: 50%;
-    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #36357E;
+    width: 552px;
+    height: 692px;
+    border-radius: 40px 0px 0px 40px
   }
 
   .right {
-    background: #cbcbcb;
-    width: 50%;
-    height: 500px;
+    background: #FFFFFF;
+    width: 552px;
+    height: 692px;
     padding: 150px 250px;
     justify-content: center;
     align-items: center;
@@ -44,9 +55,33 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 30%;
+    color: #fe5517;
+  }
+  
+  .textbox-input {
+    /* position: absolute; */
+    width: 276px;
+    height: 48px;
+    /* left: 146px;
+    top: 356px; */
+
+    background: #FFFFFF;
+    border: 1px solid #FE662E;
+    box-sizing: border-box;
+    border-radius: 10px;
+    
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.005em;
+    text-align: left;
+
+    color: #707070;
   }
 
-  .text-box {
+  .text-container {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -63,6 +98,13 @@ export const Container = styled.div`
     margin: 2px 0;
   }
 
+  .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: -13vh 0 5vh 0;
+  }
+
   /* label {
     display: flex;
     align-items: center;
@@ -75,12 +117,15 @@ export const Container = styled.div`
   button {
     border: 0;
     padding: 0.75rem 2rem;
-    margin: 10px;
-    border-radius: 0.625rem;
+    margin: 20px;
     font-weight: 700;
-    background: #535353;
     color: #ffffff;
-    width: 170px;
+
+    width: 276px;
+    height: 48px;
+
+    background: #FE5517;
+    border-radius: 10px;
 
     transition: filter 0.2s;
 
