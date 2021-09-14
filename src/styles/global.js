@@ -38,7 +38,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    /* min-height: 100vh; */
     background: var(--background);
     font: 700 1rem 'Montserrat', sans-serif;
     color: var(--text);

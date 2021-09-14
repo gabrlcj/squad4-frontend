@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../api'
 import { toast } from 'react-toastify'
+import Carousel from 'react-elastic-carousel'
 
 export function WorkStation() {
   const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext)
@@ -121,7 +122,7 @@ export function WorkStation() {
     return (
       <Station id={id}>
         <div className='chairs'>{GenerateUpChairs(chairs)}</div>
-        <img src={Table} alt='Mesa de trabalho' />
+        <img className='table' src={Table} alt='Mesa de trabalho' />
         <div className='chairs'>{GenerateDownChairs(chairs2)}</div>
       </Station>
     )
@@ -135,21 +136,45 @@ export function WorkStation() {
       </form>
       {scheduling.office === 'São Paulo' ? (
         <Container>
-          <div className='content'>
-            {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
-            {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
-          </div>
-          <div className='content'>
-            {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
-            {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
-          </div>
+          <Carousel itemsToShow={2} className='carousel'>
+            <div className='content'>
+              {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
+              {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
+            </div>
+            <div className='content'>
+              {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
+              {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
+            </div>
+            <div className='content'>
+              {tableStation(5, [33, 34, 35, 36], [37, 38, 39, 40])}
+              {tableStation(6, [41, 42, 43, 44], [45, 46, 47, 48])}
+            </div>
+            <div className='content'>
+              {tableStation(7, [49, 50, 51, 52], [53, 54, 55, 56])}
+              {tableStation(8, [57, 58, 59, 60], [61, 62, 63, 64])}
+            </div>
+          </Carousel>
         </Container>
       ) : (
         <Container>
-          <div className='content'>
-            {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
-            {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
-          </div>
+          <Carousel itemsToShow={2}>
+            <div className='content'>
+              {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
+              {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
+            </div>
+            <div className='content'>
+              {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
+              {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
+            </div>
+            <div className='content'>
+              {tableStation(5, [33, 34, 35, 36], [37, 38, 39, 40])}
+              {tableStation(6, [41, 42, 43, 44], [45, 46, 47, 48])}
+            </div>
+            <div className='content'>
+              {tableStation(7, [49, 50, 51, 52], [53, 54, 55, 56])}
+              {tableStation(8, [57, 58, 59, 60], [61, 62, 63, 64])}
+            </div>
+          </Carousel>
         </Container>
       )}
     </>
