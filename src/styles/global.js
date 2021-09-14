@@ -38,7 +38,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    /* min-height: 100vh; */
     background: var(--background);
     font: 700 1rem 'Montserrat', sans-serif;
     color: var(--text);
@@ -60,7 +59,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &:focus {
-      outline: 3px solid var(--background-focus);
+      outline: none;
+      box-shadow: 0 0 0.25rem 0.2rem var(--background-focus);
     }
 
     &::placeholder {

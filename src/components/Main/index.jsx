@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Container } from './styles'
 import { WorkStation } from '../WorkStation'
-import { useContext } from 'react/cjs/react.development'
 import { AuthContext } from '../../context/AuthContext'
 import LogoImage from '../../assets/Logo.svg'
 import BrandName from '../../assets/BrandName.svg'

@@ -33,7 +33,7 @@ export const Container = styled.div`
       background: var(--blue-lighter);
       border-radius: 1rem;
       width: 100%;
-      padding: 1rem;
+      padding: 0.75rem;
     }
   }
 `

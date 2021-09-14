@@ -65,8 +65,8 @@ export function LoginPage() {
     <>
       <Container>
         <div className='left'>
-          <img src={GrupoFCamara} alt='Logo da FCamara' />;
-          <img src={AstronautCalendar} alt='Astonauta com Calendário' />;
+          <img style={{ marginBottom: '2rem' }} src={GrupoFCamara} alt='Logo da FCamara' />
+          <img src={AstronautCalendar} alt='Astonauta com Calendário' />
         </div>
 
         <div className='right'>
