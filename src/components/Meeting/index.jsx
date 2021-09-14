@@ -51,9 +51,11 @@ export function Meeting() {
     event.stopPropagation();
     event.target.classList.add("red")
     console.log(event.target.classList)
-       if (roomScheduling.time_zone !== event.target.id) {
-      
-      setRoomScheduling({       
+    if (roomScheduling.time_zone !== event.target.id) {
+
+
+
+      setRoomScheduling({
         ...roomScheduling,
         time_zone: event.target.id,
         user_id: user?.id,
@@ -65,7 +67,6 @@ export function Meeting() {
 
   const roomClickHandler = (event) => {
     event.stopPropagation();
-  
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
         ...roomScheduling,
@@ -96,8 +97,8 @@ export function Meeting() {
     <>
       <Container onSubmit={handleAppointment}>
         <TimeBlock>
-          <h3>HORÁRIO</h3>
-          <TimeContainer>
+          <h3 className="overlay">HORÁRIO</h3>
+          <TimeContainer className="overlay">
             <div>
               <Display classname="displayTime" id="1" onClick={(event) => timeClickHandler(event)}
               >
@@ -136,9 +137,9 @@ export function Meeting() {
           </TimeContainer>
         </TimeBlock>
         <RoomBlock>
-          <h3>SALAS</h3>
+          <h3 className="hidden">SALAS</h3>
 
-          <RoomContainer>
+          <RoomContainer className="hidden">
             <div>
               <Display
                 id="1"
