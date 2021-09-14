@@ -14,6 +14,7 @@ export const Container = styled.form`
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
+  backdrop-filter: blur(2px);
 
   /* gap: 1.75rem;
 
@@ -120,6 +121,7 @@ export const Container = styled.form`
     line-height: 17px;
     letter-spacing: 0.005em;
     text-align: left;
+    padding-left: 7px;
 
     color: #707070;
   }

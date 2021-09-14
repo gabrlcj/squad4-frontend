@@ -76,6 +76,7 @@ export const Container = styled.div`
     line-height: 17px;
     letter-spacing: 0.005em;
     text-align: left;
+    padding-left: 7px;
 
     color: #707070;
   }
