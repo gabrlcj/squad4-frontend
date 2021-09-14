@@ -43,8 +43,11 @@ export function RegisterPage() {
     if (name === '' || email === '' || password === '') {
       return toast.error('Ops, algo deu errado')
     }
-    else if (confirmPassword !== password) {
+    if (validLength === false || hasNumber === false || upperCase === false || lowerCase === false || specialChar === false ) {
       return toast.error('Senha inválida!')
+    }
+    else if (confirmPassword !== password) {
+      return toast.error('Senhas diferentes!')
     }
   }
 
@@ -67,80 +70,84 @@ export function RegisterPage() {
     <>
       <Header />
       <Container onSubmit={handleUserRegister}>
-        <h2>Cadastro</h2>
-        <div className="row">
-          <label htmlFor='nome' className="column">
-            Nome:
-            <input
-              name='nome'
-              type='text'
-              required
-              placeholder='Digite seu nome'
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-            />
+        <div className="regbox">
+          <h2>Cadastro</h2>
+          <div className="row">
+            <label htmlFor='nome' className="column">
+              <input
+                name='nome'
+                type='text'
+                className='textbox-input namebox'
+                style={{ marginRight: '1vw' }}
+                required
+                placeholder='Digite seu nome'
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+              />
+            </label>
+            <label htmlFor="role">
+              <input type="text" value={role} className='textbox-input rolebox' placeholder="Digite seu cargo" onChange={(event) => setRole(event.target.value)} />
+            </label>
+          </div>
+            <label htmlFor='email' className="column">
+              <input
+                name='email'
+                type='email'
+                className='row textbox-input emailbox'
+                required
+                placeholder='Digite seu email'
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </label>
+          <div className="row">
+            <label htmlFor='senha'>
+              <input
+                name='senha'
+                type='password'
+                className='textbox-input passwordbox'
+                style={{ marginRight: '1vw' }}
+                required
+                placeholder='Digite sua senha'
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+            </label>
+            <label htmlFor='confirmSenha'>
+              <input
+                id='cp'
+                name='confirmSenha'
+                type='password'
+                className='textbox-input passwordbox'
+                required
+                placeholder='Confirme sua senha'
+                value={confirmPassword}
+                onChange={(event) => setConfirmPassword(event.target.value)}
+              />
+            </label>
+          </div>
+          <label>
+            <div className={validLength === true ? 'green' : null}>Senha com 8 ou mais dígitos</div>
+            <div className={upperCase ? 'green' : null}>Possui letra maiúscula</div>
+            <div className={lowerCase ? 'green' : null} >Possui letra minúscula</div>
+            <div className={hasNumber ? 'green' : null}>Possui números</div>
+            <div className={specialChar ? 'green' : null} >Possui caractéres especiais</div>
           </label>
-          <label htmlFor='email' className="column">
-            Email:
-            <input
-              name='email'
-              type='email'
-              required
-              placeholder='Digite seu email'
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-          </label>
+          {/* <label htmlFor='filial'>
+            Filial de preferência:
+            <input name='filial' type='radio' value='São Paulo - SP' onClick={() => setOffice('São Paulo')} /> São Paulo
+            <input name='filial' type='radio' value='Santos - SP' onClick={() => setOffice('Santos')} /> Santos
+          </label> */}
+
+          {/* <label htmlFor="squad">
+            Qual seu squad?
+            <input type="text" value={squad} placeholder="Qual seu squad?" onChange={(event) => setSquad(event.target.value)} />
+          </label> */}
+
+          <button type='submit' onClick={validateInputs}>
+            Fazer Cadastro
+          </button>
         </div>
-        <label htmlFor='senha'>
-          Senha:
-          <input
-            name='senha'
-            type='password'
-            required
-            placeholder='Digite sua senha'
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-        <label htmlFor='confirmSenha'>
-          Confirme sua senha:
-          <input
-            id='cp'
-            name='confirmSenha'
-            type='password'
-            required
-            placeholder='Confirme sua senha'
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.target.value)}
-          />
-        </label>
-        <label>
-          <div className={validLength === true ? 'green' : null}>Senha com 8 ou mais dígitos</div>
-          <div className={upperCase ? 'green' : null}>Possui letra maiúscula</div>
-          <div className={lowerCase ? 'green' : null} >Possui letra minúscula</div>
-          <div className={hasNumber ? 'green' : null}>Possui números</div>
-          <div className={specialChar ? 'green' : null} >Possui caractéres especiais</div>
-        </label>
-        <label htmlFor='filial'>
-          Filial de preferência:
-          <input name='filial' type='radio' value='São Paulo - SP' onClick={() => setOffice('São Paulo')} /> São Paulo
-          <input name='filial' type='radio' value='Santos - SP' onClick={() => setOffice('Santos')} /> Santos
-        </label>
-
-        <label htmlFor="role">
-          Qual seu cargo?
-          <input type="text" value={role} placeholder="Digite seu cargo" onChange={(event) => setRole(event.target.value)} />
-        </label>
-
-        <label htmlFor="squad">
-          Qual seu squad?
-          <input type="text" value={squad} placeholder="Qual seu squad?" onChange={(event) => setSquad(event.target.value)} />
-        </label>
-
-        <button type='submit' onClick={validateInputs}>
-          Fazer Cadastro
-        </button>
       </Container>
     </>
   )
