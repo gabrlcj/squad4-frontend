@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     --blue-main: #36357e;
     --blue-lighter: #5251a2;
     --blue-darker: #2a2962;
+    --blue-subtle: #a8a8d0;
 
     --background: #fff;
     --background-focus: #FE4400a9;
