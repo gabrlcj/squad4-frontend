@@ -5,13 +5,15 @@ import { Container } from './styles'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../api'
+import { Modal } from '../Modal/Modal'
+import { RegisterPage } from '../RegisterPage/index'
 
 import AstronautCalendar from '../../assets/AstronautCalendar.svg'
 import GrupoFCamara from '../../assets/GrupoFCamara.svg'
 import BrandName from '../../assets/BrandName.svg'
 import Logo from '../../assets/Logo.svg'
 
-export function LoginPage() {
+export function LoginPage({showModal, setShowModal, openModal}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { setToken, setUser } = useContext(AuthContext);
@@ -62,6 +64,11 @@ export function LoginPage() {
 
   return (
     <>
+    {showModal ?
+      <Modal showModal={showModal} setShowModal={setShowModal}>
+        <RegisterPage showModal={showModal} setShowModal={setShowModal}/>
+      </Modal>
+      : null}
       <Container>
         <div className='left'>
           <img src={GrupoFCamara} alt='Logo da FCamara' />;

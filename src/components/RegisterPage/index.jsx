@@ -5,15 +5,12 @@ import api from '../../api'
 import { Container } from './styles'
 import { toast } from 'react-toastify'
 
-export function RegisterPage() {
+export function RegisterPage({showModal, setShowModal, openModal}) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [origin_office, setOffice] = useState('')
   const [role, setRole] = useState('')
-  const [squad, setSquad] = useState('')
-  const [first_access, SetFirstAccess] = useState('')
 
   function handleUserRegister(event) {
     event.preventDefault()
@@ -22,35 +19,37 @@ export function RegisterPage() {
       name,
       email,
       password,
-      origin_office,
       role,
-      squad,
-      first_access
+      // origin_office,
+      // vaccine_status,
+      // squad,
+      // pwd
     }
 
     api({
-      method: "POST",
+      method:"POST",
       url: "/colaboradores",
       data
     }).then((res) => toast.success("Registro feito com sucesso!"))
-      .catch(error => toast.error("Algo não saiu como o planejado."))
+    .catch(error => toast.error("Algo não saiu como o planejado."))
   }
 
   function validateInputs() {
 
-    SetFirstAccess(true)
+    // SetFirstAccess(true)
 
     if (name === '' || email === '' || password === '') {
       return toast.error('Ops, algo deu errado')
     }
     if (validLength === false || hasNumber === false || upperCase === false || lowerCase === false || specialChar === false ) {
-      return toast.error('Senha inválida!')
+      return toast.error('Reforce sua Senha!')
     }
     else if (confirmPassword !== password) {
-      return toast.error('Senhas diferentes!')
+        return toast.error('Senha inválida!')
     }
   }
 
+  //Bloco de Validação de senha START
   const [validLength, setValidLength] = useState(null);
   const [hasNumber, setHasNumber] = useState(null);
   const [upperCase, setUpperCase] = useState(null);
@@ -58,17 +57,17 @@ export function RegisterPage() {
   const [specialChar, setSpecialChar] = useState(null);
   // const [match, setMatch] = useState(null);
 
-  useEffect(() => {
+  useEffect (() => {
     setValidLength(password.length > 7 ? true : false);
-    setHasNumber(/\d/.test(password) ? true : false);
-    setUpperCase(/[A-Z]/.test(password) ? true : false);
-    setLowerCase(/[a-z]/.test(password) ? true : false);
-    setSpecialChar((/[^A-Z a-z0-9]/).test(password) ? true : false);
+    setHasNumber(/\d/.test(password) ? true: false);
+    setUpperCase(/[A-Z]/.test(password) ? true: false);
+    setLowerCase(/[a-z]/.test(password) ? true: false);
+    setSpecialChar((/[^A-Z a-z0-9]/).test(password) ? true: false);
   }, [password])
+  //Bloco de validação de senha END
 
   return (
     <>
-      <Header />
       <Container onSubmit={handleUserRegister}>
         <div className="regbox">
           <h2>Cadastro</h2>
