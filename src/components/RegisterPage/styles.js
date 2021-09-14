@@ -32,6 +32,22 @@ export const Container = styled.form`
     font-weight: 700;
   } */
 
+  h2 {
+    margin: 5px 0 15px 0;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.005em;
+
+    color: #36357E;
+  }
+
   .regbox, form {
     display: flex;
     flex-direction: column;
@@ -65,8 +81,13 @@ export const Container = styled.form`
     }
   }
   
+  .basetext {
+    font-size: 12px;
+    /* margin: 4px 0 2px 0; */
+  }
+  
   .green{
-    font-weight: bold;
+    font-weight: bolder;
     color: green;
     }
 
@@ -79,12 +100,12 @@ export const Container = styled.form`
   width: 100%;
   }
 
-  /* .column {
+  .column {
     display: flex;
     flex-direction: column;
-    flex-basis: 50%;
-    flex: 2;
-  }  */
+    justify-content: center;
+    align-items: center;
+  } 
 
   .textbox-input {
     background: #FFFFFF;

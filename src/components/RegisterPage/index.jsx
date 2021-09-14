@@ -127,26 +127,18 @@ export function RegisterPage() {
             </label>
           </div>
           <label>
-            <div className={validLength === true ? 'green' : null}>Senha com 8 ou mais dígitos</div>
-            <div className={upperCase ? 'green' : null}>Possui letra maiúscula</div>
-            <div className={lowerCase ? 'green' : null} >Possui letra minúscula</div>
-            <div className={hasNumber ? 'green' : null}>Possui números</div>
-            <div className={specialChar ? 'green' : null} >Possui caractéres especiais</div>
+            <div className={validLength === true ? 'basetext green' : ' basetext '}  style={{ marginTop: '5px' }} >Senha com 8 ou mais dígitos</div>
+            <div className={upperCase ? 'basetext green' : ' basetext '}>Possui letra maiúscula</div>
+            <div className={lowerCase ? 'basetext green' : ' basetext '} >Possui letra minúscula</div>
+            <div className={hasNumber ? 'basetext green' : ' basetext '}>Possui números</div>
+            <div className={specialChar ? 'basetext green' : ' basetext '} >Possui caractéres especiais</div>
           </label>
-          {/* <label htmlFor='filial'>
-            Filial de preferência:
-            <input name='filial' type='radio' value='São Paulo - SP' onClick={() => setOffice('São Paulo')} /> São Paulo
-            <input name='filial' type='radio' value='Santos - SP' onClick={() => setOffice('Santos')} /> Santos
-          </label> */}
 
-          {/* <label htmlFor="squad">
-            Qual seu squad?
-            <input type="text" value={squad} placeholder="Qual seu squad?" onChange={(event) => setSquad(event.target.value)} />
-          </label> */}
-
+          <div className='column'>
           <button type='submit' onClick={validateInputs}>
             Fazer Cadastro
           </button>
+          </div>
         </div>
       </Container>
     </>
