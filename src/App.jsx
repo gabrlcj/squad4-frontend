@@ -9,6 +9,12 @@ import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./privateRoutes/Private";
 
 export default function App() {
+  const [showModal, setShowModal] = useState(false)
+
+  function handleModal() {
+    setShowModal((prev) => !prev)
+  }
+
   return (
     <>
       <Router>
