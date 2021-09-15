@@ -11,15 +11,24 @@ export function RegisterPage({ showModal, setShowModal, handleModal }) {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [role, setRole] = useState('')
+  const [validPassword, setValidPassword] = useState('')
+
 
   function handleUserRegister(event) {
     event.preventDefault()
+
+    if (validLength && hasNumber && upperCase && lowerCase && specialChar) {
+      setValidPassword(true);
+    } else {
+      setValidPassword(false)
+    }
 
     const data = {
       name,
       email,
       password,
       confirmPassword,
+      validPassword,
       role,
     }
 
@@ -29,7 +38,7 @@ export function RegisterPage({ showModal, setShowModal, handleModal }) {
       data,
     })
       .then((res) => toast.success('Registro feito com sucesso!'))
-      .catch((error) => toast.error(error.response.data.mensagem))
+      .catch((error) => toast.error(error.response.data.message))
   }
 
   const [validLength, setValidLength] = useState(null)
