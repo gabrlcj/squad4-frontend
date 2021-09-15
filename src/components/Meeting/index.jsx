@@ -22,7 +22,7 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log(occupiedRooms)
+  console.log("roomScheduling " + roomScheduling)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -37,17 +37,19 @@ export function Meeting() {
     day.getDate();
 
   useEffect(() => {
-    try {
-      api({
-        method: "get",
-        url: `reunioes/data/${formatToday}`,
-      }).then((res) => {
-        setRoomSchedulings(res.data.rows);
-      });
-    } catch (error) {
-      toast.error(error.response?.data.mensagem);
-    }
-  }, [formatToday, setRoomSchedulings]);
+    if (roomScheduling) {
+      try {
+        api({
+          method: "get",
+          url: `reunioes/${formatToday}/${roomScheduling.time_zone}`,
+        }).then((res) => {
+          setRoomSchedulings(res.data.rows);
+        });
+      } catch (error) {
+        toast.error(error.response?.data.mensagem);
+      }
+    }   
+  }, [formatToday, setRoomSchedulings, roomScheduling]);
 
   useEffect(() => {
     setOccupiedDatetime(
@@ -61,7 +63,7 @@ export function Meeting() {
   const timeClickHandler = (event) => {
     event.stopPropagation();
     document.querySelectorAll(".occupied").forEach((item) => {
-      if (!occupiedDatetime.includes(item.id)) {
+      if (!occupiedDatetime?.includes(item.id)) {
         item.classList.remove("occupied");
       }
     });
@@ -89,11 +91,10 @@ export function Meeting() {
     event.stopPropagation();
 
     document.querySelectorAll(".occupied").forEach((item) => {
-      if (!occupiedRooms.includes(item.id)) {
-        item.classList.remove("occupied");
-      }
+      item.classList.remove("occupied");
     });
     event.target.classList.add("occupied");
+
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
         ...roomScheduling,
@@ -146,8 +147,9 @@ export function Meeting() {
         {horarios.map((horario, index) => {
           return (
             <Display
+              key={horariosId[index]}
               className={`${
-                occupiedDatetime?.includes(horariosId[index].toString())
+                occupiedDatetime?.includes(horariosId[index])
                   ? "occupied"
                   : ""
               }`}
@@ -168,10 +170,11 @@ export function Meeting() {
         {rooms.map((room, index) => {
           return (
             <Display
+              key={roomsId[index]}
               marginBottom={"1rem"}
               padding={"0.5rem 1rem"}
               className={`${
-                occupiedRooms?.includes(roomsId[index].toString())
+                occupiedRooms?.includes(roomsId[index])
                   ? "occupied"
                   : ""
               }`}
