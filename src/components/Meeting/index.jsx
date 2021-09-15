@@ -21,8 +21,8 @@ export function Meeting() {
     day,
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
-
-  console.log(occupiedDatetime);
+  const [occupiedRooms, setOccupiedRooms] = useState([]);
+  console.log(roomSchedulings)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -37,28 +37,33 @@ export function Meeting() {
     day.getDate();
 
   useEffect(() => {
-    try {
-      api({
-        method: "get",
-        url: `reunioes/data/${formatToday}`,
-      }).then((res) => {
-        setRoomSchedulings(res.data.rows);
-      });
-    } catch (error) {
-      toast.error(error.response?.data.mensagem);
-    }
-  }, [formatToday, setRoomSchedulings]);
+    if (roomScheduling) {
+      try {
+        api({
+          method: "get",
+          url: `reunioes/${formatToday}/${roomScheduling.time_zone}`,
+        }).then((res) => {
+          setRoomSchedulings(res.data.rows);
+        });
+      } catch (error) {
+        toast.error(error.response?.data.mensagem);
+      }
+    }   
+  }, [formatToday, setRoomSchedulings, roomScheduling]);
 
   useEffect(() => {
     setOccupiedDatetime(
       roomSchedulings?.map((dayscheduling) => dayscheduling.time_zone)
+    );
+    setOccupiedRooms(
+      roomSchedulings?.map((dayscheduling) => dayscheduling.room)
     );
   }, [roomSchedulings]);
 
   const timeClickHandler = (event) => {
     event.stopPropagation();
     document.querySelectorAll(".occupied").forEach((item) => {
-      if (!occupiedDatetime.includes(item.id)) {
+      if (!occupiedDatetime?.includes(item.id)) {
         item.classList.remove("occupied");
       }
     });
@@ -84,6 +89,12 @@ export function Meeting() {
 
   const roomClickHandler = (event) => {
     event.stopPropagation();
+
+    document.querySelectorAll(".occupied").forEach((item) => {
+      item.classList.remove("occupied");
+    });
+    event.target.classList.add("occupied");
+
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
         ...roomScheduling,
@@ -96,18 +107,24 @@ export function Meeting() {
   };
 
   const handleAppointment = async (event) => {
-    // event.preventDefault();
-    // try {
-    //   await api({
-    //     method: "post",
-    //     url: "agendamentos",
-    //     data: scheduling,
-    //   });
-    //   toast.success("Agendamento feito com sucesso!");
-    //   setScheduling({ ...scheduling, date: new Date() });
-    // } catch (error) {
-    //   toast.error(error.response?.data.mensagem);
-    // }
+    event.preventDefault();
+    try {
+      await api({
+        method: "post",
+        url: "reunioes",
+        data: roomScheduling,
+      });
+      toast.success("Agendamento feito com sucesso!");
+      setRoomScheduling({
+          ...roomScheduling,
+          date: "",
+          room: "",
+          office: "São Paulo",
+          time_zone:"" 
+        });
+    } catch (error) {
+      toast.error(error.response?.data.mensagem);
+    }
   };
 
   const horariosId = ["1", "2", "3", "4", "5"];
@@ -127,14 +144,18 @@ export function Meeting() {
     "17h às 18h",
   ];
 
-  const Displays = (horarios, horariosId) => {
+  const rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4"];
+  const roomsId = ["1", "2", "3", "4", "5"];
+
+  const timeDisplays = (horarios, horariosId) => {
     return (
       <>
         {horarios.map((horario, index) => {
           return (
             <Display
+              key={horariosId[index]}
               className={`${
-                occupiedDatetime?.includes(horariosId[index].toString())
+                occupiedDatetime?.includes(horariosId[index])
                   ? "occupied"
                   : ""
               }`}
@@ -149,54 +170,46 @@ export function Meeting() {
     );
   };
 
+  const roomDisplays = (rooms, roomsId) => {
+    return (
+      <>
+        {rooms.map((room, index) => {
+          return (
+            <Display
+              key={roomsId[index]}
+              marginBottom={"1rem"}
+              padding={"0.5rem 1rem"}
+              className={`${
+                occupiedRooms?.includes(roomsId[index])
+                  ? "occupied"
+                  : ""
+              }`}
+              id={roomsId[index]}
+              onClick={(event) => roomClickHandler(event)}
+            >
+              {room}
+            </Display>
+          );
+        })}
+      </>
+    );
+  };
+
   return (
     <>
       <Container onSubmit={handleAppointment}>
         <TimeBlock>
           <h3 className="overlay">HORÁRIO</h3>
           <TimeContainer className="overlay">
-            <div>{Displays(horarios, horariosId)}</div>
-            <div>{Displays(horarios2, horarios2Id)}</div>
+            <div>{timeDisplays(horarios, horariosId)}</div>
+            <div>{timeDisplays(horarios2, horarios2Id)}</div>
           </TimeContainer>
         </TimeBlock>
         <RoomBlock>
           <h3 className="hidden">SALAS</h3>
 
           <RoomContainer className="hidden">
-            <div>
-              <Display
-                id="1"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 1
-              </Display>
-              <Display
-                id="2"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 2
-              </Display>
-              <Display
-                id="3"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 3
-              </Display>
-              <Display
-                id="4"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 4
-              </Display>
-            </div>
+            <div>{roomDisplays(rooms, roomsId)}</div>
           </RoomContainer>
         </RoomBlock>
       </Container>
