@@ -1,13 +1,20 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { LoginPage } from './components/LoginPage'
 import { RegisterPage } from './components/RegisterPage'
-import { QuestionnairePage } from './components/Questionnaire'
-import { Dashboard } from './components/Dashboard'
 
 import { GlobalStyle } from './styles/global'
 import { ToastContainer } from 'react-toastify'
+import { Dashboard } from './components/Dashboard'
+import { useState } from 'react'
+
 
 export default function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  function handleModal() {
+      setShowModal(prev => !prev);
+    };
+  
   return (
     <>
       <Router>
@@ -20,10 +27,10 @@ export default function App() {
             <Dashboard />
           </Route>
           <Route path='/register'>
-            <RegisterPage />
+            <RegisterPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}  />
           </Route>
           <Route path='/' exact>
-            <LoginPage />
+            <LoginPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
           </Route>
         </Switch>
         <ToastContainer theme={'dark'} autoClose={3000} />
