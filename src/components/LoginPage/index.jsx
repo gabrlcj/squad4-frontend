@@ -54,12 +54,6 @@ export function LoginPage({ showModal, setShowModal, handleModal }) {
     }
   }
 
-  function validateInputs() {
-    if (email === '' || password === '') {
-      return toast.error('Email ou senha em branco.')
-    }
-  }
-
   if (loading) {
     return <h1>Carregando...</h1>
   }
@@ -110,7 +104,7 @@ export function LoginPage({ showModal, setShowModal, handleModal }) {
                 />
               </label>
 
-              <button type='submit' onClick={validateInputs}>
+              <button type='submit'>
                 ACESSAR
               </button>
             </form>

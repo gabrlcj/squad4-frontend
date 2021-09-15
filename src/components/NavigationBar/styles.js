@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.nav`
   grid-area: navbar;
   position: relative;
-  z-index: 100;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
