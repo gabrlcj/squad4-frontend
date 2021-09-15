@@ -11,6 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 import api from "../../api";
 import { toast } from "react-toastify";
 
+
 export function Meeting() {
   const {
     roomScheduling,
@@ -22,7 +23,7 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log(occupiedRooms)
+  console.log(roomScheduling)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -108,26 +109,6 @@ export function Meeting() {
     }
   };
 
-  const handleAppointment = async (event) => {
-    event.preventDefault();
-    try {
-      await api({
-        method: "post",
-        url: "reunioes",
-        data: roomScheduling,
-      });
-      toast.success("Agendamento feito com sucesso!");
-      setRoomScheduling({
-          ...roomScheduling,
-          date: "",
-          room: "",
-          office: "São Paulo",
-          time_zone:"" 
-        });
-    } catch (error) {
-      toast.error(error.response?.data.mensagem);
-    }
-  };
 
   const horariosId = ["1", "2", "3", "4", "5"];
   const horarios = [
@@ -199,7 +180,7 @@ export function Meeting() {
 
   return (
     <>
-      <Container onSubmit={handleAppointment}>
+      <Container>
         <TimeBlock>
           <h3 className="overlay">HORÁRIO</h3>
           <TimeContainer className="overlay">
