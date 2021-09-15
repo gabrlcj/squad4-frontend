@@ -1,27 +1,50 @@
-// import { useEffect, useState } from 'react'
-// import api from '../../api'
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import api from '../../api'
 
 import { Container } from './styles'
-// import { toast } from 'react-toastify'
-// import CloseModalButton from '../../assets/CloseModal.svg'
+import { toast } from 'react-toastify'
+import CloseModalButton from '../../assets/CloseModal.svg'
 
 export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
 
-  function handleConfirmMeeting(event) {
-    event.preventDefault()
+  const { roomScheduling, setRoomScheduling } =  useContext(AuthContext);
+  console.log(roomScheduling)
 
-    // const data = {
-
-    // }
-
-    //   api({
-    //     method: 'POST',
-    //     url: '/colaboradores',
-    //     data,
-    //   })
-    //     .then((res) => toast.success('Registro feito com sucesso!'))
-    //     .catch((error) => toast.error(error.response.data.message))
+  function dataAtualFormatada(day) {
+    let data = day,
+      dia = (data.getDate() + 1).toString().padStart(2, '0'),
+      mes = (data.getMonth() + 1).toString().padStart(2, '0'),
+      ano = data.getFullYear()
+    return dia + '/' + mes + '/' + ano
   }
+
+  const handleConfirmMeeting = async (event) => {
+    event.preventDefault();
+    try {
+      await api({
+        method: "post",
+        url: "reunioes",
+        data: {
+          date: roomScheduling.date,
+          office: roomScheduling.office,
+          room: roomScheduling.room,
+          time_zone: roomScheduling.time_zone,
+          user_id: roomScheduling.user_id
+        },
+      });
+      toast.success("Agendamento feito com sucesso!");
+      setRoomScheduling({
+          ...roomScheduling,
+          date: "",
+          room: "",
+          office: "São Paulo",
+          time_zone:"" 
+        });
+    } catch (error) {
+      toast.error(error.response?.data.mensagem);
+    }
+  };
 
   return (
     <>
@@ -32,7 +55,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
         handleModal={handleModal}
       >
         <div className="confirmMeetingModal">
-          <h2>INFORMAÇÕES</h2>
+          <h2>{roomScheduling?.room}, {dataAtualFormatada(new Date(roomScheduling?.date))} em {roomScheduling?.office} - SP</h2>
           <h3>Ei, antes de confirmar o agendamento se liga nas orientações!</h3>
           <ul>
             <li>Use máscara o tempo todo, posicione-a corretamente sobre o nariz e a boca.</li>

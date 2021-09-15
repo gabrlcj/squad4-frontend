@@ -3,8 +3,12 @@ import SelectArrow from '../../assets/Select-arrow.svg'
 
 export const Container = styled.main`
   grid-area: main;
-  padding: 0.5rem 1.5rem;
+  padding: 1.5rem;
   background: #fff;
+
+  @media (max-width: 1080px) {
+    padding: 0.75rem 1.5rem;
+  }
 
   .brand-container {
     display: flex;
@@ -14,7 +18,7 @@ export const Container = styled.main`
   }
 
   .selection-bar {
-    /* margin-top: 1rem; */
+    margin-top: 1rem;
     width: 100%;
     border-radius: 1rem;
 
@@ -49,15 +53,19 @@ export const Container = styled.main`
       }
 
       option {
-        background-color: var(--blue-darker);
+        background-color: var(--orange-subtle);
       }
     }
   }
 
   section {
-    margin-top: 0.5rem;
-    border: 3.2px solid var(--blue-darker);
+    margin-top: 2rem;
+    border: 3.24px solid var(--blue-darker);
     border-radius: 2rem;
+
+    @media (max-width: 1080px) {
+      margin-top: 1.5rem;
+    }
 
     h2 {
       font-size: 1rem;

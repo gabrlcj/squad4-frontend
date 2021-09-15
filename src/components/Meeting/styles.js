@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-export const Container = styled.form`
+export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin: 1rem 0;
   color: white;
 
@@ -31,14 +31,14 @@ export const TimeBlock = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
-    margin-left: 18%;
+    margin: 0 auto;
   }
-
 `
 
 export const RoomBlock = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 2rem;
 
   h3 {
     border-radius: 40px;
@@ -51,8 +51,18 @@ export const RoomBlock = styled.div`
 
   .hidden {
     visibility: hidden;
-  }
+    opacity: 0;
 
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 `
 
 export const TimeContainer = styled.div`
