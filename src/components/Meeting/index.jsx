@@ -22,7 +22,9 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
- 
+  console.log(occupiedDatetime)
+  console.log(occupiedRooms)
+
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
     else return date;
@@ -59,10 +61,10 @@ export function Meeting() {
     );
   }, [roomSchedulings]);
 
-  const timeClickHandler = (event) => {
+  const timeClickHandler = (event, horario) => {
     event.stopPropagation();
     document.querySelectorAll(".occupied").forEach((item) => {
-      if (!occupiedDatetime?.includes(item.id)) {
+      if (!occupiedDatetime?.includes(horario)) {
         item.classList.remove("occupied");
       }
     });
@@ -86,7 +88,7 @@ export function Meeting() {
     }
   };
 
-  const roomClickHandler = (event) => {
+  const roomClickHandler = (event, room) => {
     event.stopPropagation();
 
     document.querySelectorAll(".occupied").forEach((item) => {
@@ -154,12 +156,12 @@ export function Meeting() {
             <Display
               key={horariosId[index]}
               className={`${
-                occupiedDatetime?.includes(horariosId[index])
+                occupiedDatetime?.includes(horario)
                   ? "occupied"
                   : ""
               }`}
-              id={horariosId[index]}
-              onClick={(event) => timeClickHandler(event)}
+              id={horario}
+              onClick={(event) => timeClickHandler(event, horario)}
             >
               {horario}
             </Display>
@@ -179,12 +181,12 @@ export function Meeting() {
               marginBottom={"1rem"}
               padding={"0.5rem 1rem"}
               className={`${
-                occupiedRooms?.includes(roomsId[index])
+                occupiedRooms?.includes(room)
                   ? "occupied"
                   : ""
               }`}
-              id={roomsId[index]}
-              onClick={(event) => roomClickHandler(event)}
+              id={room}
+              onClick={(event) => roomClickHandler(event, room)}
             >
               {room}
             </Display>

@@ -1,4 +1,5 @@
-// import { useEffect, useState } from 'react'
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 // import api from '../../api'
 
 import { Container } from './styles'
@@ -6,6 +7,9 @@ import { Container } from './styles'
 // import CloseModalButton from '../../assets/CloseModal.svg'
 
 export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
+
+  const { roomScheduling, setRoomScheduling } =  useContext(AuthContext);
+  console.log(roomScheduling)
 
   function handleConfirmMeeting(event) {
     event.preventDefault()
@@ -32,7 +36,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
         handleModal={handleModal}
       >
         <div className="confirmMeetingModal">
-          <h2>INFORMAÇÕES</h2>
+          <h2>INFORMAÇÕES {roomScheduling?.office}</h2>
           <h3>Ei, antes de confirmar o agendamento se liga nas orientações!</h3>
           <ul>
             <li>Use máscara o tempo todo, posicione-a corretamente sobre o nariz e a boca.</li>
