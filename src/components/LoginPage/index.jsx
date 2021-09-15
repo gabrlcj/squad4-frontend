@@ -1,17 +1,20 @@
 import { useContext, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../api'
 
+import { Modal } from '../Modal/Modal'
+import { RegisterPage } from '../RegisterPage/index'
+
 import AstronautCalendar from '../../assets/AstronautCalendar.svg'
 import GrupoFCamara from '../../assets/GrupoFCamara.svg'
 import BrandName from '../../assets/BrandName.svg'
 import Logo from '../../assets/Logo.svg'
 
-export function LoginPage() {
+export function LoginPage({ showModal, setShowModal, handleModal }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { setToken, setUser } = useContext(AuthContext)
@@ -63,6 +66,11 @@ export function LoginPage() {
 
   return (
     <>
+      {showModal ? (
+        <Modal showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}>
+          <RegisterPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
+        </Modal>
+      ) : null}
       <Container>
         <div className='left'>
           <img style={{ marginBottom: '2rem' }} src={GrupoFCamara} alt='Logo da FCamara' />
@@ -109,10 +117,10 @@ export function LoginPage() {
 
             <div className='text-container'>
               <div className='basetext'>
-                Não é cadastrado?{' '}
-                <Link to='/register' className='underline'>
+                <p>Não é cadastrado?</p>
+                <div onClick={handleModal} className='underline' style={{ cursor: 'pointer' }}>
                   Cadastre-se
-                </Link>
+                </div>
               </div>
               <div className='basetext underline'>Esqueci a senha</div>
             </div>

@@ -14,7 +14,7 @@ export const Container = styled.main`
   }
 
   .selection-bar {
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     width: 100%;
     border-radius: 1rem;
 
@@ -55,7 +55,7 @@ export const Container = styled.main`
   }
 
   section {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     border: 3.2px solid var(--blue-darker);
     border-radius: 2rem;
 
@@ -119,6 +119,10 @@ export const Container = styled.main`
 
     .selected {
       background-color: var(--blue-darker);
+    }
+
+    .selectedRoom {
+      width: 9.5rem;
     }
   }
 `

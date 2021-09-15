@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthContext'
 import LogoImage from '../../assets/Logo.svg'
 import BrandName from '../../assets/BrandName.svg'
 import { InputDate } from '../InputDate'
+import { Meeting } from '../Meeting'
 
 export function Main() {
   const [station, setStation] = useState('Estação de trabalho')
@@ -50,8 +51,8 @@ export function Main() {
         <InputDate />
       </div>
       <section>
-        <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
-        {scheduling.office === 'São Paulo' && station === 'Estação de trabalho' ? <WorkStation /> : <WorkStation />}
+      {station === 'Estação de trabalho' ? <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2> : <h2>HORÁRIOS E SALAS DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2> }
+        {station === 'Estação de trabalho' ? <WorkStation /> : <Meeting />}
         <div className='legenda'>
           <strong>
             <div className='circle ocupado'></div>Ocupado
@@ -60,7 +61,7 @@ export function Main() {
             <div className='circle livre'></div>Livre
           </strong>
         </div>
-        {scheduling.office === 'São Paulo' ? (
+        {scheduling.office === 'São Paulo' && station === 'Estação de trabalho' ? (
           <div className='buttons-container'>
             {buttons.map((item, index) => (
               <button
@@ -72,10 +73,13 @@ export function Main() {
               </button>
             ))}
           </div>
-        ) : (
+        ) : ( station === 'Estação de trabalho' ?
           <div className='buttons-container'>
             <button className='selected'>1° ANDAR</button>
-          </div>
+          </div> :
+          <div className='buttons-container room'>
+          <button className='selectedRoom legenda'>PROSSEGUIR</button>
+        </div>
         )}
       </section>
     </Container>

@@ -43,6 +43,8 @@ export const Container = styled.div`
 export const Station = styled.div`
   margin: 1rem 0;
 
+
+
   .chairs {
     display: flex;
     align-items: center;
@@ -83,7 +85,9 @@ export const Station = styled.div`
     }
 
     .circle.down.occupied,
-    .circle.up.occupied {
+    .circle.up.occupied,
+    .circle.up.occupied.busy,
+    .circle.down.occupied.busy  {
       background: var(--orange-subtle);
     }
 

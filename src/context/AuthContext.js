@@ -19,6 +19,14 @@ const AuthProvider = ({ children }) => {
     workstation: "",
     office: "São Paulo",
   });
+  const [roomScheduling, setRoomScheduling] = useState({
+    user_id: "",
+    date: "",
+    room: "",
+    office: "São Paulo",
+    time_zone:""
+  });
+  const [roomSchedulings, setRoomSchedulings] = useState()
 
   return (
     <AuthContext.Provider
@@ -33,6 +41,10 @@ const AuthProvider = ({ children }) => {
         setScheduling,
         schedulings,
         setSchedulings,
+        roomScheduling,
+        setRoomScheduling,
+        roomSchedulings,
+        setRoomSchedulings
       }}
     >
       {children}

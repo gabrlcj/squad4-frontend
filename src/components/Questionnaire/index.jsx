@@ -31,8 +31,7 @@ export function QuestionnairePage() {
       url: `/login/firstaccess/${user.id}`,
       data
     }).then((res) => {
-      toast.success("Lhe damos às boas vindas!")
-      history.push('/dashboard')
+      history.push(`/dashboard/${user.id}`)
     }).catch(error => toast.error("Algo não saiu como o planejado."))
   };
 
