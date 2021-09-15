@@ -9,7 +9,6 @@ import CloseModalButton from '../../assets/CloseModal.svg'
 export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
 
   const { roomScheduling, setRoomScheduling } =  useContext(AuthContext);
-  console.log(roomScheduling)
 
   function dataAtualFormatada(day) {
     let data = day,

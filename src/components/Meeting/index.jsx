@@ -23,7 +23,6 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log(roomScheduling)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -61,13 +60,15 @@ export function Meeting() {
     );
   }, [roomSchedulings]);
 
-  const timeClickHandler = (event, horario) => {
+  const timeClickHandler = (event) => {
     event.stopPropagation();
+
     document.querySelectorAll(".occupied").forEach((item) => {
-      if (!occupiedDatetime?.includes(horario)) {
+      if (!occupiedDatetime?.includes(item.id.toString())) {
         item.classList.remove("occupied");
       }
     });
+  
     event.target.classList.add("occupied");
 
     document.querySelectorAll(".hidden").forEach((item) => {
@@ -92,7 +93,7 @@ export function Meeting() {
     event.stopPropagation();
 
     document.querySelectorAll(".occupied").forEach((item) => {
-      if(!occupiedRooms?.includes(item.id.toString())) {
+      if(!occupiedRooms.includes(item.id.toString())) {
         item.classList.remove("occupied");
       }});
 
@@ -143,7 +144,7 @@ export function Meeting() {
                   : ""
               }`}
               id={horario}
-              onClick={(event) => timeClickHandler(event, horario)}
+              onClick={(event) => timeClickHandler(event)}
             >
               {horario}
             </Display>
