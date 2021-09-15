@@ -6,6 +6,7 @@ import { Dashboard } from "./components/Dashboard";
 
 import { GlobalStyle } from "./styles/global";
 import { ToastContainer } from "react-toastify";
+import PrivateRoute from "./privateRoutes/Private";
 
 export default function App() {
   return (
@@ -13,18 +14,10 @@ export default function App() {
       <Router>
         <GlobalStyle />
         <Switch>
-          <Route path='/firstaccess'>
-            <QuestionnairePage />
-          </Route>
-          <Route path='/dashboard/:id'>
-            <Dashboard />
-          </Route>
-          <Route path='/register'>
-            <RegisterPage />
-          </Route>
-          <Route path="/" exact>
-            <LoginPage />
-          </Route>
+          <PrivateRoute path='/firstaccess' component={QuestionnairePage} />
+          <PrivateRoute path='/dashboard/:id' component={Dashboard} />
+          <Route path='/register' component={RegisterPage} />            
+          <Route path="/" exact  component={LoginPage} />
         </Switch>
         <ToastContainer theme={"dark"} autoClose={3000} />
       </Router>
