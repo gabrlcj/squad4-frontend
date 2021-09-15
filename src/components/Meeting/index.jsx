@@ -22,8 +22,7 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log(roomSchedulings)
-
+ 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
     else return date;
