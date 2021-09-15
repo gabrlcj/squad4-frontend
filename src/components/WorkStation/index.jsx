@@ -10,7 +10,6 @@ import Carousel from 'react-elastic-carousel'
 export function WorkStation() {
   const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext)
   const [occupiedWorkstations, setOccupiedWorkstations] = useState([])
-  console.log(scheduling)
 
   function formatDateWithZero(date) {
     if (date <= 9) return '0' + date
@@ -44,15 +43,14 @@ export function WorkStation() {
       if (!occupiedWorkstations.includes(chairNumber)) {
         item.classList.remove("occupied");
         item.classList.remove("busy");
-       item.classList.add("unoccupied");
-       event.target.classList.remove("unoccupied");
-      event.target.classList.add("occupied");
-      event.target.classList.add("busy");
+        item.classList.add("unoccupied");
       }
     });
-    
-
-    if ((scheduling.workstation !== chairNumber) && (scheduling.workstation !== chairNumber)) {
+           
+    if ((scheduling.workstation !== chairNumber) && (!occupiedWorkstations.includes(chairNumber.toString()))) {
+      event.target.classList.remove("unoccupied");
+      event.target.classList.add("occupied");
+      event.target.classList.add("busy");
       setScheduling({ ...scheduling, workstation: chairNumber.toString(), user_id: user?.id })
     } else {
       return

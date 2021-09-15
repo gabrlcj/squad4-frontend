@@ -75,7 +75,7 @@ export function Meeting() {
       item.classList.remove("overlay");
     });
 
-    if (roomScheduling.time_zone !== event.target.id) {
+    if ((roomScheduling.time_zone !== event.target.id)) {
       setRoomScheduling({
         ...roomScheduling,
         time_zone: event.target.id,
