@@ -23,8 +23,6 @@ export default function App() {
           <Route path='/dashboard'>
             <Dashboard />
           </Route>
-        </Switch>
-        <Switch>
           <Route path='/register'>
             <RegisterPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}  />
           </Route>

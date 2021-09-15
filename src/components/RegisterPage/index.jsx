@@ -13,6 +13,7 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [role, setRole] = useState('')
 
+  const [first_access, setFirstAccess] = useState('')
   function handleUserRegister(event) {
     event.preventDefault()
 
@@ -21,10 +22,7 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
       email,
       password,
       role,
-      // origin_office,
-      // vaccine_status,
-      // squad,
-      // pwd
+      first_access,
     }
 
     api({
@@ -37,13 +35,13 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
 
   function validateInputs() {
 
-    // SetFirstAccess(true)
+    setFirstAccess(true)
 
     if (name === '' || email === '' || password === '') {
       return toast.error('Ops, algo deu errado')
     }
     if (validLength === false || hasNumber === false || upperCase === false || lowerCase === false || specialChar === false ) {
-      return toast.error('Reforce sua Senha!')
+      return toast.error('Reforce sua senha!')
     }
     else if (confirmPassword !== password) {
         return toast.error('Senha inválida!')
