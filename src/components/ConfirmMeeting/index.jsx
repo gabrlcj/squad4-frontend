@@ -4,12 +4,11 @@ import api from '../../api'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
-import CloseModalButton from '../../assets/CloseModal.svg'
+import CloseModalButton from '../../assets/CloseModalScheduling.svg'
 
 export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
 
-  const { roomScheduling, setRoomScheduling } =  useContext(AuthContext);
-  console.log(roomScheduling)
+  const { roomScheduling, setRoomScheduling } = useContext(AuthContext);
 
   function dataAtualFormatada(day) {
     let data = day,
@@ -35,12 +34,13 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
       });
       toast.success("Agendamento feito com sucesso!");
       setRoomScheduling({
-          ...roomScheduling,
-          date: "",
-          room: "",
-          office: "São Paulo",
-          time_zone:"" 
-        });
+        ...roomScheduling,
+        date: "",
+        room: "",
+        office: "São Paulo",
+        time_zone: ""
+      });
+      handleModal()
     } catch (error) {
       toast.error(error.response?.data.mensagem);
     }
@@ -54,6 +54,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
         setShowModal={setShowModal}
         handleModal={handleModal}
       >
+        <img src={CloseModalButton} alt='Fechar' onClick={handleModal} className='closeModalIcon' />
         <div className="confirmMeetingModal">
           <h2>{roomScheduling?.room}, {dataAtualFormatada(new Date(roomScheduling?.date))} em {roomScheduling?.office} - SP</h2>
           <h3>Ei, antes de confirmar o agendamento se liga nas orientações!</h3>
