@@ -17,28 +17,30 @@ import Logo from '../../assets/Logo.svg'
 export function LoginPage({showModal, setShowModal, handleModal}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { setToken, setUser } = useContext(AuthContext);
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const { setToken, setUser } = useContext(AuthContext)
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
   async function login(email, password) {
-    setLoading(true);
+    setLoading(true)
     const response = await api.post(`/login`, {
       email,
-      password
-    });
-    const { token } = response.data;
-    const { returningUser: { first_access } } = response.data;
-    const { returningUser } = response.data;
-    localStorage.setItem("token", token);
-    setToken(token);
-    setUser(returningUser);
-    setLoading(false);
+      password,
+    })
+    const { token } = response.data
+    const {
+      returningUser: { first_access },
+    } = response.data
+    const { returningUser } = response.data
+    localStorage.setItem('token', token)
+    setToken(token)
+    setUser(returningUser)
+    setLoading(false)
 
     if (first_access) {
-      history.push('/firstaccess');
+      history.push('/firstaccess')
     } else {
-      history.push(`/dashboard/${returningUser.id}`);
+      history.push(`/dashboard/${returningUser.id}`)
     }
   }
 
@@ -47,8 +49,8 @@ export function LoginPage({showModal, setShowModal, handleModal}) {
     try {
       await login(email, password)
     } catch (e) {
-      toast.error("Email ou senha inválidos.")
-      setLoading(false);
+      toast.error('Email ou senha inválidos.')
+      setLoading(false)
     }
   }
 
@@ -71,7 +73,7 @@ export function LoginPage({showModal, setShowModal, handleModal}) {
       : null}
       <Container>
         <div className='left'>
-          <img src={GrupoFCamara} alt='Logo da FCamara' />
+          <img style={{ marginBottom: '2rem' }} src={GrupoFCamara} alt='Logo da FCamara' />
           <img src={AstronautCalendar} alt='Astonauta com Calendário' />
         </div>
 

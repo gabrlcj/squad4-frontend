@@ -1,9 +1,11 @@
 import Table from '../../assets/WorkstationTable.svg'
+import UnavailableChair from '../../assets/UnavailableChair.svg'
 import { Container, Station } from './styles'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../api'
 import { toast } from 'react-toastify'
+import Carousel from 'react-elastic-carousel'
 
 export function WorkStation() {
   const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext)
@@ -60,17 +62,35 @@ export function WorkStation() {
     }
   }
 
+  const unavailableSeat = () => {
+    return (
+      <div className='circle unavailable'>
+        <img src={UnavailableChair} alt='Marcação de cadeira indisponivel' />
+      </div>
+    )
+  }
+
+  function isOdd(num) {
+    return num % 2 === 1
+  }
+
+  function isEven(num) {
+    return num % 2 === 0
+  }
+
   const GenerateUpChairs = (chairNumbers) => {
     return (
       <>
         {chairNumbers.map((chairNumber) => {
           return (
             <div
-              className={`circle up ${occupiedWorkstations.includes(chairNumber.toString()) ? 'red' : 'green'}`}
+              className={`circle up ${
+                occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
+              }`}
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >
-              {chairNumber}
+              {isEven(chairNumber) ? unavailableSeat() : ''}
             </div>
           )
         })}
@@ -84,11 +104,13 @@ export function WorkStation() {
         {chairNumbers.map((chairNumber) => {
           return (
             <div
-              className={`circle down ${occupiedWorkstations.includes(chairNumber.toString()) ? 'red' : 'green'}`}
+              className={`circle down ${
+                occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
+              }`}
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >
-              {chairNumber}
+              {isOdd(chairNumber) ? unavailableSeat() : ''}
             </div>
           )
         })}
@@ -100,7 +122,7 @@ export function WorkStation() {
     return (
       <Station id={id}>
         <div className='chairs'>{GenerateUpChairs(chairs)}</div>
-        <img src={Table} alt='Mesa de trabalho' />
+        <img className='table' src={Table} alt='Mesa de trabalho' />
         <div className='chairs'>{GenerateDownChairs(chairs2)}</div>
       </Station>
     )
@@ -112,16 +134,49 @@ export function WorkStation() {
         <strong style={{ marginRight: '1rem' }}>Escolha o dia e a cadeira e clique no botão confirmar</strong>
         <button type='submit'>Confirmar</button>
       </form>
-      <Container>
-        <div className='content'>
-          {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
-          {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
-        </div>
-        <div className='content'>
-          {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
-          {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
-        </div>
-      </Container>
+      {scheduling.office === 'São Paulo' ? (
+        <Container>
+          <Carousel itemsToShow={2} className='carousel'>
+            <div className='content'>
+              {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
+              {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
+            </div>
+            <div className='content'>
+              {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
+              {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
+            </div>
+            <div className='content'>
+              {tableStation(5, [33, 34, 35, 36], [37, 38, 39, 40])}
+              {tableStation(6, [41, 42, 43, 44], [45, 46, 47, 48])}
+            </div>
+            <div className='content'>
+              {tableStation(7, [49, 50, 51, 52], [53, 54, 55, 56])}
+              {tableStation(8, [57, 58, 59, 60], [61, 62, 63, 64])}
+            </div>
+          </Carousel>
+        </Container>
+      ) : (
+        <Container>
+          <Carousel itemsToShow={2}>
+            <div className='content'>
+              {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
+              {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
+            </div>
+            <div className='content'>
+              {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
+              {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
+            </div>
+            <div className='content'>
+              {tableStation(5, [33, 34, 35, 36], [37, 38, 39, 40])}
+              {tableStation(6, [41, 42, 43, 44], [45, 46, 47, 48])}
+            </div>
+            <div className='content'>
+              {tableStation(7, [49, 50, 51, 52], [53, 54, 55, 56])}
+              {tableStation(8, [57, 58, 59, 60], [61, 62, 63, 64])}
+            </div>
+          </Carousel>
+        </Container>
+      )}
     </>
   )
 }

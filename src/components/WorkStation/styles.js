@@ -4,6 +4,40 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  .rec {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    button {
+      border-radius: 100%;
+      width: 0.75rem;
+      height: 0.75rem;
+      padding: 0;
+      border: 0;
+
+      &:hover {
+        box-shadow: 0 0 1px 3px var(--orange-lighter);
+      }
+    }
+
+    .rec.rec-dot_active {
+      background: var(--orange-lighter);
+      box-shadow: 0 0 1px 3px var(--orange-lighter);
+    }
+
+    .rec.rec-arrow {
+      display: none;
+    }
+
+    .rec.rec-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
 `
 
 export const Station = styled.div`
@@ -19,10 +53,23 @@ export const Station = styled.div`
     position: relative;
     cursor: pointer;
 
+    .unavailable {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: not-allowed;
+      background: #707070;
+      text-align: center;
+    }
+
     .circle {
       border-radius: 20%;
       height: 2rem;
       width: 2rem;
+      text-align: center;
+
+      box-shadow: 0 0.15rem 0.3rem 0 #333333;
     }
 
     .circle.up {
@@ -33,6 +80,16 @@ export const Station = styled.div`
       background: grey;
       margin-top: -1.8rem;
       margin-bottom: 0.75rem;
+    }
+
+    .circle.down.occupied,
+    .circle.up.occupied {
+      background: var(--orange-subtle);
+    }
+
+    .circle.up.unoccupied,
+    .circle.down.unoccupied {
+      background: var(--green);
     }
 
     .circle.ocupado {
@@ -50,9 +107,9 @@ export const Station = styled.div`
       background: var(--green);
       margin-right: 0.25rem;
     }
+  }
 
-    .red {
-      background: red !important;
-    }
+  .table {
+    width: min(25rem, 100%);
   }
 `

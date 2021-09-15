@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     --blue-main: #36357e;
     --blue-lighter: #5251a2;
     --blue-darker: #2a2962;
+    --blue-subtle: #a8a8d0;
 
     --background: #7474B445;
     --background-focus: #FE4400a9;
@@ -37,7 +38,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    /* min-height: 100vh; */
     background: var(--background);
     font: 700 1rem 'Montserrat', sans-serif;
     color: var(--text);
@@ -59,9 +59,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &:focus {
-      outline: 3px solid var(--background-focus);
-      -moz-outline-radius: 0.25rem;
-      transition: .1s;
+      outline: none;
+      box-shadow: 0 0 0.25rem 0.2rem var(--background-focus);
     }
 
     &::placeholder {

@@ -3,7 +3,8 @@ import SelectArrow from '../../assets/Select-arrow.svg'
 
 export const Container = styled.main`
   grid-area: main;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
+  background: #fff;
 
   .brand-container {
     display: flex;
@@ -22,9 +23,9 @@ export const Container = styled.main`
 
     select {
       font: 700 0.85rem 'Montserrat', sans-serif;
-      margin: 0 2.5rem 0 1rem;
+      margin-right: 0.5rem;
       padding: 0 1.5rem;
-      width: 190px;
+      width: 185px;
       height: 40px;
       border: 0;
       background: transparent;
@@ -43,7 +44,7 @@ export const Container = styled.main`
       }
 
       & + select {
-        width: 250px;
+        width: 245px;
         background-position: 13rem;
       }
 
@@ -55,7 +56,7 @@ export const Container = styled.main`
 
   section {
     margin-top: 1rem;
-    border: 3.5px solid var(--blue-darker);
+    border: 3.2px solid var(--blue-darker);
     border-radius: 2rem;
 
     h2 {

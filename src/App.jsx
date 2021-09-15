@@ -20,7 +20,10 @@ export default function App() {
       <Router>
         <GlobalStyle />
         <Switch>
-          <Route path='/dashboard'>
+          <Route path='/firstaccess'>
+            <QuestionnairePage />
+          </Route>
+          <Route path='/dashboard/:id'>
             <Dashboard />
           </Route>
           <Route path='/register'>

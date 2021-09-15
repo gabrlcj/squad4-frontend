@@ -1,26 +1,31 @@
 import { useContext, useEffect } from 'react'
-import Calendar from 'react-calendar'
 import { AuthContext } from '../../context/AuthContext'
-import { Container } from './styles'
-import Slider from 'react-slick'
+import Calendar from 'react-calendar'
+import Carousel from 'react-elastic-carousel'
 
-export function SimpleSlider({ children }) {
-  let settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  }
-  return <Slider {...settings}>{children}</Slider>
-}
+import { Container } from './styles'
 
 export function Calendario({ formatDay, userScheduling }) {
   const { day, setDay, scheduling, setScheduling } = useContext(AuthContext)
 
   useEffect(() => {
     setScheduling({ ...scheduling, date: dataToDatabase(day) })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [day])
+
+  function setMaxDate(date) {
+    const d = date.getDate()
+    const m = date.getMonth()
+    const y = date.getFullYear()
+
+    if (date.getDay() < 5) {
+      const lastDay = date.getDate() + (5 - date.getDay())
+      return new Date(y, m, lastDay)
+    } else {
+      const lastDay = d + 7
+      return new Date(y, m, lastDay)
+    }
+  }
 
   function dataToDatabase(day) {
     var data = day,
@@ -50,23 +55,18 @@ export function Calendario({ formatDay, userScheduling }) {
         showNavigation={false}
         showFixedNumberOfWeeks={true}
         minDate={new Date()}
-        // maxDate={setMaxDate(new Date())}
+        maxDate={setMaxDate(new Date())}
         tileDisabled={({ date }) => date.getDay() === 6 || date.getDay() === 0}
       />
       <h5>Meus agendamentos</h5>
-
       <div className='appointments'>
-        <SimpleSlider className='carrousel'>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-          <div style={{ background: 'lightgrey' }}>11/09</div>
-        </SimpleSlider>
-        {userScheduling?.map((scheduling, index) => (
-          <div key={index}>{dataToCalendar(new Date(scheduling.date))}</div>
-        ))}
+        <Carousel itemsToShow={3}>
+          {userScheduling?.map((scheduling, index) => (
+            <div className='appointment-date' key={index}>
+              {dataToCalendar(new Date(scheduling.date))}
+            </div>
+          ))}
+        </Carousel>
       </div>
     </Container>
   )

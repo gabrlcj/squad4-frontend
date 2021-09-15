@@ -22,46 +22,42 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
       email,
       password,
       role,
+      squad,
       first_access,
     }
 
     api({
-      method:"POST",
-      url: "/colaboradores",
-      data
-    }).then((res) => toast.success("Registro feito com sucesso!"))
-    .catch(error => toast.error("Algo não saiu como o planejado."))
+      method: 'POST',
+      url: '/colaboradores',
+      data,
+    })
+      .then((res) => toast.success('Registro feito com sucesso!'))
+      .catch((error) => toast.error('Algo não saiu como o planejado.'))
   }
 
   function validateInputs() {
-
-    setFirstAccess(true)
+    SetFirstAccess(true)
 
     if (name === '' || email === '' || password === '') {
       return toast.error('Ops, algo deu errado')
-    }
-    if (validLength === false || hasNumber === false || upperCase === false || lowerCase === false || specialChar === false ) {
-      return toast.error('Reforce sua senha!')
-    }
-    else if (confirmPassword !== password) {
-        return toast.error('Senha inválida!')
+    } else if (confirmPassword !== password) {
+      return toast.error('Senha inválida!')
     }
   }
 
-  //Bloco de Validação de senha START
-  const [validLength, setValidLength] = useState(null);
-  const [hasNumber, setHasNumber] = useState(null);
-  const [upperCase, setUpperCase] = useState(null);
-  const [lowerCase, setLowerCase] = useState(null);
-  const [specialChar, setSpecialChar] = useState(null);
+  const [validLength, setValidLength] = useState(null)
+  const [hasNumber, setHasNumber] = useState(null)
+  const [upperCase, setUpperCase] = useState(null)
+  const [lowerCase, setLowerCase] = useState(null)
+  const [specialChar, setSpecialChar] = useState(null)
   // const [match, setMatch] = useState(null);
 
-  useEffect (() => {
-    setValidLength(password.length > 7 ? true : false);
-    setHasNumber(/\d/.test(password) ? true: false);
-    setUpperCase(/[A-Z]/.test(password) ? true: false);
-    setLowerCase(/[a-z]/.test(password) ? true: false);
-    setSpecialChar((/[^A-Z a-z0-9]/).test(password) ? true: false);
+  useEffect(() => {
+    setValidLength(password.length > 7 ? true : false)
+    setHasNumber(/\d/.test(password) ? true : false)
+    setUpperCase(/[A-Z]/.test(password) ? true : false)
+    setLowerCase(/[a-z]/.test(password) ? true : false)
+    setSpecialChar(/[^A-Z a-z0-9]/.test(password) ? true : false)
   }, [password])
   //Bloco de validação de senha END
 

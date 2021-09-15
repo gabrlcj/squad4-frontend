@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -33,14 +33,14 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #36357E;
+    background: #36357e;
     width: 552px;
     height: 692px;
-    border-radius: 40px 0px 0px 40px
+    border-radius: 40px 0px 0px 40px;
   }
 
   .right {
-    background: #FFFFFF;
+    background: #ffffff;
     width: 552px;
     height: 692px;
     padding: 150px 250px;
@@ -49,7 +49,8 @@ export const Container = styled.div`
     align-content: center;
   }
 
-  .loginbox, form {
+  .loginbox,
+  form {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -58,7 +59,7 @@ export const Container = styled.div`
     margin-top: 30%;
     color: #fe5517;
   }
-  
+
   .textbox-input {
     /* position: absolute; */
     width: 276px;
@@ -66,11 +67,11 @@ export const Container = styled.div`
     /* left: 146px;
     top: 356px; */
 
-    background: #FFFFFF;
-    border: 1px solid #FE662E;
+    background: #ffffff;
+    border: 1px solid #fe662e;
     box-sizing: border-box;
     border-radius: 10px;
-    
+
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -101,10 +102,10 @@ export const Container = styled.div`
   }
 
   .row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin: -13vh 0 5vh 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: -13vh 0 5vh 0;
   }
 
   /* label {
@@ -126,7 +127,7 @@ export const Container = styled.div`
     width: 276px;
     height: 48px;
 
-    background: #FE5517;
+    background: #fe5517;
     border-radius: 10px;
 
     transition: filter 0.2s;
@@ -137,4 +138,4 @@ export const Container = styled.div`
       color: #535353;
     }
   }
-`;
+`
