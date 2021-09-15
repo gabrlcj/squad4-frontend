@@ -11,18 +11,25 @@ export function RegisterPage({ showModal, setShowModal, handleModal }) {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [role, setRole] = useState('')
-  const [first_access, setFirstAccess] = useState(false)
+  const [validPassword, setValidPassword] = useState('')
+
 
   function handleUserRegister(event) {
     event.preventDefault()
-    setFirstAccess(true)
+
+    if (validLength && hasNumber && upperCase && lowerCase && specialChar) {
+      setValidPassword(true);
+    } else {
+      setValidPassword(false)
+    }
 
     const data = {
       name,
       email,
       password,
+      confirmPassword,
+      validPassword,
       role,
-      first_access,
     }
 
     api({
@@ -31,15 +38,7 @@ export function RegisterPage({ showModal, setShowModal, handleModal }) {
       data,
     })
       .then((res) => toast.success('Registro feito com sucesso!'))
-      .catch((error) => toast.error('Algo não saiu como o planejado.'))
-  }
-
-  function validateInputs() {
-    if (name === '' || email === '' || password === '') {
-      return toast.error('Ops, algo deu errado')
-    } else if (confirmPassword !== password) {
-      return toast.error('Senha inválida!')
-    }
+      .catch((error) => toast.error(error.response.data.message))
   }
 
   const [validLength, setValidLength] = useState(null)
@@ -140,7 +139,7 @@ export function RegisterPage({ showModal, setShowModal, handleModal }) {
           </label>
 
           <div className='column'>
-            <button type='submit' onClick={validateInputs}>
+            <button type='submit'>
               Fazer Cadastro
             </button>
           </div>
