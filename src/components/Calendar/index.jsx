@@ -4,7 +4,7 @@ import { Container } from './styles'
 export function Calendario({ formatDay, userScheduling }) {
   function dataToCalendar(day) {
     var data = day,
-      dia = (data.getDate() + 1).toString().padStart(2, '0'),
+      dia = (data.getDate()).toString().padStart(2, '0'),
       mes = (data.getMonth() + 1).toString().padStart(2, '0')
     return dia + '/' + mes
   }
