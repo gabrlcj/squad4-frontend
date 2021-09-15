@@ -22,7 +22,6 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log("roomScheduling " + roomScheduling)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -107,18 +106,24 @@ export function Meeting() {
   };
 
   const handleAppointment = async (event) => {
-    // event.preventDefault();
-    // try {
-    //   await api({
-    //     method: "post",
-    //     url: "agendamentos",
-    //     data: scheduling,
-    //   });
-    //   toast.success("Agendamento feito com sucesso!");
-    //   setScheduling({ ...scheduling, date: new Date() });
-    // } catch (error) {
-    //   toast.error(error.response?.data.mensagem);
-    // }
+    event.preventDefault();
+    try {
+      await api({
+        method: "post",
+        url: "reunioes",
+        data: roomScheduling,
+      });
+      toast.success("Agendamento feito com sucesso!");
+      setRoomScheduling({
+          ...roomScheduling,
+          date: "",
+          room: "",
+          office: "São Paulo",
+          time_zone:"" 
+        });
+    } catch (error) {
+      toast.error(error.response?.data.mensagem);
+    }
   };
 
   const horariosId = ["1", "2", "3", "4", "5"];

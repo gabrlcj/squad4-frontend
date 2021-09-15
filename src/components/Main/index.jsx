@@ -76,7 +76,7 @@ export function Main() {
             <button className='selected'>1° ANDAR</button>
           </div> :
           <div className='buttons-container room'>
-          <button className='selectedRoom legenda'>PROSSEGUIR</button>
+          <button className='selectedRoom legenda'>CADASTRAR REUNIÃO</button>
         </div>
         )}
       </section>
