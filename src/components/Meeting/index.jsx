@@ -57,12 +57,12 @@ export function Meeting() {
 
   const timeClickHandler = (event) => {
     event.stopPropagation();
-    document.querySelectorAll(".orange").forEach((item) => {
+    document.querySelectorAll(".occupied").forEach((item) => {
       if (!occupiedDatetime.includes(item.id)) {
-        item.classList.remove("orange");
+        item.classList.remove("occupied");
       }
     });
-    event.target.classList.add("orange");
+    event.target.classList.add("occupied");
 
     document.querySelectorAll(".hidden").forEach((item) => {
       item.classList.remove("hidden");
@@ -135,7 +135,7 @@ export function Meeting() {
             <Display
               className={`${
                 occupiedDatetime?.includes(horariosId[index].toString())
-                  ? "orange"
+                  ? "occupied"
                   : ""
               }`}
               id={horariosId[index]}

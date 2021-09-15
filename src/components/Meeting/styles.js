@@ -7,7 +7,7 @@ export const Container = styled.form`
   margin: 1rem 0;
   color: white;
 
-  .orange {
+  .occupied {
     background-color: var(--orange-main);
   }
 `
