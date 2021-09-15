@@ -22,7 +22,6 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log(occupiedDatetime)
   console.log(occupiedRooms)
 
   function formatDateWithZero(date) {
@@ -88,12 +87,14 @@ export function Meeting() {
     }
   };
 
-  const roomClickHandler = (event, room) => {
+  const roomClickHandler = (event) => {
     event.stopPropagation();
 
     document.querySelectorAll(".occupied").forEach((item) => {
-      item.classList.remove("occupied");
-    });
+      if(!occupiedRooms?.includes(item.id.toString())) {
+        item.classList.remove("occupied");
+      }});
+
     event.target.classList.add("occupied");
 
     if (roomScheduling.room !== event.target.id) {
@@ -186,7 +187,7 @@ export function Meeting() {
                   : ""
               }`}
               id={room}
-              onClick={(event) => roomClickHandler(event, room)}
+              onClick={(event) => roomClickHandler(event)}
             >
               {room}
             </Display>
