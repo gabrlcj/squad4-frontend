@@ -4,6 +4,7 @@ import { WorkStation } from '../WorkStation'
 import { AuthContext } from '../../context/AuthContext'
 import LogoImage from '../../assets/Logo.svg'
 import BrandName from '../../assets/BrandName.svg'
+import { InputDate } from '../InputDate'
 import { Meeting } from '../Meeting'
 
 export function Main() {
@@ -47,6 +48,7 @@ export function Main() {
             REUNIÃO
           </option>
         </select>
+        <InputDate />
       </div>
       <section>
       {station === 'Estação de trabalho' ? <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2> : <h2>HORÁRIOS E SALAS DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2> }

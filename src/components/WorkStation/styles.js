@@ -41,7 +41,7 @@ export const Container = styled.div`
 `
 
 export const Station = styled.div`
-  margin: 2rem 0;
+  margin: 1rem 0;
 
 
 
@@ -51,7 +51,7 @@ export const Station = styled.div`
     justify-content: space-around;
     width: 100%;
     margin-bottom: -1rem;
-    z-index: 100;
+    z-index: 0;
     position: relative;
     cursor: pointer;
 
