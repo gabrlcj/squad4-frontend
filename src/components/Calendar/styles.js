@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import 'react-calendar/dist/Calendar.css'
 
 export const Container = styled.div`
   grid-area: calendar;
@@ -9,7 +8,7 @@ export const Container = styled.div`
   margin: 0.5rem auto 0;
   padding: 0.75rem 1rem;
   width: 20rem;
-  height: 97%;
+  height: 96%;
 
   display: flex;
   align-items: center;
@@ -26,21 +25,20 @@ export const Container = styled.div`
     border-radius: 1.75rem 0 0 0;
   }
 
-  h5 {
-    margin: 0 0 0.5rem 0.75rem;
-    font-weight: 800;
-    font-size: 1rem;
-    margin-right: auto;
-  }
-
   h4 {
     width: 100%;
-    border-radius: 1rem;
     text-align: center;
     line-height: 1.5rem;
-    margin-bottom: 0.5rem;
-    background: var(--blue-darker);
-    color: #fff;
+    margin-top: 0.5rem;
+    font-weight: 800;
+    color: var(--blue-darker);
+  }
+
+  h5 {
+    margin-left: 0.75rem;
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-right: auto;
   }
 
   .appointments {
@@ -96,26 +94,5 @@ export const Container = styled.div`
       height: 3.25rem;
       text-align: center;
     }
-  }
-
-  .calendario {
-    height: 9rem;
-    border-radius: 0.5rem;
-    margin-bottom: 1.5rem;
-    border: 0;
-
-    abbr {
-      text-decoration: none;
-    }
-
-    button {
-      padding: 0.25rem;
-    }
-  }
-
-  .day {
-    border-radius: 0.25rem;
-    height: 1.5rem;
-    font-weight: 700;
   }
 `

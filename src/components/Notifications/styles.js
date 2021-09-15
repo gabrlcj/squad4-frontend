@@ -8,7 +8,7 @@ export const Container = styled.div`
   margin: 1rem auto 0;
   padding: 1rem;
   width: 20rem;
-  height: 85%;
+  height: 90%;
 
   @media (max-width: 1200px) {
     width: 18rem;
