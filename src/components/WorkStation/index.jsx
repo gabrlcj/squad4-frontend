@@ -43,14 +43,14 @@ export function WorkStation() {
       if (!occupiedWorkstations.includes(chairNumber)) {
         item.classList.remove("occupied");
         item.classList.remove("busy");
-       item.classList.add("unoccupied");
+        item.classList.add("unoccupied");
       }
     });
-    event.target.classList.remove("unoccupied");
-    event.target.classList.add("occupied");
-    event.target.classList.add("busy");
-
-    if (scheduling.workstation !== chairNumber) {
+           
+    if ((scheduling.workstation !== chairNumber) && (!occupiedWorkstations.includes(chairNumber.toString()))) {
+      event.target.classList.remove("unoccupied");
+      event.target.classList.add("occupied");
+      event.target.classList.add("busy");
       setScheduling({ ...scheduling, workstation: chairNumber.toString(), user_id: user?.id })
     } else {
       return
