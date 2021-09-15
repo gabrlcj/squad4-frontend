@@ -51,7 +51,7 @@ export function InputDate() {
         maxDate={setMaxDate(new Date())}
         dateFormat='dd/MM'
         filterDate={isWeekday}
-        showPopperArrow={false}
+        showPopperArrow={true}
         placeholderText='DATA'
         locale='pt-BR'
       />

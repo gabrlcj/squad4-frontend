@@ -10,6 +10,19 @@ export const Container = styled.div`
     font: 700 0.85rem 'Montserrat', sans-serif;
     height: fit-content;
 
+    .react-datepicker__triangle {
+      background: var(--orange-subtle);
+
+      &::after {
+        border-bottom-color: var(--orange-subtle);
+      }
+
+      &::before {
+        top: 0;
+        border-bottom-color: var(--orange-subtle);
+      }
+    }
+
     .react-datepicker__header {
       border-radius: 1rem;
       background: var(--orange-subtle);
@@ -28,7 +41,7 @@ export const Container = styled.div`
     }
 
     .react-datepicker__month {
-      margin: 0 0.1rem 0.1rem;
+      margin: 0 0.2rem 0.1rem;
 
       .react-datepicker__week {
         border-radius: 0.25rem;

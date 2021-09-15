@@ -17,7 +17,9 @@ export function Calendario({ formatDay, userScheduling }) {
         <Carousel itemsToShow={3}>
           {userScheduling?.map((scheduling, index) => (
             <div className='appointment-date' key={index}>
-              {dataToCalendar(new Date(scheduling.date))}
+              <strong>{dataToCalendar(new Date(scheduling.date))}</strong>
+              <strong>{scheduling.office}</strong>
+              <strong>{scheduling.workstation}</strong>
             </div>
           ))}
         </Carousel>

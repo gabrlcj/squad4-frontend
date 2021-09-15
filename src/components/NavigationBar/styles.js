@@ -19,7 +19,7 @@ export const Container = styled.nav`
     border-radius: 50%;
     border: 3.5px solid white;
 
-    @media (max-width: 1200px) {
+    @media (max-width: 1080px) {
       height: 3.5rem;
       width: 3.5rem;
       border: 2.2px solid white;
@@ -44,7 +44,7 @@ export const Container = styled.nav`
       height: 2rem;
       width: 2rem;
 
-      @media (max-width: 1200px) {
+      @media (max-width: 1080px) {
         height: 1.75rem;
         width: 1.75rem;
       }
