@@ -92,12 +92,12 @@ export function Meeting() {
   const roomClickHandler = (event) => {
     event.stopPropagation();
 
-    document.querySelectorAll(".occupied").forEach((item) => {
+    document.querySelectorAll(".occupiedRoom").forEach((item) => {
       if(!occupiedRooms.includes(item.id.toString())) {
-        item.classList.remove("occupied");
+        item.classList.remove("occupiedRoom");
       }});
 
-    event.target.classList.add("occupied");
+    event.target.classList.add("occupiedRoom");
 
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
@@ -165,7 +165,7 @@ export function Meeting() {
               padding={"0.5rem 1rem"}
               className={`${
                 occupiedRooms?.includes(room)
-                  ? "occupied"
+                  ? "occupiedRoom"
                   : ""
               }`}
               id={room}

@@ -5,9 +5,9 @@ export const Container = styled.div`
   background: #fff;
   color: var(--orange-main);
   border-radius: 2rem;
-  margin: 0.5rem auto 0;
+  margin: 0.75rem auto 0;
   padding: 0.75rem 1rem;
-  width: 20rem;
+  width: 18rem;
   height: 96%;
 
   display: flex;
@@ -16,8 +16,8 @@ export const Container = styled.div`
   gap: 0.1rem;
   flex-direction: column;
 
-  @media (max-width: 1200px) {
-    width: 18rem;
+  @media (max-width: 1080px) {
+    width: 15rem;
   }
 
   .background-calendar {
@@ -29,15 +29,15 @@ export const Container = styled.div`
     width: 100%;
     text-align: center;
     line-height: 1.5rem;
-    margin-top: 0.5rem;
+    margin-bottom: 1rem;
     font-weight: 800;
     color: var(--blue-darker);
   }
 
   h5 {
-    margin-left: 0.75rem;
+    margin: 0 0.75rem 1rem;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-right: auto;
   }
 
@@ -76,7 +76,6 @@ export const Container = styled.div`
       }
 
       .rec.rec-pagination {
-        position: static;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -93,6 +92,10 @@ export const Container = styled.div`
       width: 100%;
       height: 3.25rem;
       text-align: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
 `

@@ -7,16 +7,16 @@ export const Container = styled.div`
   border-radius: 2rem;
   margin: 1rem auto 0;
   padding: 1rem;
-  width: 20rem;
+  width: 18rem;
   height: 90%;
 
-  @media (max-width: 1200px) {
-    width: 18rem;
+  @media (max-width: 1080px) {
+    width: 15rem;
   }
 
   h5 {
     margin: 0 0 0.5rem 0.75rem;
-    font-weight: 800;
+    font-weight: 700;
     font-size: 1rem;
     margin-right: auto;
   }
@@ -33,7 +33,7 @@ export const Container = styled.div`
       background: var(--blue-lighter);
       border-radius: 1rem;
       width: 100%;
-      padding: 0.75rem;
+      padding: 1rem;
     }
   }
 `
