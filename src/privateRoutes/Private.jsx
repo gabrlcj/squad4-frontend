@@ -6,12 +6,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const { token } = useContext(AuthContext);
 
   return (
-    <Route
-      {...rest}
-      render={() =>
-        token ? <Component {...rest} /> : <Redirect to="/" />
+    <Route {...rest}>
+      {token ?
+        <Component />
+        :
+        <Redirect to="/" />
       }
-    />
+    </Route>
   );
 };
 

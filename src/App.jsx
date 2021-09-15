@@ -7,23 +7,29 @@ import { Dashboard } from "./components/Dashboard";
 import { GlobalStyle } from "./styles/global";
 import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./privateRoutes/Private";
+import { useState } from "react";
 
 export default function App() {
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   function handleModal() {
-    setShowModal((prev) => !prev)
-  }
+    setShowModal(prev => !prev);
+  };
 
   return (
     <>
       <Router>
         <GlobalStyle />
         <Switch>
-          <PrivateRoute path='/firstaccess' component={QuestionnairePage} />
-          <PrivateRoute path='/dashboard/:id' component={Dashboard} />
-          <Route path='/register' component={RegisterPage} />            
-          <Route path="/" exact  component={LoginPage} />
+          <PrivateRoute path='/firstaccess'>
+            <QuestionnairePage />
+          </PrivateRoute>
+          <PrivateRoute path='/dashboard/:id'>
+            <Dashboard />
+          </PrivateRoute>
+          <Route path="/" exact>
+            <LoginPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
+          </Route>
         </Switch>
         <ToastContainer theme={"dark"} autoClose={3000} />
       </Router>
