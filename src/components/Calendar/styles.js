@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import 'react-calendar/dist/Calendar.css'
+import 'react-datepicker/dist/react-datepicker.css'
 
 export const Container = styled.div`
   grid-area: calendar;

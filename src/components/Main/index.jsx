@@ -4,6 +4,7 @@ import { WorkStation } from '../WorkStation'
 import { AuthContext } from '../../context/AuthContext'
 import LogoImage from '../../assets/Logo.svg'
 import BrandName from '../../assets/BrandName.svg'
+import { InputDate } from '../InputDate'
 
 export function Main() {
   const [station, setStation] = useState('Estação de trabalho')
@@ -46,6 +47,7 @@ export function Main() {
             REUNIÃO
           </option>
         </select>
+        <InputDate />
       </div>
       <section>
         <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
