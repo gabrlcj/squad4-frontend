@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   margin: 1rem auto;
   width: 80%;
-  
+
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
   .underline {
@@ -68,7 +68,7 @@ export const Container = styled.div`
     top: 356px; */
 
     background: #ffffff;
-    border: 1px solid #fe662e;
+    border: 2px solid var(--orange-main);
     box-sizing: border-box;
     border-radius: 10px;
 
@@ -99,6 +99,10 @@ export const Container = styled.div`
     justify-content: center;
     font-size: 12px;
     margin: 2px 0;
+
+    p {
+      color: #707070;
+    }
   }
 
   .row {
@@ -122,20 +126,20 @@ export const Container = styled.div`
     padding: 0.75rem 2rem;
     margin: 20px;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--orange-main);
+    border: 2px solid var(--orange-main);
 
     width: 276px;
     height: 48px;
 
-    background: #fe5517;
+    background: #fff;
     border-radius: 10px;
 
-    transition: filter 0.2s;
+    transition: all 0.2s;
 
     &:hover {
-      filter: brightness(0.9);
-      background: #ffffff;
-      color: #535353;
+      color: #fff;
+      background: var(--orange-lighter);
     }
   }
 `

@@ -1,28 +1,27 @@
 import { useEffect, useState } from 'react'
-import { Header } from '../Header'
 import api from '../../api'
 
 import { Container } from './styles'
 import { toast } from 'react-toastify'
-import CloseModalButton from '../../assets/CloseModal.svg';
+import CloseModalButton from '../../assets/CloseModal.svg'
 
-export function RegisterPage({showModal, setShowModal, handleModal}) {
+export function RegisterPage({ showModal, setShowModal, handleModal }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [role, setRole] = useState('')
+  const [first_access, setFirstAccess] = useState(false)
 
-  const [first_access, setFirstAccess] = useState('')
   function handleUserRegister(event) {
     event.preventDefault()
+    setFirstAccess(true)
 
     const data = {
       name,
       email,
       password,
       role,
-      squad,
       first_access,
     }
 
@@ -36,8 +35,6 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
   }
 
   function validateInputs() {
-    SetFirstAccess(true)
-
     if (name === '' || email === '' || password === '') {
       return toast.error('Ops, algo deu errado')
     } else if (confirmPassword !== password) {
@@ -63,12 +60,17 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
 
   return (
     <>
-      <Container onSubmit={handleUserRegister} showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}>
-        <img src={CloseModalButton} alt='Fechar' onClick={handleModal} className="closeModalIcon"/>
-        <div className="regbox">
+      <Container
+        onSubmit={handleUserRegister}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        handleModal={handleModal}
+      >
+        <img src={CloseModalButton} alt='Fechar' onClick={handleModal} className='closeModalIcon' />
+        <div className='regbox'>
           <h2>Cadastro</h2>
-          <div className="row">
-            <label htmlFor='nome' className="column">
+          <div className='row'>
+            <label htmlFor='nome' className='column'>
               <input
                 name='nome'
                 type='text'
@@ -80,22 +82,28 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
                 onChange={(event) => setName(event.target.value)}
               />
             </label>
-            <label htmlFor="role">
-              <input type="text" value={role} className='textbox-input rolebox' placeholder="Digite seu cargo" onChange={(event) => setRole(event.target.value)} />
-            </label>
-          </div>
-            <label htmlFor='email' className="column">
+            <label htmlFor='role'>
               <input
-                name='email'
-                type='email'
-                className='row textbox-input emailbox'
-                required
-                placeholder='Digite seu email'
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
+                type='text'
+                value={role}
+                className='textbox-input rolebox'
+                placeholder='Digite seu cargo'
+                onChange={(event) => setRole(event.target.value)}
               />
             </label>
-          <div className="row">
+          </div>
+          <label htmlFor='email' className='column'>
+            <input
+              name='email'
+              type='email'
+              className='row textbox-input emailbox'
+              required
+              placeholder='Digite seu email'
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+          </label>
+          <div className='row'>
             <label htmlFor='senha'>
               <input
                 name='senha'
@@ -122,17 +130,19 @@ export function RegisterPage({showModal, setShowModal, handleModal}) {
             </label>
           </div>
           <label>
-            <div className={validLength === true ? 'basetext green' : ' basetext '}  style={{ marginTop: '5px' }} >Senha com 8 ou mais dígitos</div>
+            <div className={validLength === true ? 'basetext green' : ' basetext '} style={{ marginTop: '5px' }}>
+              Senha com 8 ou mais dígitos
+            </div>
             <div className={upperCase ? 'basetext green' : ' basetext '}>Possui letra maiúscula</div>
-            <div className={lowerCase ? 'basetext green' : ' basetext '} >Possui letra minúscula</div>
+            <div className={lowerCase ? 'basetext green' : ' basetext '}>Possui letra minúscula</div>
             <div className={hasNumber ? 'basetext green' : ' basetext '}>Possui números</div>
-            <div className={specialChar ? 'basetext green' : ' basetext '} >Possui caractéres especiais</div>
+            <div className={specialChar ? 'basetext green' : ' basetext '}>Possui caractéres especiais</div>
           </label>
 
           <div className='column'>
-          <button type='submit' onClick={validateInputs} >
-            Fazer Cadastro
-          </button>
+            <button type='submit' onClick={validateInputs}>
+              Fazer Cadastro
+            </button>
           </div>
         </div>
       </Container>
