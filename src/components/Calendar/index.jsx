@@ -6,11 +6,11 @@ import Carousel from 'react-elastic-carousel'
 import { Container } from './styles'
 
 export function Calendario({ formatDay, userScheduling }) {
-  const { day, setDay, scheduling, setScheduling } = useContext(AuthContext)
+  const { day, setDay, scheduling, setScheduling, setRoomScheduling } = useContext(AuthContext)
 
   useEffect(() => {
-    setScheduling({ ...scheduling, date: dataToDatabase(day) })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setScheduling({ ...scheduling, date: dataToDatabase(day) });
+    setRoomScheduling({...scheduling, date: dataToDatabase(day)})
   }, [day])
 
   function setMaxDate(date) {
