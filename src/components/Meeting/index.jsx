@@ -21,8 +21,8 @@ export function Meeting() {
     day,
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
-
-  console.log(occupiedDatetime);
+  const [occupiedRooms, setOccupiedRooms] = useState([]);
+  console.log(occupiedRooms)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -52,6 +52,9 @@ export function Meeting() {
   useEffect(() => {
     setOccupiedDatetime(
       roomSchedulings?.map((dayscheduling) => dayscheduling.time_zone)
+    );
+    setOccupiedRooms(
+      roomSchedulings?.map((dayscheduling) => dayscheduling.room)
     );
   }, [roomSchedulings]);
 
@@ -84,6 +87,13 @@ export function Meeting() {
 
   const roomClickHandler = (event) => {
     event.stopPropagation();
+
+    document.querySelectorAll(".occupied").forEach((item) => {
+      if (!occupiedRooms.includes(item.id)) {
+        item.classList.remove("occupied");
+      }
+    });
+    event.target.classList.add("occupied");
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
         ...roomScheduling,
@@ -127,7 +137,10 @@ export function Meeting() {
     "17h às 18h",
   ];
 
-  const Displays = (horarios, horariosId) => {
+  const rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4"];
+  const roomsId = ["1", "2", "3", "4", "5"];
+
+  const timeDisplays = (horarios, horariosId) => {
     return (
       <>
         {horarios.map((horario, index) => {
@@ -149,54 +162,45 @@ export function Meeting() {
     );
   };
 
+  const roomDisplays = (rooms, roomsId) => {
+    return (
+      <>
+        {rooms.map((room, index) => {
+          return (
+            <Display
+              marginBottom={"1rem"}
+              padding={"0.5rem 1rem"}
+              className={`${
+                occupiedRooms?.includes(roomsId[index].toString())
+                  ? "occupied"
+                  : ""
+              }`}
+              id={roomsId[index]}
+              onClick={(event) => roomClickHandler(event)}
+            >
+              {room}
+            </Display>
+          );
+        })}
+      </>
+    );
+  };
+
   return (
     <>
       <Container onSubmit={handleAppointment}>
         <TimeBlock>
           <h3 className="overlay">HORÁRIO</h3>
           <TimeContainer className="overlay">
-            <div>{Displays(horarios, horariosId)}</div>
-            <div>{Displays(horarios2, horarios2Id)}</div>
+            <div>{timeDisplays(horarios, horariosId)}</div>
+            <div>{timeDisplays(horarios2, horarios2Id)}</div>
           </TimeContainer>
         </TimeBlock>
         <RoomBlock>
           <h3 className="hidden">SALAS</h3>
 
           <RoomContainer className="hidden">
-            <div>
-              <Display
-                id="1"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 1
-              </Display>
-              <Display
-                id="2"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 2
-              </Display>
-              <Display
-                id="3"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 3
-              </Display>
-              <Display
-                id="4"
-                marginBottom={"1rem"}
-                padding={"0.5rem 1rem"}
-                onClick={(event) => roomClickHandler(event)}
-              >
-                SALA 4
-              </Display>
-            </div>
+            <div>{roomDisplays(rooms, roomsId)}</div>
           </RoomContainer>
         </RoomBlock>
       </Container>
