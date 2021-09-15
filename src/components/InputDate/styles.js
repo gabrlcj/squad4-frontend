@@ -78,7 +78,7 @@ export const Container = styled.div`
     margin-top: 0;
 
     position: relative;
-    z-index: 100;
+    z-index: 1;
 
     -webkit-appearance: none;
     -moz-appearance: none;
