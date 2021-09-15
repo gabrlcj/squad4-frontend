@@ -18,43 +18,60 @@ export function Meeting() {
     roomSchedulings,
     setRoomSchedulings,
     user,
-    day
+    day,
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
 
+  console.log(occupiedDatetime);
+
   function formatDateWithZero(date) {
-    if (date <= 9) return '0' + date
-    else return date
+    if (date <= 9) return "0" + date;
+    else return date;
   }
 
   const formatToday =
-    formatDateWithZero(day.getFullYear()) + '-' + formatDateWithZero(day.getMonth() + 1) + '-' + day.getDate()
+    formatDateWithZero(day.getFullYear()) +
+    "-" +
+    formatDateWithZero(day.getMonth() + 1) +
+    "-" +
+    day.getDate();
 
   useEffect(() => {
     try {
       api({
-        method: 'get',
+        method: "get",
         url: `reunioes/data/${formatToday}`,
       }).then((res) => {
-        setRoomSchedulings(res.data.rows)
-      })
+        setRoomSchedulings(res.data.rows);
+      });
     } catch (error) {
-      toast.error(error.response?.data.mensagem)
+      toast.error(error.response?.data.mensagem);
     }
-  }, [formatToday, setRoomSchedulings])
+  }, [formatToday, setRoomSchedulings]);
 
   useEffect(() => {
-    setOccupiedDatetime(roomSchedulings?.map((dayscheduling) => dayscheduling.time_zone))
-  }, [roomSchedulings])
+    setOccupiedDatetime(
+      roomSchedulings?.map((dayscheduling) => dayscheduling.time_zone)
+    );
+  }, [roomSchedulings]);
 
   const timeClickHandler = (event) => {
     event.stopPropagation();
-    event.target.classList.add("red")
-    console.log(event.target.classList)
+    document.querySelectorAll(".orange").forEach((item) => {
+      if (!occupiedDatetime.includes(item.id)) {
+        item.classList.remove("orange");
+      }
+    });
+    event.target.classList.add("orange");
+
+    document.querySelectorAll(".hidden").forEach((item) => {
+      item.classList.remove("hidden");
+    });
+    document.querySelectorAll(".overlay").forEach((item) => {
+      item.classList.remove("overlay");
+    });
+
     if (roomScheduling.time_zone !== event.target.id) {
-
-
-
       setRoomScheduling({
         ...roomScheduling,
         time_zone: event.target.id,
@@ -93,47 +110,53 @@ export function Meeting() {
     // }
   };
 
+  const horariosId = ["1", "2", "3", "4", "5"];
+  const horarios = [
+    "08h às 09h",
+    "09h às 10h",
+    "10h às 11h",
+    "11h às 12h",
+    "12h às 13h",
+  ];
+  const horarios2Id = ["6", "7", "8", "9", "10"];
+  const horarios2 = [
+    "13h às 14h",
+    "14h às 15h",
+    "15h às 16h",
+    "16h às 17h",
+    "17h às 18h",
+  ];
+
+  const Displays = (horarios, horariosId) => {
+    return (
+      <>
+        {horarios.map((horario, index) => {
+          return (
+            <Display
+              className={`${
+                occupiedDatetime?.includes(horariosId[index].toString())
+                  ? "orange"
+                  : ""
+              }`}
+              id={horariosId[index]}
+              onClick={(event) => timeClickHandler(event)}
+            >
+              {horario}
+            </Display>
+          );
+        })}
+      </>
+    );
+  };
+
   return (
     <>
       <Container onSubmit={handleAppointment}>
         <TimeBlock>
           <h3 className="overlay">HORÁRIO</h3>
           <TimeContainer className="overlay">
-            <div>
-              <Display classname="displayTime" id="1" onClick={(event) => timeClickHandler(event)}
-              >
-                8h às 9h
-              </Display>
-              <Display classname="displayTime" id="2" onClick={(event) => timeClickHandler(event)}>
-                9h às 10h
-              </Display>
-              <Display classname="displayTime" id="3" onClick={(event) => timeClickHandler(event)}>
-                10h às 11h
-              </Display>
-              <Display classname="displayTime" id="4" onClick={(event) => timeClickHandler(event)}>
-                11h às 12h
-              </Display>
-              <Display classname="displayTime" id="5" onClick={(event) => timeClickHandler(event)}>
-                12h às 13h
-              </Display>
-            </div>
-            <div>
-              <Display classname="displayTime" id="6" onClick={(event) => timeClickHandler(event)}>
-                13h às 14h
-              </Display>
-              <Display classname="displayTime" id="7" onClick={(event) => timeClickHandler(event)}>
-                14h às 15h
-              </Display>
-              <Display classname="displayTime" id="8" onClick={(event) => timeClickHandler(event)}>
-                15h às 16h
-              </Display>
-              <Display classname="displayTime" id="9" onClick={(event) => timeClickHandler(event)}>
-                16h às 17h
-              </Display>
-              <Display classname="displayTime" id="10" onClick={(event) => timeClickHandler(event)}>
-                17h às 18h
-              </Display>
-            </div>
+            <div>{Displays(horarios, horariosId)}</div>
+            <div>{Displays(horarios2, horarios2Id)}</div>
           </TimeContainer>
         </TimeBlock>
         <RoomBlock>

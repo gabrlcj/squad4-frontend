@@ -120,5 +120,9 @@ export const Container = styled.main`
     .selected {
       background-color: var(--blue-darker);
     }
+
+    .selectedRoom {
+      width: 9.5rem;
+    }
   }
 `
