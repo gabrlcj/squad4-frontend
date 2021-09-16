@@ -72,13 +72,6 @@ export const Station = styled.div`
       text-align: center;
 
       box-shadow: 0 0.15rem 0.3rem 0 #333333;
-
-      transition: all 0.3s;
-
-      &:hover {
-        transform: translateY(-5%);
-        filter: brightness(1.1);
-      }
     }
 
     .circle.up {
