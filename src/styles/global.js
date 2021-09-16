@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     --orange-subtle: #FE885C;
 
     --green: #51a259;
+    --red: #ff3b3b;
 
     --blue-main: #36357e;
     --blue-lighter: #5251a2;
@@ -18,6 +19,12 @@ export const GlobalStyle = createGlobalStyle`
     --background-focus: #FE4400a9;
     --alternative: #b4ccff;
     --text: #363033;
+
+    --toastify-color-dark: #fff;
+    --toastify-color-error: var(--red);
+    --toastify-color-sucess: var(--green);
+    --toastify-font-family: 'Montserrat', sans-serif;
+    --toastify-text-color-dark: var(--orange-main);
   }
 
   * {
@@ -42,6 +49,11 @@ export const GlobalStyle = createGlobalStyle`
     font: 700 1rem 'Montserrat', sans-serif;
     color: var(--text);
     -webkit-font-smoothing: antialiased;
+
+    @media (min-width: 1440px) {
+      margin: auto;
+      width: min(1440px, 90%);
+    }
   }
 
   input {
