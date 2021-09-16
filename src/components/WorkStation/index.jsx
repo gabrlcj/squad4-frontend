@@ -1,45 +1,52 @@
-import Table from '../../assets/WorkstationTable.svg'
-import UnavailableChair from '../../assets/UnavailableChair.svg'
-import { Container, Station } from './styles'
-import { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../../context/AuthContext'
-import api from '../../api'
-import { toast } from 'react-toastify'
-import Carousel from 'react-elastic-carousel'
-import { LoadingComponent } from '../LoadingComponent'
+import Table from "../../assets/WorkstationTable.svg";
+import UnavailableChair from "../../assets/UnavailableChair.svg";
+import { Container, Station } from "./styles";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import api from "../../api";
+import { toast } from "react-toastify";
+import Carousel from "react-elastic-carousel";
+import { LoadingComponent } from "../LoadingComponent";
 
 export function WorkStation() {
-  const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext);
+  const { scheduling, setScheduling, user, schedulings, setSchedulings, day } =
+    useContext(AuthContext);
   const [occupiedWorkstations, setOccupiedWorkstations] = useState([]);
   const [loading, setLoading] = useState(false);
 
   function formatDateWithZero(date) {
-    if (date <= 9) return '0' + date
-    else return date
+    if (date <= 9) return "0" + date;
+    else return date;
   }
 
   useEffect(() => {
-    setOccupiedWorkstations(schedulings?.map((dayscheduling) => dayscheduling.workstation))
-  }, [schedulings])
+    setOccupiedWorkstations(
+      schedulings?.map((dayscheduling) => dayscheduling.workstation)
+    );
+  }, [schedulings]);
 
   const formatToday =
-    formatDateWithZero(day.getFullYear()) + '-' + formatDateWithZero(day.getMonth() + 1) + '-' + day.getDate()
+    formatDateWithZero(day.getFullYear()) +
+    "-" +
+    formatDateWithZero(day.getMonth() + 1) +
+    "-" +
+    day.getDate();
 
   useEffect(() => {
     try {
       api({
-        method: 'get',
+        method: "get",
         url: `agendamentos/data/${formatToday}`,
       }).then((res) => {
         setSchedulings(res.data.rows);
-      })
+      });
     } catch (error) {
-      toast.error(error.response?.data.mensagem)
+      toast.error(error.response?.data.mensagem);
     }
-  }, [formatToday, setSchedulings])
+  }, [formatToday, setSchedulings]);
 
   const chairClickHandler = (event, chairNumber) => {
-    event.stopPropagation()
+    event.stopPropagation();
 
     document.querySelectorAll(".busy").forEach((item) => {
       if (!occupiedWorkstations.includes(chairNumber)) {
@@ -48,51 +55,58 @@ export function WorkStation() {
         item.classList.add("unoccupied");
       }
     });
-           
-    if ((scheduling.workstation !== chairNumber) && (!occupiedWorkstations.includes(chairNumber.toString()))) {
+
+    if (
+      scheduling.workstation !== chairNumber &&
+      !occupiedWorkstations.includes(chairNumber.toString())
+    ) {
       event.target.classList.remove("unoccupied");
-      event.target.classList.add("occupied");      
+      event.target.classList.add("occupied");
       event.target.classList.add("busy");
       event.target.classList.add("occupiedChair");
-      setScheduling({ ...scheduling, workstation: chairNumber.toString(), user_id: user?.id })
+      setScheduling({
+        ...scheduling,
+        workstation: chairNumber.toString(),
+        user_id: user?.id,
+      });
     } else {
-      return
+      return;
     }
-  }
+  };
 
   const handleAppointment = async (event) => {
     event.preventDefault();
     setLoading(true);
     try {
       await api({
-        method: 'post',
-        url: 'agendamentos',
+        method: "post",
+        url: "agendamentos",
         data: scheduling,
-      })
+      });
 
-      toast.success('Agendamento feito com sucesso!')
-      setScheduling({ ...scheduling, date: new Date() })
+      toast.success("Agendamento feito com sucesso!");
+      setScheduling({ ...scheduling, date: new Date() });
       setLoading(false);
     } catch (error) {
       toast.error(error.response?.data.mensagem);
       setLoading(false);
     }
-  }
+  };
 
   const unavailableSeat = () => {
     return (
-      <div className='circle unavailable'>
-        <img src={UnavailableChair} alt='Marcação de cadeira indisponivel' />
+      <div className="circle unavailable">
+        <img src={UnavailableChair} alt="Marcação de cadeira indisponivel" />
       </div>
-    )
-  }
+    );
+  };
 
   function isOdd(num) {
-    return num % 2 === 1
+    return num % 2 === 1;
   }
 
   function isEven(num) {
-    return num % 2 === 0
+    return num % 2 === 0;
   }
 
   const GenerateUpChairs = (chairNumbers) => {
@@ -102,18 +116,20 @@ export function WorkStation() {
           return (
             <div
               className={`circle up ${
-                occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
+                occupiedWorkstations.includes(chairNumber.toString())
+                  ? "occupied"
+                  : "unoccupied"
               }`}
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >
-              {isEven(chairNumber) ? unavailableSeat() : ''}
+              {isEven(chairNumber) ? unavailableSeat() : ""}
             </div>
-          )
+          );
         })}
       </>
-    )
-  }
+    );
+  };
 
   const GenerateDownChairs = (chairNumbers) => {
     return (
@@ -122,78 +138,110 @@ export function WorkStation() {
           return (
             <div
               className={`circle down ${
-                occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
+                occupiedWorkstations.includes(chairNumber.toString())
+                  ? "occupied"
+                  : "unoccupied"
               }`}
               key={chairNumber}
               onClick={(event) => chairClickHandler(event, chairNumber)}
             >
-              {isOdd(chairNumber) ? unavailableSeat() : ''}
+              {isOdd(chairNumber) ? unavailableSeat() : ""}
             </div>
-          )
+          );
         })}
       </>
-    )
-  }
+    );
+  };
 
   const tableStation = (id, chairs, chairs2) => {
     return (
       <Station id={id}>
-        <div className='chairs'>{GenerateUpChairs(chairs)}</div>
-        <img className='table' src={Table} alt='Mesa de trabalho' />
-        <div className='chairs'>{GenerateDownChairs(chairs2)}</div>
+        <div className="chairs">{GenerateUpChairs(chairs)}</div>
+        <img className="table" src={Table} alt="Mesa de trabalho" />
+        <div className="chairs">{GenerateDownChairs(chairs2)}</div>
       </Station>
-    )
+    );
+  };
+
+  let chairNumber = 640;
+  const allChairs = Array.apply(null, { length: chairNumber }).map(
+    Number.call,
+    Number
+  );
+ 
+  function simpleArray(chair) {
+    return [chair, chair + 16]
   }
+
+  const creatingWorkstations = (allStations, allChairs) => {
+    return (
+      <>
+        {allStations.map((station, index) => (
+        
+          <div className="content">
+            {tableStation(allStations[index], [allChairs[station], allChairs[station + 1], allChairs[station + 2], allChairs[station + 3]], [allChairs[station + 4], allChairs[station + 5], allChairs[station + 6], allChairs[station + 7]])}
+            {tableStation(allStations[index + 1], [allChairs[station + 8], allChairs[station + 9], allChairs[station + 10], allChairs[station + 11]], [allChairs[station + 12], allChairs[station + 13], allChairs[station + 14], allChairs[station + 15]])}
+          </div>
+
+        ))}
+      </>
+    );
+  };
 
   return (
     <>
-      <form className='modal' onSubmit={handleAppointment}>
-        <strong style={{ marginRight: '1rem' }}>Escolha o dia e a cadeira e clique no botão confirmar</strong>
-        <button type='submit'>Confirmar</button>
+      <form className="modal" onSubmit={handleAppointment}>
+        <strong style={{ marginRight: "1rem" }}>
+          Escolha o dia e a cadeira e clique no botão confirmar
+        </strong>
+        <button type="submit">Confirmar</button>
       </form>
-      {scheduling.office === 'São Paulo' ? (
+      {scheduling.office === "São Paulo" ? (
         <Container>
-          <Carousel itemsToShow={2} className='carousel'>
-            <div className='content'>
-              {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
-              {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
-            </div>
-            <div className='content'>
-              {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
-              {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
-            </div>
-            <div className='content'>
-              {tableStation(5, [33, 34, 35, 36], [37, 38, 39, 40])}
-              {tableStation(6, [41, 42, 43, 44], [45, 46, 47, 48])}
-            </div>
-            <div className='content'>
-              {tableStation(7, [49, 50, 51, 52], [53, 54, 55, 56])}
-              {tableStation(8, [57, 58, 59, 60], [61, 62, 63, 64])}
-            </div>
+          <Carousel itemsToShow={2} className="carousel">
+            {creatingWorkstations(simpleArray(1), allChairs)}
+            {creatingWorkstations(simpleArray(18), allChairs)}
+            {creatingWorkstations(simpleArray(33), allChairs)}
+            {creatingWorkstations(simpleArray(50), allChairs)}
+            {creatingWorkstations(simpleArray(67), allChairs)}
+            {creatingWorkstations(simpleArray(84), allChairs)}
+            {creatingWorkstations(simpleArray(101), allChairs)}
+            {creatingWorkstations(simpleArray(118), allChairs)}
+            {creatingWorkstations(simpleArray(133), allChairs)}            
+            {creatingWorkstations(simpleArray(150), allChairs)}
+            {creatingWorkstations(simpleArray(167), allChairs)}
+            {creatingWorkstations(simpleArray(184), allChairs)}
+            {creatingWorkstations(simpleArray(201), allChairs)}
+            {creatingWorkstations(simpleArray(218), allChairs)}
+            {creatingWorkstations(simpleArray(233), allChairs)}            
+            {creatingWorkstations(simpleArray(250), allChairs)}
+            {creatingWorkstations(simpleArray(267), allChairs)}
+            {creatingWorkstations(simpleArray(284), allChairs)}
+            {creatingWorkstations(simpleArray(301), allChairs)}
+            {creatingWorkstations(simpleArray(318), allChairs)}
           </Carousel>
         </Container>
       ) : (
         <Container>
           <Carousel itemsToShow={2}>
-            <div className='content'>
-              {tableStation(1, [1, 2, 3, 4], [5, 6, 7, 8])}
-              {tableStation(2, [9, 10, 11, 12], [13, 14, 15, 16])}
-            </div>
-            <div className='content'>
-              {tableStation(3, [17, 18, 19, 20], [21, 22, 23, 24])}
-              {tableStation(4, [25, 26, 27, 28], [29, 30, 31, 32])}
-            </div>
-            <div className='content'>
-              {tableStation(5, [33, 34, 35, 36], [37, 38, 39, 40])}
-              {tableStation(6, [41, 42, 43, 44], [45, 46, 47, 48])}
-            </div>
-            <div className='content'>
-              {tableStation(7, [49, 50, 51, 52], [53, 54, 55, 56])}
-              {tableStation(8, [57, 58, 59, 60], [61, 62, 63, 64])}
-            </div>
+          {creatingWorkstations(simpleArray(1), allChairs)}
+            {creatingWorkstations(simpleArray(18), allChairs)}
+            {creatingWorkstations(simpleArray(33), allChairs)}
+            {creatingWorkstations(simpleArray(50), allChairs)}
+            {creatingWorkstations(simpleArray(67), allChairs)}
+            {creatingWorkstations(simpleArray(84), allChairs)}
+            {creatingWorkstations(simpleArray(101), allChairs)}
+            {creatingWorkstations(simpleArray(118), allChairs)}
+            {creatingWorkstations(simpleArray(133), allChairs)}            
+            {creatingWorkstations(simpleArray(150), allChairs)}
+            {creatingWorkstations(simpleArray(167), allChairs)}
+            {creatingWorkstations(simpleArray(184), allChairs)}
+            {creatingWorkstations(simpleArray(201), allChairs)}
+            {creatingWorkstations(simpleArray(218), allChairs)}
+            {creatingWorkstations(simpleArray(233), allChairs)}            
           </Carousel>
         </Container>
       )}
     </>
-  )
+  );
 }
