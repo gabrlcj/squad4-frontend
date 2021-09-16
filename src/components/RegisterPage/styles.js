@@ -2,12 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.form`
   width: 35rem;
-  height: 35rem;
+  height: 32rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   margin: auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 

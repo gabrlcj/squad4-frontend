@@ -56,8 +56,9 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
           <img src={CloseModalButton} alt='Fechar' onClick={handleModal} className='closeModalIcon' />
           <div className='confirmMeetingModal'>
             <h2>
-              {roomScheduling?.room}, {dataAtualFormatada(new Date(roomScheduling?.date))} em {roomScheduling?.office} -
-              SP
+              {roomScheduling?.room},{" "}
+              {dataAtualFormatada(new Date(roomScheduling?.date))} de {roomScheduling?.time_zone} em{" "}
+              {roomScheduling?.office} - SP
             </h2>
             <h3>Ei, antes de confirmar o agendamento se liga nas orientações!</h3>
             <ul>
