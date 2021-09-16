@@ -40,5 +40,5 @@ yarn
 # Rode o comando yarn dev para inicialização do projeto
 yarn dev
 
-# Site estará rodando no localhost: 3000
+# Site estará rodando no http://localhost:3000
 ```
