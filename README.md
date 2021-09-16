@@ -56,11 +56,13 @@ yarn dev
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=React+Router&color=%2332323240&style=for-the-badge&logo=React+Router" alt="React Router"></a>
 
 ## 👤 Participantes
-|Foto|Nome|
-|--|--|
-|<img src="https://github.com/gabrlcj.png" width="100">|_Gabriel Bittencourt_|
-<img src="https://github.com/felipeblobo.png" width="100">|_Felipe Lobo_|
-<img src="https://github.com/hirogawa.png" width="100">|_Hugo Lemos_|
-<img src="https://github.com/dansenpir.png" width="100">|_Danrley Senegalha_|
+|_Gabriel Bittencourt_|_Felipe Lobo_|_Hugo Lemos_|_Danrley Senegalha_|
+|---------------------|-------------|------------|-------------------|
+|<img src="https://github.com/gabrlcj.png" width="100">|<img src="https://github.com/felipeblobo.png" width="100">|<img src="https://github.com/hirogawa.png" width="100">|<img src="https://github.com/dansenpir.png" width="100">
+
+
+
+
+
 
 #### Feito com 🧡 pelo squad4!
