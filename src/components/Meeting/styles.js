@@ -7,8 +7,12 @@ export const Container = styled.div`
   margin: 1rem 0;
   color: white;
 
-  .occupied {
-    background-color: var(--orange-main);
+  .occupiedRoom {
+    background-color: var(--orange-subtle);
+  }
+
+  .specificOccupied, .occupied {
+    background-color: var(--orange-lighter) !important;
   }
 `
 

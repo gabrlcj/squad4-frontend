@@ -23,7 +23,6 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log(roomScheduling)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -61,14 +60,16 @@ export function Meeting() {
     );
   }, [roomSchedulings]);
 
-  const timeClickHandler = (event, horario) => {
+  const timeClickHandler = (event) => {
     event.stopPropagation();
+
     document.querySelectorAll(".occupied").forEach((item) => {
-      if (!occupiedDatetime?.includes(horario)) {
+      if (!occupiedDatetime?.includes(item.id.toString())) {
         item.classList.remove("occupied");
       }
     });
-    event.target.classList.add("occupied");
+  
+    event.target.classList.add("occupiedTime");
 
     document.querySelectorAll(".hidden").forEach((item) => {
       item.classList.remove("hidden");
@@ -91,12 +92,13 @@ export function Meeting() {
   const roomClickHandler = (event) => {
     event.stopPropagation();
 
-    document.querySelectorAll(".occupied").forEach((item) => {
-      if(!occupiedRooms?.includes(item.id.toString())) {
-        item.classList.remove("occupied");
+    document.querySelectorAll(".occupiedRoom").forEach((item) => {
+      if(!occupiedRooms.includes(item.id.toString())) {
+        item.classList.remove("occupiedRoom");
       }});
 
-    event.target.classList.add("occupied");
+    event.target.classList.add("occupiedRoom");    
+    event.target.classList.add("specificOccupied");
 
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
@@ -143,7 +145,7 @@ export function Meeting() {
                   : ""
               }`}
               id={horario}
-              onClick={(event) => timeClickHandler(event, horario)}
+              onClick={(event) => timeClickHandler(event)}
             >
               {horario}
             </Display>
@@ -164,7 +166,7 @@ export function Meeting() {
               padding={"0.5rem 1rem"}
               className={`${
                 occupiedRooms?.includes(room)
-                  ? "occupied"
+                  ? "occupiedRoom"
                   : ""
               }`}
               id={room}

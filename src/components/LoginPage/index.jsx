@@ -13,6 +13,7 @@ import AstronautCalendar from '../../assets/AstronautCalendar.svg'
 import GrupoFCamara from '../../assets/GrupoFCamara.svg'
 import BrandName from '../../assets/BrandName.svg'
 import Logo from '../../assets/Logo.svg'
+import { LoadingComponent } from '../LoadingComponent';
 
 export function LoginPage({ showModal, setShowModal, handleModal }) {
   const [email, setEmail] = useState('')
@@ -55,7 +56,7 @@ export function LoginPage({ showModal, setShowModal, handleModal }) {
   }
 
   if (loading) {
-    return <h1>Carregando...</h1>
+    return <LoadingComponent />
   }
 
   return (
