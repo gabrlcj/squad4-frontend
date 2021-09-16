@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0 .25rem .25rem rgba(0, 0, 0, 0.25));
 
   .underline {
     text-decoration: underline;
@@ -18,7 +18,7 @@ export const Container = styled.div`
     width: 15rem;
 
     font: 700 1.25rem 'Montserrat', sans-serif;
-    line-height: 22px;
+    line-height: 1.375rem;
   }
 
   .left {
@@ -29,7 +29,7 @@ export const Container = styled.div`
     background: var(--blue-main);
     width: 30rem;
     height: 35rem;
-    border-radius: 40px 0px 0px 40px;
+    border-radius: 2.5rem 0 0 2.5rem;
 
     img {
       margin: 0;
@@ -43,12 +43,12 @@ export const Container = styled.div`
       white-space: normal;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 61.25rem) {
       position: absolute;
-      width: 1px;
-      height: 1px;
+      width: 0.063rem;
+      height: 0.063rem;
       padding: 0;
-      margin: -1px;
+      margin: -0.063rem;
       overflow: hidden;
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
@@ -56,10 +56,10 @@ export const Container = styled.div`
 
       img {
         position: absolute;
-        width: 1px;
-        height: 1px;
+        width: 0.063rem;
+        height: 0.063rem;
         padding: 0;
-        margin: -1px;
+        margin: -0.063rem;
         overflow: hidden;
         clip: rect(0, 0, 0, 0);
         white-space: nowrap;
@@ -72,11 +72,11 @@ export const Container = styled.div`
     background: #ffffff;
     width: 30rem;
     height: 35rem;
-    padding: 140px 200px;
+    padding: 8.75rem 12.5rem;
     justify-content: center;
     align-items: center;
     align-content: center;
-    border-radius: 0px 0px 40px 0px;
+    border-radius: 0 0 2.5rem 0;
   }
 
   .loginbox,
@@ -86,23 +86,22 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 30%;
     color: var(--orange-main);
   }
 
   .textbox-input {
-    width: 276px;
-    height: 48px;
+    width: 17.25rem;
+    height: 3rem;
 
     background: #ffffff;
-    border: 2px solid var(--orange-main);
+    border: 0.125rem solid var(--orange-main);
     box-sizing: border-box;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 
     font: 400 1rem 'Calibri', sans-serif;
-    line-height: 17px;
+    line-height: 1.125rem;
     text-align: left;
-    padding-left: 7px;
+    padding-left: 0.438rem;
 
     color: var(--text);
   }
@@ -121,7 +120,7 @@ export const Container = styled.div`
     width: 15rem;
     justify-content: center;
     font-size: 0.75rem;
-    margin: 2px 0;
+    margin: 0.125rem 0;
 
     p {
       color: #707070;
@@ -138,16 +137,16 @@ export const Container = styled.div`
   button {
     border: 0;
     padding: 0.75rem 2rem;
-    margin: 20px;
+    margin: 1.25rem;
     font-weight: 700;
     color: var(--orange-main);
-    border: 2px solid var(--orange-main);
+    border: 0.125rem solid var(--orange-main);
 
     width: 17.25rem;
     height: 3rem;
 
     background: #fff;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 
     transition: all 0.2s;
 
