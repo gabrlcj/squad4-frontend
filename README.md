@@ -13,6 +13,16 @@
   <a href="https://www.npmjs.com/package/react"><img src="https://img.shields.io/badge/React-17-orange?logo=react&logoColor=blue" alt="Made with React"></a>
 </div>
 
+<br />
+
+<div align='center'>
+  <a href="#-sobre">Sobre</a> •
+  <a href="#-imagens">Imagens</a> •
+  <a href="#rodando-o-projeto">Rodando o Projeto</a> •
+  <a href="#-tecnologias-utilizadas">Tecnologias Utilizadas</a> •
+  <a href="#-participantes">Participantes</a>
+</div>
+
 ## 📝 Sobre
 Projeto desenvolvido pelo **squad 4** no hackathon do [Programa de Formação](https://digital.fcamara.com.br/programadeformacao) do [Grupo FCamara](https://www.fcamara.com.br/) onde criamos um sistema de login/registro para agendamento de idas ao ambiente de trabalho, apresentando todos os cuidados necessários para a volta do trabalho presencial.
 
@@ -50,8 +60,6 @@ yarn dev
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=JavaScript&color=%2332323240&style=for-the-badge&logo=JavaScript" alt="JavaScript"></a>
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=Reactjs&color=%2332323240&style=for-the-badge&logo=React" alt="Reactjs"></a>
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=Styled-components&color=%2332323240&style=for-the-badge&logo=styled-components" alt="Styled-components"></a>
-
-## 🧰 Ferramentas Utilizadas
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=Yarn&color=%2332323240&style=for-the-badge&logo=Yarn" alt="Yarn"></a>
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=React+Router&color=%2332323240&style=for-the-badge&logo=React+Router" alt="React Router"></a>
 
