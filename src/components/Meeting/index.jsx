@@ -69,7 +69,7 @@ export function Meeting() {
       }
     });
   
-    event.target.classList.add("occupiedTime");
+    event.target.classList.add("occupied");
 
     document.querySelectorAll(".hidden").forEach((item) => {
       item.classList.remove("hidden");
