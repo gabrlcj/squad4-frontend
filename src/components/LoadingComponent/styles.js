@@ -15,7 +15,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     background: #36357e;
-    width: 45rem;
+    width: ${props => props.dimensions ? props.dimensions : "45rem"};
     height: 30rem;
     border-radius: 40px 0px 40px 40px;
 
