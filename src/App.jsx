@@ -7,7 +7,7 @@ import { GlobalStyle } from "./styles/global";
 import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./privateRoutes/Private";
 import { useState } from "react";
-import { Loading } from "./components/Loading";
+import { LoadingComponent} from "./components/LoadingComponent";
 
 export default function App() {
   const [showModal, setShowModal] = useState(false);
@@ -31,7 +31,7 @@ export default function App() {
             <LoginPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
           </Route>
           <Route path="/loading" exact>
-            <Loading />
+            <LoadingComponent />
           </Route>
         </Switch>
         <ToastContainer theme={"dark"} autoClose={3000} />

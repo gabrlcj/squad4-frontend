@@ -5,7 +5,7 @@ import BrandName from "../../assets/BrandName.svg";
 import Logo from "../../assets/Logo.svg";
 import LoadingImage from "../../assets/loading.gif";
 
-export function Loading() {
+export function LoadingComponent() {
   return (
     <>
       <Container>

@@ -6,10 +6,12 @@ import { AuthContext } from '../../context/AuthContext'
 import api from '../../api'
 import { toast } from 'react-toastify'
 import Carousel from 'react-elastic-carousel'
+import { LoadingComponent } from '../LoadingComponent'
 
 export function WorkStation() {
-  const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext)
-  const [occupiedWorkstations, setOccupiedWorkstations] = useState([])
+  const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext);
+  const [occupiedWorkstations, setOccupiedWorkstations] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   function formatDateWithZero(date) {
     if (date <= 9) return '0' + date
@@ -29,7 +31,7 @@ export function WorkStation() {
         method: 'get',
         url: `agendamentos/data/${formatToday}`,
       }).then((res) => {
-        setSchedulings(res.data.rows)
+        setSchedulings(res.data.rows);
       })
     } catch (error) {
       toast.error(error.response?.data.mensagem)
@@ -59,7 +61,8 @@ export function WorkStation() {
   }
 
   const handleAppointment = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
+    setLoading(true);
     try {
       await api({
         method: 'post',
@@ -69,8 +72,10 @@ export function WorkStation() {
 
       toast.success('Agendamento feito com sucesso!')
       setScheduling({ ...scheduling, date: new Date() })
+      setLoading(false);
     } catch (error) {
-      toast.error(error.response?.data.mensagem)
+      toast.error(error.response?.data.mensagem);
+      setLoading(false);
     }
   }
 
