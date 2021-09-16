@@ -26,3 +26,19 @@ Assim podendo visualizar quais estações de trabalho e salas de reunião estão
   <img src='.github/LoginPageOS.png' width=545>
   <img src='.github/RegisterPageOS.png' width=545>
 </div>
+
+## 📂 Rodando o projeto
+```git
+# Clone o repositório
+git clone https://github.com/gabrlcj/squad4-frontend
+
+# Acesse a pasta do projeto 
+
+# Rode o comando yarn no terminal dentro da pasta do projeto
+yarn
+
+# Rode o comando yarn dev para inicialização do projeto
+yarn dev
+
+# Site estará rodando no localhost: 3000
+```
