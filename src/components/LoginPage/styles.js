@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: center;
   margin: 1rem auto;
   width: 80%;
 
@@ -37,6 +36,10 @@ export const Container = styled.div`
     width: 552px;
     height: 692px;
     border-radius: 40px 0px 0px 40px;
+
+    img {
+      margin: 0 0.5rem;
+    }
   }
 
   .right {

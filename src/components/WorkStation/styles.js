@@ -16,6 +16,7 @@ export const Container = styled.div`
       height: 0.75rem;
       padding: 0;
       border: 0;
+      background: #c4c4c4;
 
       &:hover {
         box-shadow: 0 0 1px 3px var(--orange-lighter);

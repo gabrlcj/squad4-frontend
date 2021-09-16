@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import { toast } from 'react-toastify'
 import api from '../../api/index.js'
 import { AuthContext } from '../../context/AuthContext.js'
-import { Calendario } from '../Calendar/index.jsx'
+import { Appointments } from '../Appointments/index.jsx'
 import { Main } from '../Main/index.jsx'
 import { NavigationBar } from '../NavigationBar/index.jsx'
 import { Notifications } from '../Notifications/index.jsx'
@@ -39,8 +39,8 @@ export function Dashboard() {
       <Container>
         <NavigationBar />
         <Main formatDay={formatToday} />
-        <div className='background-calendar'>
-          <Calendario userScheduling={userScheduling} setUserScheduling={setUserScheduling} formatDay={formatToday} />
+        <div className='background-appointments'>
+          <Appointments userScheduling={userScheduling} setUserScheduling={setUserScheduling} formatDay={formatToday} />
         </div>
         <div className='background-notification'>
           <Notifications />
