@@ -2,26 +2,28 @@ import { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-function PrivateRoute({ children, ...rest }) {
-  
+function PrivateRoute({ component: Component, ...rest }) {
+
   const { token } = useContext(AuthContext);
 
   return (
     <Route
       {...rest}
-      render={({ location }) =>
-        token ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/",
-              state: { from: location }
-            }}
-          />
-        )
+      render={
+        () => (
+          token
+            ? (
+              <Component />
+            ) : (
+              <Redirect
+                to={{
+                  pathname: '/'
+                }}
+              />
+            ))
       }
     />
   );
 }
+
 export default PrivateRoute;

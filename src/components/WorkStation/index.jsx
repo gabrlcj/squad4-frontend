@@ -49,8 +49,9 @@ export function WorkStation() {
            
     if ((scheduling.workstation !== chairNumber) && (!occupiedWorkstations.includes(chairNumber.toString()))) {
       event.target.classList.remove("unoccupied");
-      event.target.classList.add("occupied");
+      event.target.classList.add("occupied");      
       event.target.classList.add("busy");
+      event.target.classList.add("occupiedChair");
       setScheduling({ ...scheduling, workstation: chairNumber.toString(), user_id: user?.id })
     } else {
       return

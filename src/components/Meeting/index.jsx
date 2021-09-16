@@ -69,7 +69,7 @@ export function Meeting() {
       }
     });
   
-    event.target.classList.add("occupied");
+    event.target.classList.add("occupiedTime");
 
     document.querySelectorAll(".hidden").forEach((item) => {
       item.classList.remove("hidden");
@@ -97,7 +97,8 @@ export function Meeting() {
         item.classList.remove("occupiedRoom");
       }});
 
-    event.target.classList.add("occupiedRoom");
+    event.target.classList.add("occupiedRoom");    
+    event.target.classList.add("specificOccupied");
 
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
