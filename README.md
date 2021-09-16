@@ -28,17 +28,17 @@ Assim podendo visualizar quais estações de trabalho e salas de reunião estão
 </div>
 
 ## 📂 Rodando o projeto
-```git
+```bash
 # Clone o repositório
 git clone https://github.com/gabrlcj/squad4-frontend
 
 # Acesse a pasta do projeto 
-
 # Rode o comando yarn no terminal dentro da pasta do projeto
 yarn
 
-# Rode o comando yarn dev para inicialização do projeto
+# Após as instalações das dependências
+# Rode o comando yarn dev para rodar o projeto
 yarn dev
 
-# Site estará rodando no http://localhost:3000
+# Site estará rodando no localhost:3000
 ```
