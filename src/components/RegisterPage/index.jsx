@@ -17,19 +17,20 @@ export function RegisterPage({
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
-  const [validPassword, setValidPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  function validatePassword() {
+    if (validLength && hasNumber && upperCase && lowerCase && specialChar) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   function handleUserRegister(event) {
     event.preventDefault();
 
     setLoading(true);
-
-    if (validLength && hasNumber && upperCase && lowerCase && specialChar) {
-      setValidPassword(true);
-    } else {
-      setValidPassword(false);
-    }
 
     const data = {
       name,
@@ -46,12 +47,13 @@ export function RegisterPage({
       data,
     })
       .then((res) => {
-        toast.success("Registro feito com sucesso!");
         setLoading(false);
+        toast.success("Registro feito com sucesso!");
+        handleModal();
       })
       .catch((error) => {
-        toast.error(error.response.data.message);
         setLoading(false);
+        toast.error(error.response.data.message);
       });
   }
 
@@ -60,7 +62,7 @@ export function RegisterPage({
   const [upperCase, setUpperCase] = useState(null);
   const [lowerCase, setLowerCase] = useState(null);
   const [specialChar, setSpecialChar] = useState(null);
-  // const [match, setMatch] = useState(null);
+  const [validPassword, setValidPassword] = useState("");
 
   useEffect(() => {
     setValidLength(password.length > 7 ? true : false);
@@ -68,6 +70,7 @@ export function RegisterPage({
     setUpperCase(/[A-Z]/.test(password) ? true : false);
     setLowerCase(/[a-z]/.test(password) ? true : false);
     setSpecialChar(/[^A-Z a-z0-9]/.test(password) ? true : false);
+    setValidPassword(validatePassword ? true : false)
   }, [password]);
   //Bloco de validação de senha END
 
@@ -177,7 +180,7 @@ export function RegisterPage({
               Possui números
             </div>
             <div className={specialChar ? "basetext green" : " basetext "}>
-              Possui caractéres especiais
+              Possui caracteres especiais
             </div>
           </label>
 
