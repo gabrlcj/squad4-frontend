@@ -5,10 +5,10 @@ import BrandName from "../../assets/BrandName.svg";
 import Logo from "../../assets/Logo.svg";
 import LoadingImage from "../../assets/loading.gif";
 
-export function LoadingComponent() {
+export function LoadingComponent(props) {
+
   return (
-    <>
-      <Container>
+      <Container dimensions={props.dimensions}>
         <div className="content">
           <div>
             <img src={Logo} alt="Logo do App" style={{ marginRight: "1vw" }} />
@@ -22,6 +22,5 @@ export function LoadingComponent() {
           />
         </div>
       </Container>
-    </>
   );
 }
