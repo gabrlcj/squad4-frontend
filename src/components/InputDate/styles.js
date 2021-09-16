@@ -8,7 +8,7 @@ export const Container = styled.div`
     border-radius: 1rem;
     border: 0;
     font: 700 0.85rem 'Montserrat', sans-serif;
-    height: fit-content;
+    height: 15rem;
 
     .react-datepicker__triangle {
       background: var(--orange-subtle);
@@ -44,10 +44,10 @@ export const Container = styled.div`
       margin: 0 0.2rem 0.1rem;
 
       .react-datepicker__week {
-        border-radius: 0.25rem;
-
         .react-datepicker__day {
           color: #fff;
+          padding: 0.1rem;
+          border-radius: 0.5rem;
           transition: all 0.2s;
 
           &:hover {
@@ -89,6 +89,7 @@ export const Container = styled.div`
     border-radius: 3rem;
     outline: none;
     margin-top: 0;
+    cursor: pointer;
 
     position: relative;
     z-index: 1;
@@ -98,6 +99,10 @@ export const Container = styled.div`
 
     &:focus {
       box-shadow: 0 0 0.5rem 0.1rem var(--blue-lighter);
+    }
+
+    &:hover {
+      filter: brightness(1);
     }
 
     &::placeholder {

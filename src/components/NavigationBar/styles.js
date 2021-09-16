@@ -13,6 +13,10 @@ export const Container = styled.nav`
   background: var(--blue-darker);
   padding: 1.5rem 0;
 
+  @media (min-width: 1440px) {
+    border-radius: 1.75rem 0 1.75rem 0;
+  }
+
   .profile-img {
     height: 6rem;
     width: 6rem;
@@ -31,6 +35,13 @@ export const Container = styled.nav`
     align-items: center;
     justify-content: space-between;
     gap: 5rem;
+
+    transition: all ease 0.3s;
+
+    &:hover {
+      transform: translateY(0%);
+      filter: drop-shadow(1.5);
+    }
   }
 
   div {
@@ -39,15 +50,22 @@ export const Container = styled.nav`
     justify-content: center;
     gap: 3rem;
     flex-direction: column;
+  }
 
-    img {
-      height: 2rem;
-      width: 2rem;
+  img:not(.profile-img) {
+    height: 2rem;
+    width: 2rem;
 
-      @media (max-width: 1080px) {
-        height: 1.75rem;
-        width: 1.75rem;
-      }
+    transition: all ease 0.3s;
+
+    &:hover {
+      transform: translateY(-25%);
+      filter: drop-shadow(1.5);
+    }
+
+    @media (max-width: 1080px) {
+      height: 1.75rem;
+      width: 1.75rem;
     }
   }
 `

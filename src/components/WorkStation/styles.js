@@ -36,13 +36,14 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.5rem;
+      margin: 1rem 0;
     }
   }
 `
 
 export const Station = styled.div`
-  margin: 1rem 0;
+  margin: 2rem 0;
 
   .chairs {
     display: flex;
@@ -71,6 +72,13 @@ export const Station = styled.div`
       text-align: center;
 
       box-shadow: 0 0.15rem 0.3rem 0 #333333;
+
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(-5%);
+        filter: brightness(1.1);
+      }
     }
 
     .circle.up {
@@ -80,7 +88,7 @@ export const Station = styled.div`
     .circle.down {
       background: grey;
       margin-top: -2rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .circle.down.occupied,

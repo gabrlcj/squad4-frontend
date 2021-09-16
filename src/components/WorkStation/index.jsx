@@ -7,7 +7,7 @@ import api from '../../api'
 import { toast } from 'react-toastify'
 import Carousel from 'react-elastic-carousel'
 
-export function WorkStation() {
+export function WorkStation({ handleModal }) {
   const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext)
   const [occupiedWorkstations, setOccupiedWorkstations] = useState([])
 
@@ -39,37 +39,21 @@ export function WorkStation() {
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()
 
-    document.querySelectorAll(".busy").forEach((item) => {
+    document.querySelectorAll('.busy').forEach((item) => {
       if (!occupiedWorkstations.includes(chairNumber)) {
-        item.classList.remove("occupied");
-        item.classList.remove("busy");
-        item.classList.add("unoccupied");
+        item.classList.remove('occupied')
+        item.classList.remove('busy')
+        item.classList.add('unoccupied')
       }
-    });
-           
-    if ((scheduling.workstation !== chairNumber) && (!occupiedWorkstations.includes(chairNumber.toString()))) {
-      event.target.classList.remove("unoccupied");
-      event.target.classList.add("occupied");
-      event.target.classList.add("busy");
+    })
+
+    if (scheduling.workstation !== chairNumber && !occupiedWorkstations.includes(chairNumber.toString())) {
+      event.target.classList.remove('unoccupied')
+      event.target.classList.add('occupied')
+      event.target.classList.add('busy')
       setScheduling({ ...scheduling, workstation: chairNumber.toString(), user_id: user?.id })
     } else {
       return
-    }
-  }
-
-  const handleAppointment = async (event) => {
-    event.preventDefault()
-    try {
-      await api({
-        method: 'post',
-        url: 'agendamentos',
-        data: scheduling,
-      })
-
-      toast.success('Agendamento feito com sucesso!')
-      setScheduling({ ...scheduling, date: new Date() })
-    } catch (error) {
-      toast.error(error.response?.data.mensagem)
     }
   }
 
@@ -99,7 +83,10 @@ export function WorkStation() {
                 occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
               }`}
               key={chairNumber}
-              onClick={(event) => chairClickHandler(event, chairNumber)}
+              onClick={(event) => {
+                chairClickHandler(event, chairNumber)
+                handleModal()
+              }}
             >
               {isEven(chairNumber) ? unavailableSeat() : ''}
             </div>
@@ -119,7 +106,10 @@ export function WorkStation() {
                 occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
               }`}
               key={chairNumber}
-              onClick={(event) => chairClickHandler(event, chairNumber)}
+              onClick={(event) => {
+                chairClickHandler(event, chairNumber)
+                handleModal()
+              }}
             >
               {isOdd(chairNumber) ? unavailableSeat() : ''}
             </div>
@@ -141,10 +131,6 @@ export function WorkStation() {
 
   return (
     <>
-      <form className='modal' onSubmit={handleAppointment}>
-        <strong style={{ marginRight: '1rem' }}>Escolha o dia e a cadeira e clique no botão confirmar</strong>
-        <button type='submit'>Confirmar</button>
-      </form>
       {scheduling.office === 'São Paulo' ? (
         <Container>
           <Carousel itemsToShow={2} className='carousel'>

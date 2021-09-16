@@ -1,134 +1,99 @@
-import {
-  Container,
-  TimeBlock,
-  RoomBlock,
-  TimeContainer,
-  Display,
-  RoomContainer,
-} from "./styles";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import api from "../../api";
-import { toast } from "react-toastify";
-
+import { Container, TimeBlock, RoomBlock, TimeContainer, Display, RoomContainer } from './styles'
+import { useContext, useEffect, useState } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+import api from '../../api'
+import { toast } from 'react-toastify'
 
 export function Meeting() {
-  const {
-    roomScheduling,
-    setRoomScheduling,
-    roomSchedulings,
-    setRoomSchedulings,
-    user,
-    day,
-  } = useContext(AuthContext);
-  const [occupiedDatetime, setOccupiedDatetime] = useState([]);
-  const [occupiedRooms, setOccupiedRooms] = useState([]);
+  const { roomScheduling, setRoomScheduling, roomSchedulings, setRoomSchedulings, user, day } = useContext(AuthContext)
+  const [occupiedDatetime, setOccupiedDatetime] = useState([])
+  const [occupiedRooms, setOccupiedRooms] = useState([])
   console.log(roomScheduling)
 
   function formatDateWithZero(date) {
-    if (date <= 9) return "0" + date;
-    else return date;
+    if (date <= 9) return '0' + date
+    else return date
   }
 
   const formatToday =
-    formatDateWithZero(day.getFullYear()) +
-    "-" +
-    formatDateWithZero(day.getMonth() + 1) +
-    "-" +
-    day.getDate();
+    formatDateWithZero(day.getFullYear()) + '-' + formatDateWithZero(day.getMonth() + 1) + '-' + day.getDate()
 
   useEffect(() => {
     if (roomScheduling) {
       try {
         api({
-          method: "get",
+          method: 'get',
           url: `reunioes/${formatToday}/${roomScheduling.time_zone}`,
         }).then((res) => {
-          setRoomSchedulings(res.data.rows);
-        });
+          setRoomSchedulings(res.data.rows)
+        })
       } catch (error) {
-        toast.error(error.response?.data.mensagem);
+        toast.error(error.response?.data.mensagem)
       }
-    }   
-  }, [formatToday, setRoomSchedulings, roomScheduling]);
+    }
+  }, [formatToday, setRoomSchedulings, roomScheduling])
 
   useEffect(() => {
-    setOccupiedDatetime(
-      roomSchedulings?.map((dayscheduling) => dayscheduling.time_zone)
-    );
-    setOccupiedRooms(
-      roomSchedulings?.map((dayscheduling) => dayscheduling.room)
-    );
-  }, [roomSchedulings]);
+    setOccupiedDatetime(roomSchedulings?.map((dayscheduling) => dayscheduling.time_zone))
+    setOccupiedRooms(roomSchedulings?.map((dayscheduling) => dayscheduling.room))
+  }, [roomSchedulings])
 
   const timeClickHandler = (event, horario) => {
-    event.stopPropagation();
-    document.querySelectorAll(".occupied").forEach((item) => {
+    event.stopPropagation()
+    document.querySelectorAll('.occupied').forEach((item) => {
       if (!occupiedDatetime?.includes(horario)) {
-        item.classList.remove("occupied");
+        item.classList.remove('occupied')
       }
-    });
-    event.target.classList.add("occupied");
+    })
+    event.target.classList.add('occupied')
 
-    document.querySelectorAll(".hidden").forEach((item) => {
-      item.classList.remove("hidden");
-    });
-    document.querySelectorAll(".overlay").forEach((item) => {
-      item.classList.remove("overlay");
-    });
+    document.querySelectorAll('.hidden').forEach((item) => {
+      item.classList.remove('hidden')
+    })
+    document.querySelectorAll('.overlay').forEach((item) => {
+      item.classList.remove('overlay')
+    })
 
-    if ((roomScheduling.time_zone !== event.target.id)) {
+    if (roomScheduling.time_zone !== event.target.id) {
       setRoomScheduling({
         ...roomScheduling,
         time_zone: event.target.id,
         user_id: user?.id,
-      });
+      })
     } else {
-      return;
+      return
     }
-  };
+  }
 
   const roomClickHandler = (event) => {
-    event.stopPropagation();
+    event.stopPropagation()
 
-    document.querySelectorAll(".occupied").forEach((item) => {
-      if(!occupiedRooms?.includes(item.id.toString())) {
-        item.classList.remove("occupied");
-      }});
+    document.querySelectorAll('.occupied').forEach((item) => {
+      if (!occupiedRooms?.includes(item.id.toString())) {
+        item.classList.remove('occupied')
+      }
+    })
 
-    event.target.classList.add("occupied");
+    event.target.classList.add('occupied')
 
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
         ...roomScheduling,
         room: event.target.id,
         user_id: user?.id,
-      });
+      })
     } else {
-      return;
+      return
     }
-  };
+  }
 
+  const horariosId = ['1', '2', '3', '4', '5']
+  const horarios = ['08h às 09h', '09h às 10h', '10h às 11h', '11h às 12h', '12h às 13h']
+  const horarios2Id = ['6', '7', '8', '9', '10']
+  const horarios2 = ['13h às 14h', '14h às 15h', '15h às 16h', '16h às 17h', '17h às 18h']
 
-  const horariosId = ["1", "2", "3", "4", "5"];
-  const horarios = [
-    "08h às 09h",
-    "09h às 10h",
-    "10h às 11h",
-    "11h às 12h",
-    "12h às 13h",
-  ];
-  const horarios2Id = ["6", "7", "8", "9", "10"];
-  const horarios2 = [
-    "13h às 14h",
-    "14h às 15h",
-    "15h às 16h",
-    "16h às 17h",
-    "17h às 18h",
-  ];
-
-  const rooms = ["Sala 1", "Sala 2", "Sala 3", "Sala 4"];
-  const roomsId = ["1", "2", "3", "4", "5"];
+  const rooms = ['Sala 1', 'Sala 2', 'Sala 3', 'Sala 4']
+  const roomsId = ['1', '2', '3', '4', '5']
 
   const timeDisplays = (horarios, horariosId) => {
     return (
@@ -137,21 +102,17 @@ export function Meeting() {
           return (
             <Display
               key={horariosId[index]}
-              className={`${
-                occupiedDatetime?.includes(horario)
-                  ? "occupied"
-                  : ""
-              }`}
+              className={`${occupiedDatetime?.includes(horario) ? 'occupied' : ''}`}
               id={horario}
               onClick={(event) => timeClickHandler(event, horario)}
             >
               {horario}
             </Display>
-          );
+          )
         })}
       </>
-    );
-  };
+    )
+  }
 
   const roomDisplays = (rooms, roomsId) => {
     return (
@@ -160,42 +121,37 @@ export function Meeting() {
           return (
             <Display
               key={roomsId[index]}
-              marginBottom={"1rem"}
-              padding={"0.5rem 1rem"}
-              className={`${
-                occupiedRooms?.includes(room)
-                  ? "occupied"
-                  : ""
-              }`}
+              marginBottom={'1rem'}
+              padding={'0.5rem 1rem'}
+              className={`${occupiedRooms?.includes(room) ? 'occupied' : ''}`}
               id={room}
               onClick={(event) => roomClickHandler(event)}
             >
               {room}
             </Display>
-          );
+          )
         })}
       </>
-    );
-  };
+    )
+  }
 
   return (
     <>
       <Container>
         <TimeBlock>
-          <h3 className="overlay">HORÁRIO</h3>
-          <TimeContainer className="overlay">
+          <h3 className='overlay'>HORÁRIO</h3>
+          <TimeContainer className='overlay'>
             <div>{timeDisplays(horarios, horariosId)}</div>
             <div>{timeDisplays(horarios2, horarios2Id)}</div>
           </TimeContainer>
         </TimeBlock>
         <RoomBlock>
-          <h3 className="hidden">SALAS</h3>
-
-          <RoomContainer className="hidden">
+          <h3 className='hidden'>SALAS</h3>
+          <RoomContainer className='hidden'>
             <div>{roomDisplays(rooms, roomsId)}</div>
           </RoomContainer>
         </RoomBlock>
       </Container>
     </>
-  );
+  )
 }
