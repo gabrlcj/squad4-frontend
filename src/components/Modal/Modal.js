@@ -3,8 +3,11 @@ import styled from 'styled-components'
 
 const ModalBox = styled.div`
   display: flex;
-  margin: 0 auto;
-  position: fixed;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 10;
   width: 100%;
   height: 100%;

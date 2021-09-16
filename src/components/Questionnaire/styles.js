@@ -1,17 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  /* width: min(1080px, 90%); */
-  min-height: 100vh;
-  /* min-width: 100vw; */
-  background: var(--alternative);
+  height: 100vh;
 
   .window {
-    /* margin: auto; */
     margin-top: 3rem;
     margin-bottom: 3rem;
     width: 65rem;
@@ -34,28 +30,31 @@ export const Container = styled.div`
       p {
         font-size: 1.125rem;
       }
-
     }
   }
-  
-  .box, .box .left, .box .right {
+
+  .box,
+  .box .left,
+  .box .right {
     display: flex;
     flex: 1;
 
     .left {
-    flex-direction: column;
-    width: 40%;
-    padding-right: 2rem;
-    margin-left: 10rem;
-    margin-bottom: 6.950rem;
-  }
+      flex-direction: column;
+      align-items: center;
+      width: 40%;
+      padding-right: 2rem;
+      margin-left: 10rem;
+      margin-bottom: 6.95rem;
+    }
 
-  .right {
-    flex-direction: column;
-    width: 40%;
-    padding-left: 2rem;
-    margin-right: 15.938rem;
-  }
+    .right {
+      flex-direction: column;
+      align-items: center;
+      width: 40%;
+      padding-left: 2rem;
+      margin-right: 15.938rem;
+    }
 
     .box-question {
       margin-top: 3.75rem;
@@ -76,7 +75,7 @@ export const Container = styled.div`
       padding-left: 20%;
     }
 
-    input[type="radio"] {
+    input[type='radio'] {
       display: inline;
       margin: auto 0;
     }
@@ -85,20 +84,19 @@ export const Container = styled.div`
       margin: auto 0;
       line-height: 2;
       cursor: pointer;
-      color: #535353;
-      }
+      color: var(--text);
+    }
 
     /* Checked */
-    input[type="radio"]:checked + label {
-      color: #FE5517;
+    input[type='radio']:checked + label {
+      color: var(--orange-main);
     }
 
     /* Transition */
     label,
     label::before {
-      transition: .25s all ease;
+      transition: 0.25s all ease;
     }
-
   }
 
   button {
@@ -113,25 +111,22 @@ export const Container = styled.div`
     margin-top: 4.375rem;
     margin-left: 11rem;
 
-
-    transition: filter 0.2s;
+    transition: all 0.2s;
 
     &:hover {
-      filter: brightness(0.9);
       background: var(--orange-lighter);
+      transform: translateY(-15%);
     }
   }
-`;
+`
 
 export const Question = styled.h3`
-    /* height: 5.313rem; */
-    /* margin-top: 2.813rem; */
-    padding: ${props => props.padding || "1rem"};
-    text-align: center;
-    font-size: 0.875rem;  
-    font-weight: 700;
-    font-style: normal;
-    background: var(--blue-lighter);
-    color: #ffffff;
-    border-radius: 1.25rem;
-`;
+  padding: ${(props) => props.padding || '1rem'};
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  background: var(--blue-lighter);
+  color: #ffffff;
+  border-radius: 1.25rem;
+`
