@@ -63,7 +63,7 @@ export function LoginPage({ showModal, setShowModal, handleModal }) {
     <>
       {showModal ? (
         <Modal showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}>
-          <RegisterPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
+          <RegisterPage dimensions={"30rem"} showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
         </Modal>
       ) : null}
       <Container>

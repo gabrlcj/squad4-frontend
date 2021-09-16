@@ -94,7 +94,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
           </div>
         </>
       ) : (
-        <LoadingComponent dimensions={"20rem"} />
+        <LoadingComponent dimensions={"25rem"} />
       )}
     </Container>
   );
