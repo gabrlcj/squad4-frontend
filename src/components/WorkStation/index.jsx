@@ -8,7 +8,8 @@ import { toast } from 'react-toastify'
 import Carousel from 'react-elastic-carousel'
 import { LoadingComponent } from '../LoadingComponent'
 
-export function WorkStation() {
+
+export function WorkStation({ handleModal }) {
   const { scheduling, setScheduling, user, schedulings, setSchedulings, day } = useContext(AuthContext);
   const [occupiedWorkstations, setOccupiedWorkstations] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,11 +42,11 @@ export function WorkStation() {
   const chairClickHandler = (event, chairNumber) => {
     event.stopPropagation()
 
-    document.querySelectorAll(".busy").forEach((item) => {
+    document.querySelectorAll('.busy').forEach((item) => {
       if (!occupiedWorkstations.includes(chairNumber)) {
-        item.classList.remove("occupied");
-        item.classList.remove("busy");
-        item.classList.add("unoccupied");
+        item.classList.remove('occupied')
+        item.classList.remove('busy')
+        item.classList.add('unoccupied')
       }
     });
            
@@ -105,7 +106,10 @@ export function WorkStation() {
                 occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
               }`}
               key={chairNumber}
-              onClick={(event) => chairClickHandler(event, chairNumber)}
+              onClick={(event) => {
+                chairClickHandler(event, chairNumber)
+                handleModal()
+              }}
             >
               {isEven(chairNumber) ? unavailableSeat() : ''}
             </div>
@@ -125,7 +129,10 @@ export function WorkStation() {
                 occupiedWorkstations.includes(chairNumber.toString()) ? 'occupied' : 'unoccupied'
               }`}
               key={chairNumber}
-              onClick={(event) => chairClickHandler(event, chairNumber)}
+              onClick={(event) => {
+                chairClickHandler(event, chairNumber)
+                handleModal()
+              }}
             >
               {isOdd(chairNumber) ? unavailableSeat() : ''}
             </div>
@@ -147,10 +154,6 @@ export function WorkStation() {
 
   return (
     <>
-      <form className='modal' onSubmit={handleAppointment}>
-        <strong style={{ marginRight: '1rem' }}>Escolha o dia e a cadeira e clique no botão confirmar</strong>
-        <button type='submit'>Confirmar</button>
-      </form>
       {scheduling.office === 'São Paulo' ? (
         <Container>
           <Carousel itemsToShow={2} className='carousel'>

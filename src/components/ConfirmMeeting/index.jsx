@@ -22,10 +22,11 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
   const handleConfirmMeeting = async (event) => {
     event.preventDefault();
     setLoading(true);
+
     try {
       await api({
-        method: "post",
-        url: "reunioes",
+        method: 'post',
+        url: 'reunioes',
         data: {
           date: roomScheduling.date,
           office: roomScheduling.office,
@@ -42,7 +43,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
       toast.error(error.response?.data.mensagem);
       setLoading(false);
     }
-  };
+  }
 
   return (
     <Container

@@ -63,7 +63,7 @@ export const Container = styled.form`
     font: 700 1.15rem 'Montserrat', sans-serif;
   }
 
-  .confirmMeetingModal {
+  .confirm-workstation {
     display: flex;
     align-items: center;
     flex-direction: column;

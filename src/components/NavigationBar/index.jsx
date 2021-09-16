@@ -10,7 +10,11 @@ export function NavigationBar() {
   return (
     <Container>
       <div className='nav-container'>
-        <img className='profile-img' src='http://barcarena.pa.gov.br/portal/img/perfil/padrao.jpg' alt='' />
+        <img
+          className='profile-img'
+          src='http://barcarena.pa.gov.br/portal/img/perfil/padrao.jpg'
+          alt='Imagem de perfil'
+        />
         <div>
           <img src={Home} alt='Icone home' />
           <img src={Search} alt='Icone de procura' />

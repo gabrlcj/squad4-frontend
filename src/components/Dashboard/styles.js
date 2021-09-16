@@ -19,6 +19,10 @@ export const Container = styled.main`
     background: var(--blue-darker);
     border-radius: 0 0 0 2rem;
     margin-left: -0.5rem;
+
+    @media (min-width: 1440px) {
+      border-radius: 0 0 2rem 0;
+    }
   }
 
   @media (max-width: 1080px) {
