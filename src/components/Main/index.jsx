@@ -4,6 +4,7 @@ import { WorkStation } from '../WorkStation'
 import { AuthContext } from '../../context/AuthContext'
 import LogoImage from '../../assets/Logo.svg'
 import BrandName from '../../assets/BrandName.svg'
+import Help from '../../assets/Help.svg'
 import { InputDate } from '../InputDate'
 import { Meeting } from '../Meeting'
 import { Modal } from '../Modal/Modal'
@@ -66,6 +67,7 @@ export function Main({ showModal, setShowModal, handleModal }) {
         <div className='brand-container'>
           <img src={LogoImage} alt='Logo da aplicação' />
           <img src={BrandName} alt='Nome da aplicação' />
+          <img className='help' src={Help} alt='Nome da aplicação' />
         </div>
         <div className='selection-bar'>
           <select
