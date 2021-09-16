@@ -95,6 +95,7 @@ export function Meeting() {
     document.querySelectorAll(".occupiedRoom").forEach((item) => {
       if(!occupiedRooms.includes(item.id.toString())) {
         item.classList.remove("occupiedRoom");
+        item.classList.remove("specificOccupied");
       }});
 
     event.target.classList.add("occupiedRoom");    

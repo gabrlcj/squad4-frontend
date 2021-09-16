@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import api from '../../api'
 
@@ -9,6 +9,7 @@ import CloseModalButton from '../../assets/CloseModalScheduling.svg'
 export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
 
   const { roomScheduling, setRoomScheduling } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
   function dataAtualFormatada(day) {
     let data = day,
@@ -20,6 +21,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
 
   const handleConfirmMeeting = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       await api({
         method: "post",
@@ -40,6 +42,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
         office: "São Paulo",
         time_zone: ""
       });
+      setLoading(false);
       handleModal()
     } catch (error) {
       toast.error(error.response?.data.mensagem);
