@@ -15,7 +15,6 @@ export function Dashboard({ showModal, setShowModal, handleModal }) {
   const [userScheduling, setUserScheduling] = useState([])
   const { scheduling } = useContext(AuthContext)
 
-
   useEffect(() => {
     api({
       method: 'get',

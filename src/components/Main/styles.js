@@ -15,6 +15,13 @@ export const Container = styled.main`
     align-items: center;
     justify-content: left;
     gap: 2rem;
+    position: relative;
+
+    .help {
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+    }
   }
 
   .selection-bar {
