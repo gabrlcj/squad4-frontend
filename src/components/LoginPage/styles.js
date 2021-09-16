@@ -2,11 +2,9 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
+  height: 100vh;
   align-items: center;
-  justify-content: center;
-  justify-content: center;
-  margin: 1rem auto;
-  width: 80%;
+  justify-content: center; 
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
@@ -34,19 +32,20 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     background: #36357e;
-    width: 552px;
-    height: 692px;
+    width: 30rem;
+    height: 35rem;
     border-radius: 40px 0px 0px 40px;
   }
 
   .right {
     background: #ffffff;
-    width: 552px;
-    height: 692px;
+    width: 30rem;
+    height: 35rem;
     padding: 150px 250px;
     justify-content: center;
     align-items: center;
     align-content: center;
+    border-radius: 0px 0px 40px 0px;
   }
 
   .loginbox,
