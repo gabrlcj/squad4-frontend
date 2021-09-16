@@ -76,13 +76,15 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     &::placeholder {
-      font-weight: 700;
+      font-weight: 500;
+      color: var(--text);
     }
   }
 
 
   button {
     cursor: pointer;
+    font: 700 1rem 'Montserrat', sans-serif;
   }
 
   a {

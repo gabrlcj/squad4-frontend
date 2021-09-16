@@ -1,105 +1,81 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Container = styled.form`
-  width: 564px;
-  height: 510px;
-  
+  width: 35rem;
+  height: 35rem;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: center;
-  margin: 10vh auto;
+  flex-direction: column;
+  margin: auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-  background: #FFFFFF;
+  background: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
+  border-radius: 3rem;
   backdrop-filter: blur(2px);
-
-  /* gap: 1.75rem;
-
-  border: 2px solid #d3d3d3c1;
-  border-radius: 0.25rem;
-  background: #d3d3d3c1;
-  padding: 2rem;
-  margin: 5rem auto; */
-
-  /* label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    font-weight: 700;
-  } */
 
   h2 {
     margin: 5px 0 15px 0;
 
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 22px;
+    font: 700 1.5rem 'Montserrat', sans-serif;
     line-height: 22px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.005em;
 
-    color: #36357E;
+    color: var(--blue-main);
   }
 
-  .regbox, form {
+  .regbox,
+  form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: left;
+    margin: auto;
   }
 
   button {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     border: 0;
     padding: 0.75rem 2rem;
     margin: 20px;
-    font-weight: 700;
-    color: #ffffff;
+    font: 700 1rem 'Montserrat', sans-serif;
+    color: #fff;
 
-    width: 276px;
-    height: 48px;
+    width: 20rem;
+    height: 3rem;
 
-    background: #36357E;
-    border-radius: 10px;
+    background: var(--blue-main);
+    border-radius: 0.75rem;
 
-    transition: filter 0.2s;
+    transition: all 0.2s;
 
     &:hover {
-      filter: brightness(0.9);
-      background: #ffffff;
-      color: #535353;
+      background: var(--blue-lighter);
+      transform: translateY(-15%);
     }
   }
-  
-  .basetext {
-    font-size: 12px;
-    /* margin: 4px 0 2px 0; */
-  }
-  
-  .green{
-    font-weight: bolder;
-    color: green;
-    }
 
-    .row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
+  .basetext {
+    font-size: 0.75rem;
+    margin: 0 0.15rem 0.15rem;
+  }
+
+  .green {
+    font-weight: bolder;
+    color: var(--green);
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
   }
 
   .column {
@@ -114,28 +90,31 @@ export const Container = styled.form`
     position: absolute;
     top: -10px;
     right: -10px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 50px;
     cursor: pointer;
   }
 
   .textbox-input {
-    background: #FFFFFF;
-    border: 1px solid #36357E;
-    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid var(--blue-main);
     border-radius: 10px;
-    
-    font-family: Calibri;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
+
+    font: 400 0.85rem 'Calibri', sans-serif;
     line-height: 17px;
-    letter-spacing: 0.005em;
     text-align: left;
     padding-left: 7px;
 
-    color: #707070;
+    color: var(--text);
 
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0.25rem 0.2rem var(--blue-subtle);
+    }
+
+    &::placeholder {
+      color: var(--blue-main);
+    }
   }
 
   .namebox {

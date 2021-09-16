@@ -14,15 +14,11 @@ export const Container = styled.div`
 
   .title {
     display: flex;
-    width: 14.5625rem;
     justify-content: center;
-    font-family: Inter;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 800;
+    width: 15rem;
+
+    font: 700 1.25rem 'Montserrat', sans-serif;
     line-height: 22px;
-    letter-spacing: 0.005em;
-    text-align: left;
   }
 
   .left {
@@ -30,13 +26,13 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #36357e;
+    background: var(--blue-main);
     width: 30rem;
     height: 35rem;
     border-radius: 40px 0px 0px 40px;
 
     img {
-      margin: 0 0.5rem;
+      margin: 0;
       position: static;
       width: auto;
       height: auto;
@@ -48,6 +44,16 @@ export const Container = styled.div`
     }
 
     @media (max-width: 980px) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+
       img {
         position: absolute;
         width: 1px;
@@ -66,7 +72,7 @@ export const Container = styled.div`
     background: #ffffff;
     width: 30rem;
     height: 35rem;
-    padding: 140px 250px;
+    padding: 140px 200px;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -81,7 +87,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 30%;
-    color: #fe5517;
+    color: var(--orange-main);
   }
 
   .textbox-input {
@@ -93,32 +99,28 @@ export const Container = styled.div`
     box-sizing: border-box;
     border-radius: 10px;
 
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
+    font: 400 1rem 'Calibri', sans-serif;
     line-height: 17px;
-    letter-spacing: 0.005em;
     text-align: left;
     padding-left: 7px;
 
-    color: #707070;
+    color: var(--text);
   }
 
   .text-container {
     display: flex;
     flex: 1;
     flex-direction: column;
-    width: 14.5625rem;
+    width: 15rem;
     justify-content: center;
     text-align: left;
   }
 
   .basetext {
     display: flex;
-    width: 14.5625rem;
+    width: 15rem;
     justify-content: center;
-    font-size: 12px;
+    font-size: 0.75rem;
     margin: 2px 0;
 
     p {
@@ -141,8 +143,8 @@ export const Container = styled.div`
     color: var(--orange-main);
     border: 2px solid var(--orange-main);
 
-    width: 276px;
-    height: 48px;
+    width: 17.25rem;
+    height: 3rem;
 
     background: #fff;
     border-radius: 10px;

@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { Container } from './styles'
 import CloseModalButton from '../../assets/CloseModalScheduling.svg'
 
-export function ConfirmWorkStation({ handleAppointment, showModal, setShowModal, handleModal }) {
+export function ConfirmWorkStation({ handleAppointment, handleModal }) {
   const { scheduling } = useContext(AuthContext)
 
   function dataToCalendar(day) {
@@ -30,7 +30,7 @@ export function ConfirmWorkStation({ handleAppointment, showModal, setShowModal,
             Em caso de qualquer <strong>sintoma de COVID-19</strong>, cancele seu agendamento!
           </li>
         </ul>
-        <button type='submit'>Confirmar</button>
+        <button type='submit'>CONFIRMAR</button>
       </div>
     </Container>
   )
