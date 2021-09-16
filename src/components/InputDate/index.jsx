@@ -5,11 +5,12 @@ import { AuthContext } from '../../context/AuthContext'
 import { Container } from './styles'
 
 export function InputDate() {
-  const { day, setDay, scheduling, setScheduling } = useContext(AuthContext)
+  const { day, setDay, scheduling, setScheduling, setRoomScheduling  } = useContext(AuthContext)
   registerLocale('pt-BR', ptBR)
 
   useEffect(() => {
     setScheduling({ ...scheduling, date: dataToDatabase(day) })
+    setRoomScheduling({...scheduling, date: dataToDatabase(day)})
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [day])
 

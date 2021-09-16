@@ -9,7 +9,7 @@ import { NavigationBar } from '../NavigationBar/index.jsx'
 import { Notifications } from '../Notifications/index.jsx'
 import { Container } from './styles.js'
 
-export function Dashboard() {
+export function Dashboard({ showModal, setShowModal, handleModal }) {
   const today = new Date()
   const { id } = useParams()
   const [userScheduling, setUserScheduling] = useState([])
@@ -38,7 +38,7 @@ export function Dashboard() {
     <>
       <Container>
         <NavigationBar />
-        <Main formatDay={formatToday} />
+        <Main formatDay={formatToday} showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
         <div className='background-appointments'>
           <Appointments userScheduling={userScheduling} setUserScheduling={setUserScheduling} formatDay={formatToday} />
         </div>

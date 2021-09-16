@@ -24,7 +24,7 @@ export default function App() {
             <QuestionnairePage />
           </PrivateRoute>
           <PrivateRoute path='/dashboard/:id'>
-            <Dashboard />
+            <Dashboard showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
           </PrivateRoute>
           <Route path="/" exact>
             <LoginPage showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />

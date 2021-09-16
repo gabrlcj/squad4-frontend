@@ -11,6 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 import api from "../../api";
 import { toast } from "react-toastify";
 
+
 export function Meeting() {
   const {
     roomScheduling,
@@ -22,7 +23,7 @@ export function Meeting() {
   } = useContext(AuthContext);
   const [occupiedDatetime, setOccupiedDatetime] = useState([]);
   const [occupiedRooms, setOccupiedRooms] = useState([]);
-  console.log(roomSchedulings)
+  console.log(roomScheduling)
 
   function formatDateWithZero(date) {
     if (date <= 9) return "0" + date;
@@ -60,10 +61,10 @@ export function Meeting() {
     );
   }, [roomSchedulings]);
 
-  const timeClickHandler = (event) => {
+  const timeClickHandler = (event, horario) => {
     event.stopPropagation();
     document.querySelectorAll(".occupied").forEach((item) => {
-      if (!occupiedDatetime?.includes(item.id)) {
+      if (!occupiedDatetime?.includes(horario)) {
         item.classList.remove("occupied");
       }
     });
@@ -76,7 +77,7 @@ export function Meeting() {
       item.classList.remove("overlay");
     });
 
-    if (roomScheduling.time_zone !== event.target.id) {
+    if ((roomScheduling.time_zone !== event.target.id)) {
       setRoomScheduling({
         ...roomScheduling,
         time_zone: event.target.id,
@@ -91,8 +92,10 @@ export function Meeting() {
     event.stopPropagation();
 
     document.querySelectorAll(".occupied").forEach((item) => {
-      item.classList.remove("occupied");
-    });
+      if(!occupiedRooms?.includes(item.id.toString())) {
+        item.classList.remove("occupied");
+      }});
+
     event.target.classList.add("occupied");
 
     if (roomScheduling.room !== event.target.id) {
@@ -106,26 +109,6 @@ export function Meeting() {
     }
   };
 
-  const handleAppointment = async (event) => {
-    event.preventDefault();
-    try {
-      await api({
-        method: "post",
-        url: "reunioes",
-        data: roomScheduling,
-      });
-      toast.success("Agendamento feito com sucesso!");
-      setRoomScheduling({
-          ...roomScheduling,
-          date: "",
-          room: "",
-          office: "São Paulo",
-          time_zone:"" 
-        });
-    } catch (error) {
-      toast.error(error.response?.data.mensagem);
-    }
-  };
 
   const horariosId = ["1", "2", "3", "4", "5"];
   const horarios = [
@@ -155,12 +138,12 @@ export function Meeting() {
             <Display
               key={horariosId[index]}
               className={`${
-                occupiedDatetime?.includes(horariosId[index])
+                occupiedDatetime?.includes(horario)
                   ? "occupied"
                   : ""
               }`}
-              id={horariosId[index]}
-              onClick={(event) => timeClickHandler(event)}
+              id={horario}
+              onClick={(event) => timeClickHandler(event, horario)}
             >
               {horario}
             </Display>
@@ -180,11 +163,11 @@ export function Meeting() {
               marginBottom={"1rem"}
               padding={"0.5rem 1rem"}
               className={`${
-                occupiedRooms?.includes(roomsId[index])
+                occupiedRooms?.includes(room)
                   ? "occupied"
                   : ""
               }`}
-              id={roomsId[index]}
+              id={room}
               onClick={(event) => roomClickHandler(event)}
             >
               {room}
@@ -197,7 +180,7 @@ export function Meeting() {
 
   return (
     <>
-      <Container onSubmit={handleAppointment}>
+      <Container>
         <TimeBlock>
           <h3 className="overlay">HORÁRIO</h3>
           <TimeContainer className="overlay">
