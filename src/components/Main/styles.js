@@ -96,6 +96,7 @@ export const Container = styled.main`
       border-radius: 50%;
       background: var(--orange-subtle);
       margin-right: 0.25rem;
+      border: 1px solid #121212;
     }
 
     .circle.livre {
@@ -104,6 +105,7 @@ export const Container = styled.main`
       border-radius: 50%;
       background: var(--green);
       margin-right: 0.25rem;
+      border: 1px solid #121212;
     }
   }
 

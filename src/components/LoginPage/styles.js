@@ -5,7 +5,6 @@ export const Container = styled.div`
   height: 100vh;
   align-items: center;
   justify-content: center; 
-
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
   .underline {
@@ -35,6 +34,10 @@ export const Container = styled.div`
     width: 30rem;
     height: 35rem;
     border-radius: 40px 0px 0px 40px;
+
+    img {
+      margin: 0 0.5rem;
+    }
   }
 
   .right {

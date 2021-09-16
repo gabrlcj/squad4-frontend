@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  grid-area: calendar;
+  grid-area: appointments;
   background: #fff;
   color: var(--orange-main);
   border-radius: 2rem;
   margin: 0.75rem auto 0;
   padding: 0.75rem 1rem;
   width: 18rem;
-  height: 96%;
+  height: 90%;
 
   display: flex;
   align-items: center;
@@ -18,11 +18,6 @@ export const Container = styled.div`
 
   @media (max-width: 1080px) {
     width: 15rem;
-  }
-
-  .background-calendar {
-    background: var(--blue-darker);
-    border-radius: 1.75rem 0 0 0;
   }
 
   h4 {
@@ -35,7 +30,7 @@ export const Container = styled.div`
   }
 
   h5 {
-    margin: 0 0.75rem 1rem;
+    margin: 0 0.5rem 1rem;
     font-weight: 700;
     font-size: 1rem;
     margin-right: auto;
@@ -49,9 +44,13 @@ export const Container = styled.div`
 
     .rec {
       width: 100%;
-      height: 3.5rem;
+      height: 5rem;
       padding: 0;
       margin: 0;
+
+      .rec.rec-item-wrapper {
+        flex-direction: column;
+      }
 
       button {
         border-radius: 100%;
@@ -60,6 +59,7 @@ export const Container = styled.div`
         padding: 0;
         border: 0;
         margin-top: 0.85rem;
+        background: #c4c4c4;
 
         &:hover {
           box-shadow: 0 0 1px 3px var(--orange-lighter);
@@ -88,7 +88,6 @@ export const Container = styled.div`
       background: var(--orange-main);
       padding: 1rem 0.35rem;
       border-radius: 1rem;
-      margin: 0 0.5rem;
       width: 100%;
       height: 3.25rem;
       text-align: center;
@@ -96,6 +95,12 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: space-around;
+      transition: all ease-in-out 0.3s;
+    }
+
+    .show {
+      transition: all ease-in-out 0.3s;
+      transform: translateX(-40%);
     }
   }
 `
