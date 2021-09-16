@@ -18,7 +18,7 @@
 <div align='center'>
   <a href="#-sobre">Sobre</a> •
   <a href="#-imagens">Imagens</a> •
-  <a href="#rodando-o-projeto">Rodando o Projeto</a> •
+  <a href="#-rodando-o-projeto">Rodando o Projeto</a> •
   <a href="#-tecnologias-utilizadas">Tecnologias Utilizadas</a> •
   <a href="#-participantes">Participantes</a>
 </div>
