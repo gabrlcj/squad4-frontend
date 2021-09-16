@@ -14,7 +14,7 @@ export function Dashboard({ showModal, setShowModal, handleModal }) {
   const { id } = useParams()
   const [userScheduling, setUserScheduling] = useState([])
   const { scheduling } = useContext(AuthContext)
-  
+
 
   useEffect(() => {
     api({
@@ -41,7 +41,7 @@ export function Dashboard({ showModal, setShowModal, handleModal }) {
         <NavigationBar />
         <Main formatDay={formatToday} showModal={showModal} setShowModal={setShowModal} handleModal={handleModal} />
         <div className='background-appointments'>
-          <Appointments userScheduling={userScheduling} setUserScheduling={setUserScheduling} formatDay={formatToday} />
+          <Appointments userScheduling={userScheduling} setUserScheduling={setUserScheduling} formatDay={formatToday} handleModal={handleModal} />
         </div>
         <div className='background-notification'>
           <Notifications />

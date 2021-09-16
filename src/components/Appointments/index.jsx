@@ -1,17 +1,19 @@
 import { useState } from 'react'
 import Carousel from 'react-elastic-carousel'
+import { CancelScheduling } from '../CancelScheduling'
+import { Modal } from '../Modal/Modal'
 import { Container } from './styles'
 
-export function Appointments({ formatDay, userScheduling }) {
-  const [mouseEnter, setMouseEnter] = useState(false)
+export function Appointments({ formatDay, userScheduling, showModal, setShowModal, handleModal }) {
+  // const [mouseEnter, setMouseEnter] = useState(false)
 
-  function handleMouseEnterEvent() {
-    setMouseEnter(true)
-  }
+  // function handleMouseEnterEvent() {
+  //   setMouseEnter(true)
+  // }
 
-  function handleMouseLeaveEvent() {
-    setMouseEnter(false)
-  }
+  // function handleMouseLeaveEvent() {
+  //   setMouseEnter(false)
+  // }
 
   function dataToCalendar(day) {
     var data = day,
@@ -24,20 +26,32 @@ export function Appointments({ formatDay, userScheduling }) {
     <Container>
       <h4>Hoje é dia {formatDay}</h4>
       <h5>Meus agendamentos</h5>
-      <div onMouseOut={handleMouseLeaveEvent} className='appointments'>
-        <Carousel itemsToShow={1}>
-          {userScheduling?.map((scheduling, index) => (
-            <div
-              className={`appointment-date ${mouseEnter === true ? 'show' : ''}`}
-              key={index}
-              onClick={handleMouseEnterEvent}
-            >
-              {dataToCalendar(new Date(scheduling.date))}
-              <strong>{scheduling.office}</strong>
-              <strong>{scheduling.workstation}</strong>
-            </div>
-          ))}
-        </Carousel>
+      {/* <div onMouseOut={handleMouseLeaveEvent} className='appointments'> */}
+      <div className='appointments' onClick={handleModal}>
+        {/* <Carousel verticalMode itemsToShow={3}> */}
+        {userScheduling?.map((scheduling, index) => (
+          <div
+            // className={`appointment-date ${mouseEnter === true ? 'show' : ''}`}
+            className="appointment-date"
+            key={index}
+          // onClick={handleMouseEnterEvent}
+          // onClick={handleModal}
+          >
+            {/* {showModal && handleModal === true ? (
+              <Modal showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}>
+                <CancelScheduling
+                  showModal={showModal}
+                  setShowModal={setShowModal}
+                  handleModal={handleModal}
+                />
+              </Modal>
+            ) : null} */}
+            {dataToCalendar(new Date(scheduling.date))}
+            <strong>{scheduling.office}</strong>
+            <strong>{scheduling.workstation}</strong>
+          </div>
+        ))}
+        {/* </Carousel> */}
       </div>
     </Container>
   )

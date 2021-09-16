@@ -38,9 +38,12 @@ export const Container = styled.div`
 
   .appointments {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+    cursor: pointer;
+
 
     .rec {
       width: 100%;
@@ -90,6 +93,7 @@ export const Container = styled.div`
       border-radius: 1rem;
       width: 100%;
       height: 3.25rem;
+      margin-bottom: 1rem;
       text-align: center;
 
       display: flex;
