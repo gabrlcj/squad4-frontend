@@ -54,3 +54,13 @@ yarn dev
 ## 🧰 Ferramentas Utilizadas
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=Yarn&color=%2332323240&style=for-the-badge&logo=Yarn" alt="Yarn"></a>
 <a href="https://"><img src="https://img.shields.io/static/v1?label=&message=React+Router&color=%2332323240&style=for-the-badge&logo=React+Router" alt="React Router"></a>
+
+## 👤 Participantes
+|Foto|Nome|
+|--|--|
+|<img src="https://github.com/gabrlcj.png" width="100">|_Gabriel Bittencourt_|
+<img src="https://github.com/felipeblobo.png" width="100">|_Felipe Lobo_|
+<img src="https://github.com/hirogawa.png" width="100">|_Hugo Lemos_|
+<img src="https://github.com/dansenpir.png" width="100">|_Danrley Senegalha_|
+
+#### Feito com 🧡 pelo squad4!
