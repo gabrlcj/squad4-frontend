@@ -1,37 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.form`
-  width: 564px;
-  height: 510px;
-  
+  width: 35rem;
+  height: 32rem;
   display: flex;
-  align-items: center;
   justify-content: center;
-  justify-content: center;
-  margin: 10vh auto;
+  margin: auto;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   backdrop-filter: blur(2px);
-
-  /* gap: 1.75rem;
-
-  border: 2px solid #d3d3d3c1;
-  border-radius: 0.25rem;
-  background: #d3d3d3c1;
-  padding: 2rem;
-  margin: 5rem auto; */
-
-  /* label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    font-weight: 700;
-  } */
 
   h2 {
     margin: 5px 0 15px 0;
@@ -85,7 +64,6 @@ export const Container = styled.form`
   
   .basetext {
     font-size: 12px;
-    /* margin: 4px 0 2px 0; */
   }
   
   .green{
@@ -94,12 +72,12 @@ export const Container = styled.form`
     }
 
     .row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
   }
 
   .column {

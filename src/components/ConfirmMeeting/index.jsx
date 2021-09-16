@@ -62,7 +62,7 @@ export function ConfirmMeeting({ showModal, setShowModal, handleModal }) {
           <div className="confirmMeetingModal">
             <h2>
               {roomScheduling?.room},{" "}
-              {dataAtualFormatada(new Date(roomScheduling?.date))} em{" "}
+              {dataAtualFormatada(new Date(roomScheduling?.date))} de {roomScheduling?.time_zone} em{" "}
               {roomScheduling?.office} - SP
             </h2>
             <h3>
