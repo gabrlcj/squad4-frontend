@@ -12,19 +12,20 @@ export function RegisterPage({ showModal, setShowModal, handleModal, dimensions 
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [role, setRole] = useState('')
-  const [validPassword, setValidPassword] = useState('')
   const [loading, setLoading] = useState(false)
+
+  function validatePassword() {
+    if (validLength && hasNumber && upperCase && lowerCase && specialChar) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   function handleUserRegister(event) {
     event.preventDefault()
 
     setLoading(true)
-
-    if (validLength && hasNumber && upperCase && lowerCase && specialChar) {
-      setValidPassword(true)
-    } else {
-      setValidPassword(false)
-    }
 
     const data = {
       name,
@@ -41,12 +42,13 @@ export function RegisterPage({ showModal, setShowModal, handleModal, dimensions 
       data,
     })
       .then((res) => {
-        toast.success('Registro feito com sucesso!')
         setLoading(false)
+        toast.success('Registro feito com sucesso!')
+        handleModal()
       })
       .catch((error) => {
-        toast.error(error.response.data.message)
         setLoading(false)
+        toast.error(error.response.data.message)
       })
   }
 
@@ -55,7 +57,7 @@ export function RegisterPage({ showModal, setShowModal, handleModal, dimensions 
   const [upperCase, setUpperCase] = useState(null)
   const [lowerCase, setLowerCase] = useState(null)
   const [specialChar, setSpecialChar] = useState(null)
-  // const [match, setMatch] = useState(null);
+  const [validPassword, setValidPassword] = useState('')
 
   useEffect(() => {
     setValidLength(password.length > 7 ? true : false)
@@ -63,6 +65,8 @@ export function RegisterPage({ showModal, setShowModal, handleModal, dimensions 
     setUpperCase(/[A-Z]/.test(password) ? true : false)
     setLowerCase(/[a-z]/.test(password) ? true : false)
     setSpecialChar(/[^A-Z a-z0-9]/.test(password) ? true : false)
+    setValidPassword(validatePassword ? true : false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [password])
   //Bloco de validação de senha END
 
@@ -150,14 +154,15 @@ export function RegisterPage({ showModal, setShowModal, handleModal, dimensions 
               />
             </label>
           </div>
-          <div className={validLength === true ? 'basetext green' : ' basetext '} style={{ marginTop: '5px' }}>
-            Senha com 8 ou mais dígitos
-          </div>
-          <div className={upperCase ? 'basetext green' : ' basetext '}>Possui letra maiúscula</div>
-          <div className={lowerCase ? 'basetext green' : ' basetext '}>Possui letra minúscula</div>
-          <div className={hasNumber ? 'basetext green' : ' basetext '}>Possui números</div>
-          <div className={specialChar ? 'basetext green' : ' basetext '}>Possui caractéres especiais</div>
-
+          <label>
+            <div className={validLength === true ? 'basetext green' : ' basetext '} style={{ marginTop: '5px' }}>
+              Senha com 8 ou mais dígitos
+            </div>
+            <div className={upperCase ? 'basetext green' : ' basetext '}>Possui letra maiúscula</div>
+            <div className={lowerCase ? 'basetext green' : ' basetext '}>Possui letra minúscula</div>
+            <div className={hasNumber ? 'basetext green' : ' basetext '}>Possui números</div>
+            <div className={specialChar ? 'basetext green' : ' basetext '}>Possui caracteres especiais</div>
+          </label>
           <div className='column'>
             <button type='submit'>FAZER CADASTRO</button>
           </div>
