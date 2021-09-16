@@ -5,10 +5,16 @@ import api from '../../api'
 import { toast } from 'react-toastify'
 
 export function Meeting() {
-  const { roomScheduling, setRoomScheduling, roomSchedulings, setRoomSchedulings, user, day } = useContext(AuthContext)
-  const [occupiedDatetime, setOccupiedDatetime] = useState([])
-  const [occupiedRooms, setOccupiedRooms] = useState([])
-  console.log(roomScheduling)
+  const {
+    roomScheduling,
+    setRoomScheduling,
+    roomSchedulings,
+    setRoomSchedulings,
+    user,
+    day,
+  } = useContext(AuthContext);
+  const [occupiedDatetime, setOccupiedDatetime] = useState([]);
+  const [occupiedRooms, setOccupiedRooms] = useState([]);
 
   function formatDateWithZero(date) {
     if (date <= 9) return '0' + date
@@ -38,14 +44,16 @@ export function Meeting() {
     setOccupiedRooms(roomSchedulings?.map((dayscheduling) => dayscheduling.room))
   }, [roomSchedulings])
 
-  const timeClickHandler = (event, horario) => {
-    event.stopPropagation()
-    document.querySelectorAll('.occupied').forEach((item) => {
-      if (!occupiedDatetime?.includes(horario)) {
-        item.classList.remove('occupied')
+  const timeClickHandler = (event) => {
+    event.stopPropagation();
+
+    document.querySelectorAll(".occupied").forEach((item) => {
+      if (!occupiedDatetime?.includes(item.id.toString())) {
+        item.classList.remove("occupied");
       }
-    })
-    event.target.classList.add('occupied')
+    });
+  
+    event.target.classList.add("occupied");
 
     document.querySelectorAll('.hidden').forEach((item) => {
       item.classList.remove('hidden')
@@ -68,13 +76,14 @@ export function Meeting() {
   const roomClickHandler = (event) => {
     event.stopPropagation()
 
-    document.querySelectorAll('.occupied').forEach((item) => {
-      if (!occupiedRooms?.includes(item.id.toString())) {
-        item.classList.remove('occupied')
-      }
-    })
+    document.querySelectorAll(".occupiedRoom").forEach((item) => {
+      if(!occupiedRooms.includes(item.id.toString())) {
+        item.classList.remove("occupiedRoom");
+        item.classList.remove("specificOccupied");
+      }});
 
-    event.target.classList.add('occupied')
+    event.target.classList.add("occupiedRoom");    
+    event.target.classList.add("specificOccupied");
 
     if (roomScheduling.room !== event.target.id) {
       setRoomScheduling({
@@ -104,7 +113,7 @@ export function Meeting() {
               key={horariosId[index]}
               className={`${occupiedDatetime?.includes(horario) ? 'occupied' : ''}`}
               id={horario}
-              onClick={(event) => timeClickHandler(event, horario)}
+              onClick={(event) => timeClickHandler(event)}
             >
               {horario}
             </Display>
@@ -121,9 +130,13 @@ export function Meeting() {
           return (
             <Display
               key={roomsId[index]}
-              marginBottom={'1rem'}
-              padding={'0.5rem 1rem'}
-              className={`${occupiedRooms?.includes(room) ? 'occupied' : ''}`}
+              marginBottom={"1rem"}
+              padding={"0.5rem 1rem"}
+              className={`${
+                occupiedRooms?.includes(room)
+                  ? "occupiedRoom"
+                  : ""
+              }`}
               id={room}
               onClick={(event) => roomClickHandler(event)}
             >

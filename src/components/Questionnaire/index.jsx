@@ -13,9 +13,7 @@ export function QuestionnairePage() {
   const history = useHistory()
 
   const { user } = useContext(AuthContext)
-
-  console.log(user)
-
+  
   function handleQuestionnaire(event) {
     event.preventDefault()
 

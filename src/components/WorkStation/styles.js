@@ -98,6 +98,11 @@ export const Station = styled.div`
       background: var(--orange-subtle);
     }
 
+    .circle.down.occupied.busy.occupiedChair,
+    .circle.up.occupied.busy.occupiedChair {
+      background: var(--orange-lighter);
+    }
+
     .circle.up.unoccupied,
     .circle.down.unoccupied {
       background: var(--green);
