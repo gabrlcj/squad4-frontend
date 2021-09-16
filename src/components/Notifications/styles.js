@@ -34,6 +34,13 @@ export const Container = styled.div`
       border-radius: 1rem;
       width: 100%;
       padding: 1rem;
+
+      transition: all ease 0.3s;
+
+      &:hover {
+        transform: translateY(-15%);
+        background: var(--blue-main);
+      }
     }
   }
 `

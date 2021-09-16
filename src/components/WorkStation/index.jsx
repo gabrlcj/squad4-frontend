@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import Carousel from "react-elastic-carousel";
 import { LoadingComponent } from "../LoadingComponent";
 
-export function WorkStation() {
+export function WorkStation({ handleModal }) {
   const { scheduling, setScheduling, user, schedulings, setSchedulings, day } =
     useContext(AuthContext);
   const [occupiedWorkstations, setOccupiedWorkstations] = useState([]);
@@ -121,7 +121,10 @@ export function WorkStation() {
                   : "unoccupied"
               }`}
               key={chairNumber}
-              onClick={(event) => chairClickHandler(event, chairNumber)}
+              onClick={(event) => {
+                chairClickHandler(event, chairNumber);
+                handleModal();
+              }}
             >
               {isEven(chairNumber) ? unavailableSeat() : ""}
             </div>
@@ -143,7 +146,10 @@ export function WorkStation() {
                   : "unoccupied"
               }`}
               key={chairNumber}
-              onClick={(event) => chairClickHandler(event, chairNumber)}
+              onClick={(event) => {
+                chairClickHandler(event, chairNumber);
+                handleModal();
+              }}
             >
               {isOdd(chairNumber) ? unavailableSeat() : ""}
             </div>
@@ -168,21 +174,47 @@ export function WorkStation() {
     Number.call,
     Number
   );
- 
+
   function simpleArray(chair) {
-    return [chair, chair + 16]
+    return [chair, chair + 16];
   }
 
   const creatingWorkstations = (allStations, allChairs) => {
     return (
       <>
         {allStations.map((station, index) => (
-        
           <div className="content">
-            {tableStation(allStations[index], [allChairs[station], allChairs[station + 1], allChairs[station + 2], allChairs[station + 3]], [allChairs[station + 4], allChairs[station + 5], allChairs[station + 6], allChairs[station + 7]])}
-            {tableStation(allStations[index + 1], [allChairs[station + 8], allChairs[station + 9], allChairs[station + 10], allChairs[station + 11]], [allChairs[station + 12], allChairs[station + 13], allChairs[station + 14], allChairs[station + 15]])}
+            {tableStation(
+              allStations[index],
+              [
+                allChairs[station],
+                allChairs[station + 1],
+                allChairs[station + 2],
+                allChairs[station + 3],
+              ],
+              [
+                allChairs[station + 4],
+                allChairs[station + 5],
+                allChairs[station + 6],
+                allChairs[station + 7],
+              ]
+            )}
+            {tableStation(
+              allStations[index + 1],
+              [
+                allChairs[station + 8],
+                allChairs[station + 9],
+                allChairs[station + 10],
+                allChairs[station + 11],
+              ],
+              [
+                allChairs[station + 12],
+                allChairs[station + 13],
+                allChairs[station + 14],
+                allChairs[station + 15],
+              ]
+            )}
           </div>
-
         ))}
       </>
     );
@@ -190,15 +222,9 @@ export function WorkStation() {
 
   return (
     <>
-      <form className="modal" onSubmit={handleAppointment}>
-        <strong style={{ marginRight: "1rem" }}>
-          Escolha o dia e a cadeira e clique no botão confirmar
-        </strong>
-        <button type="submit">Confirmar</button>
-      </form>
       {scheduling.office === "São Paulo" ? (
         <Container>
-          <Carousel itemsToShow={2} className="carousel">
+          <Carousel itemsToShow={1} className="carousel">
             {creatingWorkstations(simpleArray(1), allChairs)}
             {creatingWorkstations(simpleArray(18), allChairs)}
             {creatingWorkstations(simpleArray(33), allChairs)}
@@ -207,24 +233,47 @@ export function WorkStation() {
             {creatingWorkstations(simpleArray(84), allChairs)}
             {creatingWorkstations(simpleArray(101), allChairs)}
             {creatingWorkstations(simpleArray(118), allChairs)}
-            {creatingWorkstations(simpleArray(133), allChairs)}            
+            {creatingWorkstations(simpleArray(133), allChairs)}
             {creatingWorkstations(simpleArray(150), allChairs)}
             {creatingWorkstations(simpleArray(167), allChairs)}
             {creatingWorkstations(simpleArray(184), allChairs)}
             {creatingWorkstations(simpleArray(201), allChairs)}
             {creatingWorkstations(simpleArray(218), allChairs)}
-            {creatingWorkstations(simpleArray(233), allChairs)}            
+            {creatingWorkstations(simpleArray(233), allChairs)}
             {creatingWorkstations(simpleArray(250), allChairs)}
             {creatingWorkstations(simpleArray(267), allChairs)}
             {creatingWorkstations(simpleArray(284), allChairs)}
             {creatingWorkstations(simpleArray(301), allChairs)}
             {creatingWorkstations(simpleArray(318), allChairs)}
+            {creatingWorkstations(simpleArray(233), allChairs)}
+            {creatingWorkstations(simpleArray(250), allChairs)}
+            {creatingWorkstations(simpleArray(267), allChairs)}
+            {creatingWorkstations(simpleArray(284), allChairs)}
+            {creatingWorkstations(simpleArray(301), allChairs)}
+            {creatingWorkstations(simpleArray(318), allChairs)}
+            {creatingWorkstations(simpleArray(333), allChairs)}
+            {creatingWorkstations(simpleArray(350), allChairs)}
+            {creatingWorkstations(simpleArray(367), allChairs)}
+            {creatingWorkstations(simpleArray(384), allChairs)}
+            {creatingWorkstations(simpleArray(401), allChairs)}
+            {creatingWorkstations(simpleArray(418), allChairs)}
+            {creatingWorkstations(simpleArray(433), allChairs)}
+            {creatingWorkstations(simpleArray(450), allChairs)}
+            {creatingWorkstations(simpleArray(467), allChairs)}
+            {creatingWorkstations(simpleArray(484), allChairs)}
+            {creatingWorkstations(simpleArray(501), allChairs)}
+            {creatingWorkstations(simpleArray(518), allChairs)}
+            {creatingWorkstations(simpleArray(533), allChairs)}
+            {creatingWorkstations(simpleArray(550), allChairs)}''
+            {creatingWorkstations(simpleArray(567), allChairs)}
+            {creatingWorkstations(simpleArray(584), allChairs)}
+            {creatingWorkstations(simpleArray(601), allChairs)}
           </Carousel>
         </Container>
       ) : (
         <Container>
-          <Carousel itemsToShow={2}>
-          {creatingWorkstations(simpleArray(1), allChairs)}
+          <Carousel itemsToShow={1}>
+            {creatingWorkstations(simpleArray(1), allChairs)}
             {creatingWorkstations(simpleArray(18), allChairs)}
             {creatingWorkstations(simpleArray(33), allChairs)}
             {creatingWorkstations(simpleArray(50), allChairs)}
@@ -232,13 +281,13 @@ export function WorkStation() {
             {creatingWorkstations(simpleArray(84), allChairs)}
             {creatingWorkstations(simpleArray(101), allChairs)}
             {creatingWorkstations(simpleArray(118), allChairs)}
-            {creatingWorkstations(simpleArray(133), allChairs)}            
+            {creatingWorkstations(simpleArray(133), allChairs)}
             {creatingWorkstations(simpleArray(150), allChairs)}
             {creatingWorkstations(simpleArray(167), allChairs)}
             {creatingWorkstations(simpleArray(184), allChairs)}
             {creatingWorkstations(simpleArray(201), allChairs)}
             {creatingWorkstations(simpleArray(218), allChairs)}
-            {creatingWorkstations(simpleArray(233), allChairs)}            
+            {creatingWorkstations(simpleArray(233), allChairs)}
           </Carousel>
         </Container>
       )}

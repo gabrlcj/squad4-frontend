@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 2rem auto;
   color: white;
 
   .occupiedRoom {
@@ -18,6 +18,7 @@ export const Container = styled.div`
 
 export const TimeBlock = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   h3 {
@@ -27,6 +28,7 @@ export const TimeBlock = styled.div`
     background-color: var(--blue-darker);
     text-align: center;
     padding-top: 0.5rem;
+    margin-right: 2rem;
   }
 
   .overlay {
@@ -34,7 +36,6 @@ export const TimeBlock = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    align-content: center;
     margin: 0 auto;
   }
 `
@@ -42,7 +43,6 @@ export const TimeBlock = styled.div`
 export const RoomBlock = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 2rem;
 
   h3 {
     border-radius: 40px;
@@ -54,7 +54,7 @@ export const RoomBlock = styled.div`
   }
 
   .hidden {
-    visibility: hidden;
+    display: hidden;
     opacity: 0;
 
     position: absolute;
@@ -77,7 +77,7 @@ export const TimeContainer = styled.div`
   background-color: #7474b445;
   padding: 2rem 2.5rem;
   border-radius: 1.5rem;
-  /* min-height: 20rem; */
+  margin-right: 2rem;
 `
 
 export const Display = styled.div`
@@ -96,5 +96,4 @@ export const RoomContainer = styled.div`
   background-color: rgba(116, 116, 180, 0.27);
   padding: 2rem 2.5rem;
   border-radius: 1.5rem;
-  /* min-height: 20rem; */
 `

@@ -13,7 +13,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: start;
-  gap: 0.1rem;
+  gap: 0.25rem;
   flex-direction: column;
 
   @media (max-width: 1080px) {

@@ -3,11 +3,11 @@ import SelectArrow from '../../assets/Select-arrow.svg'
 
 export const Container = styled.main`
   grid-area: main;
-  padding: 1.5rem;
+  padding: 2.5rem 1.5rem;
   background: #fff;
 
   @media (max-width: 1080px) {
-    padding: 0.75rem 1.5rem;
+    padding: 1.5rem;
   }
 
   .brand-container {
@@ -18,12 +18,16 @@ export const Container = styled.main`
   }
 
   .selection-bar {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     width: 100%;
-    border-radius: 1rem;
 
     display: flex;
     align-items: center;
+    justify-content: space-around;
+
+    @media (max-width: 1080px) {
+      justify-content: left;
+    }
 
     select {
       font: 700 0.85rem 'Montserrat', sans-serif;
@@ -35,10 +39,11 @@ export const Container = styled.main`
       background: transparent;
       color: #fff;
       background: url(${SelectArrow}) no-repeat;
-      background-position: 9.2rem;
+      background-position: 9.3rem;
       background-color: var(--blue-darker);
       border-radius: 3rem;
       outline: none;
+      cursor: pointer;
 
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -54,17 +59,18 @@ export const Container = styled.main`
 
       option {
         background-color: var(--orange-subtle);
+        font: 700 0.85rem 'Montserrat', sans-serif;
       }
     }
   }
 
   section {
-    margin-top: 2rem;
-    border: 3.24px solid var(--blue-darker);
+    margin-top: 2.5rem;
+    border: 3px solid var(--blue-darker);
     border-radius: 2rem;
 
     @media (max-width: 1080px) {
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
 
     h2 {
@@ -107,6 +113,10 @@ export const Container = styled.main`
       margin-right: 0.25rem;
       border: 1px solid #121212;
     }
+
+    .circle.livre.blue {
+      background: var(--blue-main);
+    }
   }
 
   .buttons-container {
@@ -116,6 +126,7 @@ export const Container = styled.main`
     margin: 1rem 0;
 
     button {
+      margin: 1rem 0;
       color: white;
       background: var(--orange-main);
       border-radius: 1rem;
@@ -124,15 +135,32 @@ export const Container = styled.main`
       padding: 0.5rem 1rem;
       font: 800 1rem 'Montserrat', sans-serif;
 
-      transition: all 0.2s;
+      transition: background-color ease 0.4s;
+
+      &:hover {
+        background: var(--orange-lighter);
+      }
     }
 
     .selected {
       background-color: var(--blue-darker);
+
+      &:hover {
+        background: var(--blue-main);
+      }
     }
 
     .selectedRoom {
-      width: 9.5rem;
+      width: 14rem;
+      padding: 1rem;
+    }
+  }
+
+  .buttons-container.room {
+    margin-top: 0.5rem;
+
+    @media (max-width: 1080px) {
+      margin-top: 0;
     }
   }
 `
