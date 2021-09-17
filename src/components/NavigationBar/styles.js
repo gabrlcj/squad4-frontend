@@ -55,6 +55,7 @@ export const Container = styled.nav`
   img:not(.profile-img) {
     height: 2rem;
     width: 2rem;
+    cursor: pointer;
 
     transition: all ease 0.3s;
 
