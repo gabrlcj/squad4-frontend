@@ -16,7 +16,7 @@
 <br />
 
 <div align='center'>
-  <a href="https://orange-space.vercel.app/"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+  <a href="https://orange-space.vercel.app/" target="_blank"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 </div>
 
 <br />
