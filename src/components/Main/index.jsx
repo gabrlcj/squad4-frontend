@@ -27,7 +27,7 @@ export function Main({ showModal, setShowModal, handleModal, userScheduling }) {
     return dia + '/' + mes + '/' + ano
   }
 
-  const buttons = ['1° ANDAR', '2° ANDAR', '3° ANDAR']
+  const buttons = []
 
   const handleAppointment = async (event) => {
     event.preventDefault()
