@@ -11,6 +11,7 @@ export function Appointments({ formatDay, userScheduling, setUserScheduling }) {
   const [cancel, setCancel] = useState(false)
   const { id } = useParams()
   const { scheduling } = useContext(AuthContext)
+  const [userRoomSchedule, setUserRoomSchedule] = useState()
 
   useEffect(() => {
     api({
@@ -22,6 +23,17 @@ export function Appointments({ formatDay, userScheduling, setUserScheduling }) {
       })
       .catch((error) => toast.error(error.response?.data.mensagem))
   }, [id, scheduling, userScheduling])
+
+  useEffect(() => {
+    api({
+      method: 'get',
+      url: `/reunioes/colaboradores/${id}`,
+    })
+      .then((res) => {
+        setUserRoomSchedule(res.data)
+      })
+      .catch((error) => toast.error(error.response?.data.mensagem))
+  }, [id, scheduling, setUserRoomSchedule])
 
   function handleCancel() {
     setCancel(!cancel)
@@ -56,6 +68,22 @@ export function Appointments({ formatDay, userScheduling, setUserScheduling }) {
             <strong>{scheduling.workstation}</strong>
           </div>
         ))}
+        {userRoomSchedule?.map((scheduling) => (
+          <div
+            className={`appointment-date meeting ${cancel ? 'cancel-button' : ''}`}
+            key={scheduling.id}
+            onClick={handleCancel}
+          >
+            {dataToCalendar(new Date(scheduling.date))}{' '}
+            <img onClick={() => deleteAppointment(scheduling.id)} className='cancel' src={Cancel} alt='Cancelar' />
+            <strong>{scheduling.office}</strong>
+            <strong>{scheduling.room}</strong>
+          </div>
+        ))}
+      </div>
+
+      <div className='appointments'>
+
       </div>
     </Container>
   )

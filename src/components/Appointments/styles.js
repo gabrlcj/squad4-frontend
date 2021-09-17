@@ -44,7 +44,7 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    height: 70%;
+    /* height: 70%; */
     overflow-x: hidden;
     cursor: pointer;
 
@@ -55,7 +55,7 @@ export const Container = styled.div`
       border-radius: 1rem;
       width: 100%;
       height: 3.25rem;
-      margin-bottom: 1rem;
+      /* margin-bottom: 1rem; */
       text-align: center;
 
       display: flex;
@@ -75,6 +75,11 @@ export const Container = styled.div`
         border-width: 0;
       }
     }
+
+    .appointment-date.meeting {
+        background: var(--orange-subtle);
+        color: var(--text);
+      }    
 
     .cancel-button {
       transition: all ease-in-out 0.3s;
