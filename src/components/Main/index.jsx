@@ -44,7 +44,6 @@ export function Main({ showModal, setShowModal, handleModal, userScheduling }) {
       toast.error(error.response?.data.mensagem)
     }
   }
-  console.log(userScheduling)
   return (
     <>
       {showModal && station !== 'Estação de trabalho' ? (
