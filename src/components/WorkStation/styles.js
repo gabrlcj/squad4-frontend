@@ -29,11 +29,22 @@ export const Container = styled.div`
     }
 
     .rec.rec-arrow {
-      display: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-subtle);
+      height: 4rem;
+      width: 4rem;
+      margin: 0 0.5rem;
+
+      &:hover {
+        box-shadow: 0 0 1px 3px var(--blue-main);
+        color: #121212;
+      }
     }
 
     .rec.rec-pagination {
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       gap: 1.5rem;

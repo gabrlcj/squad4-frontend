@@ -81,12 +81,23 @@ export const Container = styled.main`
     }
 
     h2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
       font-size: 1rem;
       padding: 1rem;
       color: #fff;
       background: var(--blue-darker);
       border-radius: 1.5rem 1.5rem 0 0;
       text-align: center;
+
+      strong {
+        color: whitesmoke;
+        background: var(--green);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+      }
     }
   }
 

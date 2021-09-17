@@ -38,7 +38,7 @@ export function Main({ showModal, setShowModal, handleModal }) {
       })
 
       toast.success('Agendamento feito com sucesso!')
-      setScheduling({ ...scheduling, date: new Date() })
+      handleModal()
     } catch (error) {
       toast.error(error.response?.data.mensagem)
     }
@@ -93,7 +93,14 @@ export function Main({ showModal, setShowModal, handleModal }) {
         </div>
         <section>
           {station === 'Estação de trabalho' ? (
-            <h2>ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
+            <h2>
+              ESTAÇÕES DISPONÍVEIS PARA {dataAtualFormatada(day)}
+              {scheduling.office === 'São Paulo' ? (
+                <strong>42 MESAS LIVRES EM SÃO PAULO</strong>
+              ) : (
+                <strong>15 MESAS LIVRES EM SANTOS</strong>
+              )}{' '}
+            </h2>
           ) : (
             <h2>HORÁRIOS E SALAS DISPONÍVEIS PARA {dataAtualFormatada(day)}</h2>
           )}

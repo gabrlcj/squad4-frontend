@@ -4,7 +4,6 @@ export const Container = styled.main`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 9.7rem 1fr 20rem;
-  grid-template-rows: 50vh 50vh;
   grid-template-areas:
     'navbar main appointments'
     'navbar main notification';
@@ -27,6 +26,5 @@ export const Container = styled.main`
 
   @media (max-width: 1080px) {
     grid-template-columns: 5rem 1fr 17rem;
-    grid-template-rows: auto auto;
   }
 `

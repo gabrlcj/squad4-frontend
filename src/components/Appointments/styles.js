@@ -8,7 +8,7 @@ export const Container = styled.div`
   margin: 0.75rem auto 0;
   padding: 0.75rem 1rem;
   width: 18rem;
-  height: 90%;
+  height: 24rem;
 
   display: flex;
   align-items: center;
@@ -39,49 +39,12 @@ export const Container = styled.div`
   .appointments {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
-
-    .rec {
-      width: 100%;
-      height: 5rem;
-      padding: 0;
-      margin: 0;
-
-      .rec.rec-item-wrapper {
-        flex-direction: column;
-      }
-
-      button {
-        border-radius: 100%;
-        width: 0.75rem;
-        height: 0.75rem;
-        padding: 0;
-        border: 0;
-        margin-top: 0.85rem;
-        background: #c4c4c4;
-
-        &:hover {
-          box-shadow: 0 0 1px 3px var(--orange-lighter);
-        }
-      }
-
-      .rec.rec-dot_active {
-        background: var(--orange-lighter);
-        box-shadow: 0 0 1px 3px var(--orange-lighter);
-      }
-
-      .rec.rec-arrow {
-        display: none;
-      }
-
-      .rec.rec-pagination {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-      }
-    }
+    height: 70%;
+    overflow-x: hidden;
 
     .appointment-date {
       color: #fff;
@@ -96,11 +59,37 @@ export const Container = styled.div`
       align-items: center;
       justify-content: space-around;
       transition: all ease-in-out 0.3s;
+
+      .cancel {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
     }
 
-    .show {
+    .cancel-button {
       transition: all ease-in-out 0.3s;
       transform: translateX(-40%);
+      position: relative;
+
+      .cancel {
+        position: absolute;
+        right: -6rem;
+        width: auto;
+        height: auto;
+        padding: 0;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+        cursor: pointer;
+      }
     }
   }
 `

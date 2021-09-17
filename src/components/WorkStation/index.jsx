@@ -29,7 +29,7 @@ export function WorkStation({ handleModal }) {
     try {
       api({
         method: 'get',
-        url: `agendamentos/data/${formatToday}`,
+        url: `/agendamentos/data/${formatToday}`,
       }).then((res) => {
         setSchedulings(res.data.rows)
       })
