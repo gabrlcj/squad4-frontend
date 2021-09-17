@@ -38,6 +38,7 @@ export const Container = styled.div`
 
   .appointments {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: start;
     flex-direction: column;
@@ -45,6 +46,7 @@ export const Container = styled.div`
     width: 100%;
     height: 70%;
     overflow-x: hidden;
+    cursor: pointer;
 
     .appointment-date {
       color: #fff;
@@ -53,6 +55,7 @@ export const Container = styled.div`
       border-radius: 1rem;
       width: 100%;
       height: 3.25rem;
+      margin-bottom: 1rem;
       text-align: center;
 
       display: flex;

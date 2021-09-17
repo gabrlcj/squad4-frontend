@@ -12,8 +12,9 @@ import { ConfirmMeeting } from '../ConfirmMeeting'
 import { ConfirmWorkStation } from '../ConfirmWorkStation'
 import api from '../../api'
 import { toast } from 'react-toastify'
+import { CancelScheduling } from '../CancelScheduling'
 
-export function Main({ showModal, setShowModal, handleModal }) {
+export function Main({ showModal, setShowModal, handleModal, userScheduling }) {
   const [station, setStation] = useState('Estação de trabalho')
   const [activeButton, setActiveButton] = useState(0)
   const { day, scheduling, setScheduling, user } = useContext(AuthContext)
@@ -43,7 +44,7 @@ export function Main({ showModal, setShowModal, handleModal }) {
       toast.error(error.response?.data.mensagem)
     }
   }
-
+  console.log(userScheduling)
   return (
     <>
       {showModal && station !== 'Estação de trabalho' ? (
@@ -55,6 +56,17 @@ export function Main({ showModal, setShowModal, handleModal }) {
       {showModal && station === 'Estação de trabalho' ? (
         <Modal showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}>
           <ConfirmWorkStation
+            handleAppointment={handleAppointment}
+            showModal={showModal}
+            setShowModal={setShowModal}
+            handleModal={handleModal}
+          />
+        </Modal>
+      ) : null}
+
+      {showModal && userScheduling?.id ? (
+        <Modal showModal={showModal} setShowModal={setShowModal} handleModal={handleModal}>
+          <CancelScheduling
             handleAppointment={handleAppointment}
             showModal={showModal}
             setShowModal={setShowModal}
